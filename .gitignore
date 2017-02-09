@@ -30,6 +30,8 @@
 npm-debug.log
 testem.log
 /typings
+ng2-sticky-kit.js
+ng2-sticky-kit.js.map
 
 # e2e
 /e2e/*.js

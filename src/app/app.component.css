@@ -1,0 +1,29 @@
+.header-container{
+    width: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    position: relative;
+    display: block;
+}
+
+.banner.img-responsive{
+    margin-bottom: -3.3%;
+}
+
+.logo.img-responsive{
+    width: 50%;
+    margin: auto;
+    left: 25%;
+    top: 30%;
+    position: absolute;
+}
+
+.navbar{
+      margin-bottom: 50px;
+      border-radius: 0;
+      background-color: black;
+      border: none;
+      opacity: 0.9;
+}
+
+
