@@ -5,31 +5,35 @@
   </div>
 
   <div class="nav-container">
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Deals</a></li>
-          <li><a href="#">Stores</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <sticky [sticky-parent]="false" [sticky-width]="'100%'">  
+        <!--แก้ตรงนี้เลยนะจ๊ะ-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">Logo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </sticky>
   </div>
 
   <div class="container">
@@ -66,16 +70,6 @@
                     amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
                     mollitia reprehenderit totam.</p>
             </div>
-
-            <!--<sticky class="aside" [sticky-offset-top]="68" [sticky-offset-bottom]="40" [sticky-media-query]="'min-width: 768px'">
-                <div class="panel">
-                    <h2>Heading 1</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet
-                        architecto
-                        asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                        reprehenderit totam.</p>
-                </div>
-            </sticky>-->
         </div>
 
         <div class="row">
@@ -121,71 +115,51 @@
                     amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
                     mollitia reprehenderit totam.</p>
             </div>
-
-            <!--<sticky class="aside" [sticky-offset-top]="68">
-                <div class="panel">
-                    <h2>Heading 2</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                </div>
-            </sticky>-->
         </div>
 
-        <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
-                amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
-                mollitia reprehenderit totam.</p>
+        <div class="row">
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
+                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                    reprehenderit totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid
+                    amet architecto asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias,
+                    mollitia reprehenderit totam.</p>
+            </div>
         </div>
     </div>
 </div>
