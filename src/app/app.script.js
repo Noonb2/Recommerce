@@ -9,9 +9,10 @@ console.log('Hello Script');
 			$('.menu-hamburger-close').css('display','block');
 			$('#others').css('display','none');
 			$('#mySidenav').css('width','250px');
-			$('#main').css('margin-left','250px');
+			
 			$('body').css('background','rgba(0,0,0,0.4)');
 			$('body').css('overflow','hidden');
+			// $('body').css('margin-left','250px');
 
 			
 		});
@@ -19,9 +20,10 @@ console.log('Hello Script');
 			$('.menu-hamburger-close').css('display','none');
 			$('.menu-hamburger-open,#others').css('display','block');
 			$('#mySidenav').css('width','0');
-			$('#main').css('margin-left','0');
+			
 			$('body').css('background','white');
 			$('body').css('overflow','initial');
+			// $('body').css('margin-left','0');
 
 		});
 		//  $('body').click(function(evt){
