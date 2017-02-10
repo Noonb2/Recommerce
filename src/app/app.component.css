@@ -36,7 +36,7 @@
     margin-left: 10px;
     margin-right: 10px;
     cursor:pointer;
-    font-size: 0.75em;
+    font-size: 0.9em;
     color:#fcf192;
     /*text-shadow: rgb(255, 252, 176) 0px 0px 7px;*/
     border-radius: 10px;
@@ -71,7 +71,7 @@
     margin-left: 10px;
     margin-right: 10px;
     /*cursor:pointer;*/
-    font-size: 0.75em;
+    font-size: 0.9em;
     color:#fcf192;
     /*text-shadow: rgb(255, 252, 176) 0px 0px 7px;*/
     border-radius: 10px;
@@ -111,7 +111,7 @@
   }
   .sub-menu>p>a{
     color:#818181;
-    font-size: 0.5em;
+    font-size: 0.9em;
     transition: color 0.5s;
   }
   .sub-menu>p>a:hover{
@@ -198,7 +198,7 @@
       display: none ;
     }
     .menu-navbar{
-      font-size: 0.5em;
+      font-size: 0.9em;
     }
     .menu-hamburger-open{
       display: block;
