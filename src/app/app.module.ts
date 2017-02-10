@@ -8,7 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {Department} from './department/department.component';
 import {itemlist} from './department/itemlist/itemList.component';
 const appRoutes: Routes = [
+  
   { path: 'Departments', component: Department },
+  
   
 ];
 

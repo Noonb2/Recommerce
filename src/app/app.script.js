@@ -16,7 +16,7 @@ console.log('Hello Script');
 
 			
 		});
-		$('.menu-hamburger-close,.closebtn').click(function(){
+		$('.menu-hamburger-close,.closebtn,#sub-cat').click(function(){
 			$('.menu-hamburger-close').css('display','none');
 			$('.menu-hamburger-open,#others').css('display','block');
 			$('#mySidenav').css('width','0');
@@ -25,6 +25,15 @@ console.log('Hello Script');
 			$('body').css('overflow','initial');
 			// $('body').css('margin-left','0');
 
+		});
+		$(document).on("scroll",function(){
+			
+				if($(document).scrollTop()>100){
+
+					$(".department-containner").fadeOut(500);
+				} else{
+
+				}
 		});
 		//  $('body').click(function(evt){
 		//  		console.log($(event.target).attr('class'));

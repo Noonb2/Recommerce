@@ -1,7 +1,7 @@
 <div>
   <div class="header-container" >
       <img src="./img/BannerCover.png" class="banner img-responsive">
-      <a href="#"><img src="./img/Logo.png" class="logo img-responsive"></a>
+      <a [routerLink]="['']"><img src="./img/Logo.png" class="logo img-responsive"></a>
   </div>
 
   <div class="nav-container">
@@ -16,7 +16,7 @@
 	  </div>
 	  <a href="javascript:void(0)" id="women-menu">Women's Fashion</a>
 	  <div class="sub-menu" id="women" style="">
-	  		<p><a href="" style="">Apparels</a></p>
+	  		<p><a [routerLink]="['/Departments']" id="sub-cat" style="">Apparels</a></p>
 			<p><a href="">Bags</a></p>
 			<p><a href="">Shoes</a></p>
 			<p><a href="">Accesories</a></p>
@@ -75,7 +75,7 @@
 		<div class="center">
 			<div class="col-md-2 col-sm-2 department">
 				<p id="head">Women's Fashion</p>
-				<p><a href="/Departments">Apparels</a></p>
+				<p><a [routerLink]="['/Departments']">Apparels</a></p>
 				<p><a href="">Bags</a></p>
 				<p><a href="">Shoes</a></p>
 				<p><a href="">Accesories</a></p>
