@@ -7,10 +7,6 @@
 
 }
 
-.banner.img-responsive{
-    
-     
-}
 
 .logo.img-responsive{
     width: 50%;
@@ -23,7 +19,7 @@
 .navbar{
       margin-bottom: 50px;
       border-radius: 0;
-      background-color: black;
+      background-color: transparent;
       border: none;
       opacity: 0.9;
 }
