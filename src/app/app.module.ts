@@ -4,15 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { StickyModule } from '../ng2-sticky-kit';
 import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+import {Department} from './department/department.component';
+import {itemlist} from './department/itemlist/itemList.component';
+const appRoutes: Routes = [
+  { path: 'Departments', component: Department },
+  
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Department,
+    itemlist,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes),
     StickyModule
   ],
   providers: [],

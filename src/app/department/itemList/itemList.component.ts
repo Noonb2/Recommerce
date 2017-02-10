@@ -6,7 +6,7 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
   styleUrls: ['./itemlist.component.css']
 })
 
-export class AppComponent {
+export class itemlist {
   title = 'app works!';
   constructor(private elementRef:ElementRef){}
   ngAfterViewInit(){
