@@ -3,11 +3,13 @@
     padding-right: 0px;
     padding-left: 0px;
     position: relative;
-    display: block;
+   
+
 }
 
 .banner.img-responsive{
-    margin-bottom: -3.3%;
+    
+     
 }
 
 .logo.img-responsive{
