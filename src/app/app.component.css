@@ -30,7 +30,7 @@
     /*text-align: center;*/
   }
   .menu-navbar{
-    
+    /*z-index: 1000;*/
     display: flex;
     justify-content: center;
     text-align: center;
@@ -62,7 +62,7 @@
     background: #330431;
     width: 100%;
     /*position: fixed;*/
-    z-index: 1000;
+    /*z-index: 1000;*/
 
 
   }
@@ -150,14 +150,14 @@
     .department-containner{
     display: none;
     background-color: rgba(0, 0, 0, 0.8);
-    height: 400px;
+    height: 20%;
     /*position: fixed;*/
-    padding-top: 70px;
+    /*padding-top: 70px;*/
     
     /*display: inline-block;*/
     }
     .department{
-      height: 50vh;
+      height: 30vh;
       margin:10px;
       padding-top:20px;
 
