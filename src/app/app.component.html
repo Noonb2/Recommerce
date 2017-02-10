@@ -6,33 +6,117 @@
 
   <div class="nav-container">
     <sticky [sticky-parent]="false" [sticky-width]="'100%'">  
-        <!--แก้ตรงนี้เลยนะจ๊ะ-->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="#">Logo</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">Stores</a></li>
-                    <li><a href="#">Contact</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        <div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" >&times;</a>
+	  <div class="col-md-6 navbar-search" style="" >
+				<div id="search">
+					<input type="text" placeholder="search.." style="width: 80%;">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</div>
+	  </div>
+	  <a href="javascript:void(0)" id="women-menu">Women's Fashion</a>
+	  <div class="sub-menu" id="women" style="">
+	  		<p><a href="" style="">Apparels</a></p>
+			<p><a href="">Bags</a></p>
+			<p><a href="">Shoes</a></p>
+			<p><a href="">Accesories</a></p>
+	  </div>
+	  <a href="javascript:void(0)" id="men-menu">Men's Fashion</a>
+	  <div class="sub-menu" id="men" style="">
+	  		<p><a href="" style="">Apparels</a></p>
+			<p><a href="">Bags</a></p>
+			<p><a href="">Shoes</a></p>
+			<p><a href="">Accesories</a></p>
+	  </div>
+	  <a href="javascript:void(0)" id="elec-menu">Electronics</a>
+	  <div class="sub-menu" id="electronic" style="">
+	  		<p><a href="">TV & Home Theatre</a></p>
+			<p><a href="">Computers & Printers</a></p>
+			<p><a href="">Mobile Devices</a></p>
+			<p><a href="">Cameras</a></p>
+	  </div>
+	  <a href="javascript:void(0)" id="home-menu">Home</a>
+	  <div class="sub-menu" id ="home" style="">
+			<p><a href="">Bedroom</a></p>
+			<p><a href="">Bathroom</a></p>
+			<p><a href="">Living Room</a></p>
+			<p><a href="">Kitchen</a></p>
+	  </div>
+	</div>
+	<div class="center navbar-containner" >
+		
+		<div class="center-navbar" >
+			<div class="col-md-2 col-sm-2 menu-navbar menu-hamburger-open" id="hamburger">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ></span>
+				
+			</div>
+			<div class="col-md-2 col-sm-2  menu-navbar menu-hamburger-close" id="hamburger">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ></span>
+				
+			</div>
+			<div class="col-md-2 col-sm-2 menu-navbar menu-collapse" style="" id="department-menu" >
+				Department
+			</div>
+			<div class="col-md-6 col-sm-3 navbar-search menu-collapse" style="" >
+				<div id="search">
+					<input type="text" placeholder="search.." >
+					<span class="glyphicon glyphicon-search" aria-hidden="true" style=""></span>
+				</div>
+			</div>
+			<div class="col-md-1 col-sm-2 menu-navbar" style="" id="others" >
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;Cart
+			</div>
+			<div class="col-md-1 col-sm-2 menu-navbar" style="" id="others" >
+				Sign In
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 col-sm-12 department-containner">
+		<div class="center">
+			<div class="col-md-2 col-sm-2 department">
+				<p id="head">Women's Fashion</p>
+				<p><a href="">Apparels</a></p>
+				<p><a href="">Bags</a></p>
+				<p><a href="">Shoes</a></p>
+				<p><a href="">Accesories</a></p>
+			</div>
+			<div class="col-md-2 col-sm-2 department">
+				<p id="head">Men's Fashion</p>
+				<p><a href="">Apparels</a></p>
+				<p><a href="">Bags</a></p>
+				<p><a href="">Shoes</a></p>
+				<p><a href="">Accesories</a></p>
+			</div>
+			<div class="col-md-2 col-sm-2  department">
+				<p id="head">Electronics</p>
+				<p><a href="">TV & Home Theatre</a></p>
+				<p><a href="">Computers & Printers</a></p>
+				<p><a href="">Mobile Devices</a></p>
+				<p><a href="">Cameras</a></p>
+			</div>
+			<div class="col-md-2 col-sm-2 department">
+				<p id="head">Home</p>
+				<p><a href="">Bedroom</a></p>
+				<p><a href="">Bathroom</a></p>
+				<p><a href="">Living Room</a></p>
+				<p><a href="">Kitchen</a></p>
+			</div>
+		</div>
+		<!-- <div class="center" style="color:white;vertical-align: center;height: 340px;text-align: center">
+			<div class="col-md-2 col-sm-2" id="women-app" >
+				Dress
+			</div>
+			<div class="col-md-2 col-sm-2" id="women-app">
+				Shirt
+			</div>
+			<div class="col-md-2 col-sm-2" id="women-app">
+				Skirt
+			</div>
+			<div class="col-md-2 col-sm-2" id="women-app">
+				Trouser
+			</div>
+		</div> -->
+	</div>
     </sticky>
   </div>
 
