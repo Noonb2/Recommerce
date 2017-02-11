@@ -12,7 +12,7 @@ export class AppComponent {
   ngAfterViewInit(){
       var s = document.createElement("script");
       s.type = "text/javascript";
-      s.src = "/app/app.script.js";
+      s.src = "./app/app.script.js";
       this.elementRef.nativeElement.appendChild(s);
   }
   

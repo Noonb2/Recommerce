@@ -6,7 +6,9 @@ import { StickyModule } from '../ng2-sticky-kit';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import {Department} from './department/department.component';
-import {itemlist} from './department/itemlist/itemList.component';
+import {itemList} from './department/itemlist/itemList.component';
+import {itemListService} from './department/itemlist/itemList.service';
+
 const appRoutes: Routes = [
   
   { path: 'Departments', component: Department },
@@ -18,7 +20,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     Department,
-    itemlist,
+    itemList,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     StickyModule
   ],
-  providers: [],
+  providers: [itemListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
