@@ -14,23 +14,7 @@ export class itemListService {
 
 	}
 	getItem(){
-	// 	this.data = [{
-	// 	name:"test1",
-	// 	description:"descript1",
-	// 	img:"wb1.png",
-	// },
-	// {
-	// 	name:"test2",
-	// 	description:"descript2",
-	// 	img:"wb2.png",
-	// },
-	// {
-	// 	name:"test3",
-	// 	description:"descript3",
-	// 	img:"wb3.png",
-	// },
-	// ]
-		
+
 		return this.http.get(this.itemlistUrl).map((res:Response) => res.json());
 		// console.log(data);
 		
