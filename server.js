@@ -22,25 +22,7 @@ app.use('/api', api);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
-// app.get('/api/itemlist',function(req,res){
-// 	data = [{
-// 		name:"test1",
-// 		description:"descript1",
-// 		img:"wb1.png",
-// 	},
-// 	{
-// 		name:"test2",
-// 		description:"descript2",
-// 		img:"wb2.png",
-// 	},
-// 	{
-// 		name:"test3",
-// 		description:"descript3",
-// 		img:"wb3.png",
-// 	},
-// 	]
-// 	res.json(data);
-// })
+
 /**
  * Get port from environment and store in Express.
  */
