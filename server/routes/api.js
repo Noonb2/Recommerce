@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('api works');
 });
+
 router.get('/itemlist',function(req,res){
 	data = [{
 		name:"test1",
@@ -24,4 +25,5 @@ router.get('/itemlist',function(req,res){
 	]
 	res.json(data);
 })
+
 module.exports = router;
