@@ -1,9 +1,14 @@
 console.log('Hello Script');
 	$(document).ready(function(){
 		$('#department-menu').click(function(){
-		console.log("menu clicked")
-		$('.department-containner').fadeToggle(500);
-	});
+			console.log("menu clicked")
+			$('.department-containner').fadeToggle(500);
+		});
+		$('.sub-cat-menu').click(function(){
+			
+			$('.department-containner').fadeOut(500);
+			$("html, body").animate({scrollTop: 0}, 750);
+			});
 		$('.menu-hamburger-open').click(function(){
 			$('.menu-hamburger-open,#others').css('display','none');
 			$('.menu-hamburger-close').css('display','block');

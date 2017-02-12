@@ -31,14 +31,53 @@ export class itemList {
         this.sub = this.route.params.subscribe(params => {
            this.department = params['department'];
            this.category = params['category'];
-
+           switch (this.department) {
+               case "women":
+                   // code...
+                   this.department="Women's Fashion";
+                   break;
+               case "men":
+                   this.department="Men's Fashion";
+                   break;
+               case "elec":
+                   this.department="Electronics";
+                   break;
+               case "home":
+                   this.department="Home";
+                   break;
+               default:
+                   // code...
+                   break;
+           }
+           switch (this.category) {
+               case "tv":
+                   // code...
+                   this.category="TV & Home Theatre";
+                   break;
+               case "comp":
+                   // code...
+                   this.category="Computers & Printers";
+                   break;
+               case "mobile":
+                   // code...
+                   this.category="Mobile Devices";
+                   break;
+               case "livingroom":
+                   // code...
+                   this.category="Living Room";
+                   break;
+               default:
+                   // code...
+                   break;
+           }
        // In a real app: dispatch action to load the details here.
         });
-        this.itemlistService.getItemParams(this.department,this.category).subscribe(data => this.data =data);
+        this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => this.data =data);
 
         
     }
 
+   
 
   
 }
