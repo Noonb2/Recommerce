@@ -11,7 +11,7 @@ import {itemListService} from './department/itemlist/itemList.service';
 
 const appRoutes: Routes = [
   
-  { path: 'Departments', component: Department },
+  { path: 'Departments/:department/:category', component:Department},
   
   
 ];

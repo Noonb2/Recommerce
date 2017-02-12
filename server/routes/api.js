@@ -6,8 +6,7 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 
-router.get('/itemlist',function(req,res){
-	data = [{
+data = [{
 		name:"test1",
 		description:"descript1",
 		img:"wb1.png",
@@ -23,6 +22,14 @@ router.get('/itemlist',function(req,res){
 		img:"wb3.png",
 	},
 	]
+router.get('/itemlist',function(req,res){
+	
+	res.json(data);
+})
+
+router.get('/itemlist/:department/:category',function(req,res){
+	console.log(req.params.department);
+	console.log(req.params.category);
 	res.json(data);
 })
 

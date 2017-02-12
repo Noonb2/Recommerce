@@ -16,31 +16,31 @@
 	  </div>
 	  <a href="javascript:void(0)" id="women-menu">Women's Fashion</a>
 	  <div class="sub-menu" id="women" style="">
-	  		<p><a [routerLink]="['/Departments']" id="sub-cat" style="">Apparels</a></p>
-			<p><a href="">Bags</a></p>
-			<p><a href="">Shoes</a></p>
-			<p><a href="">Accesories</a></p>
+	  		<p><a [routerLink]="['/Departments','women','apparels']" id="sub-cat">Apparels</a></p>
+            <p><a [routerLink]="['/Departments','women','bags']"  id="sub-cat">Bags</a></p>
+            <p><a [routerLink]="['/Departments','women','shoes']" id="sub-cat">Shoes</a></p>
+            <p><a [routerLink]="['/Departments','women','accessories']" id="sub-cat">Accessories</a></p>
 	  </div>
 	  <a href="javascript:void(0)" id="men-menu">Men's Fashion</a>
 	  <div class="sub-menu" id="men" style="">
-	  		<p><a href="" style="">Apparels</a></p>
-			<p><a href="">Bags</a></p>
-			<p><a href="">Shoes</a></p>
-			<p><a href="">Accesories</a></p>
+	  		<p><a [routerLink]="['/Departments','men','apparels']" id="sub-cat">Apparels</a></p>
+            <p><a [routerLink]="['/Departments','men','bags']"  id="sub-cat">Bags</a></p>
+            <p><a [routerLink]="['/Departments','men','shoes']"  id="sub-cat">Shoes</a></p>
+            <p><a [routerLink]="['/Departments','men','accessories']"  id="sub-cat">Accessories</a></p>
 	  </div>
 	  <a href="javascript:void(0)" id="elec-menu">Electronics</a>
 	  <div class="sub-menu" id="electronic" style="">
-	  		<p><a href="">TV & Home Theatre</a></p>
-			<p><a href="">Computers & Printers</a></p>
-			<p><a href="">Mobile Devices</a></p>
-			<p><a href="">Cameras</a></p>
+	  		<p><a [routerLink]="['/Departments','elec','tv']"  id="sub-cat">TV & Home Theatre</a></p>
+            <p><a [routerLink]="['/Departments','elec','comp']"  id="sub-cat">Computers & Printers</a></p>
+            <p><a [routerLink]="['/Departments','elec','mobile']"  id="sub-cat">Mobile Devices</a></p>
+            <p><a [routerLink]="['/Departments','elec','cameras']"  id="sub-cat">Cameras</a></p>
 	  </div>
 	  <a href="javascript:void(0)" id="home-menu">Home</a>
 	  <div class="sub-menu" id ="home" style="">
-			<p><a href="">Bedroom</a></p>
-			<p><a href="">Bathroom</a></p>
-			<p><a href="">Living Room</a></p>
-			<p><a href="">Kitchen</a></p>
+			<p><a [routerLink]="['/Departments','home','bedroom']"  id="sub-cat">Bedroom</a></p>
+            <p><a [routerLink]="['/Departments','home','bathroom']"  id="sub-cat">Bathroom</a></p>
+            <p><a [routerLink]="['/Departments','home','livingroom']"  id="sub-cat">Living Room</a></p>
+            <p><a [routerLink]="['/Departments','home','kitchen']"  id="sub-cat">Kitchen</a></p>
 	  </div>
 	</div>
 	<div class="center navbar-containner" >
@@ -75,31 +75,31 @@
 		<div class="center">
 			<div class="col-md-2 col-sm-2 department">
 				<p id="head">Women's Fashion</p>
-				<p><a [routerLink]="['/Departments']">Apparels</a></p>
-				<p><a href="">Bags</a></p>
-				<p><a href="">Shoes</a></p>
-				<p><a href="">Accesories</a></p>
+				<p><a [routerLink]="['/Departments','women','apparels']">Apparels</a></p>
+				<p><a [routerLink]="['/Departments','women','bags']"  >Bags</a></p>
+				<p><a [routerLink]="['/Departments','women','shoes']" >Shoes</a></p>
+				<p><a [routerLink]="['/Departments','women','accessories']" >Accessories</a></p>
 			</div>
 			<div class="col-md-2 col-sm-2 department">
 				<p id="head">Men's Fashion</p>
-				<p><a href="">Apparels</a></p>
-				<p><a href="">Bags</a></p>
-				<p><a href="">Shoes</a></p>
-				<p><a href="">Accesories</a></p>
+				<p><a [routerLink]="['/Departments','men','apparels']" >Apparels</a></p>
+				<p><a [routerLink]="['/Departments','men','bags']"  >Bags</a></p>
+				<p><a [routerLink]="['/Departments','men','shoes']"  >Shoes</a></p>
+				<p><a [routerLink]="['/Departments','men','accessories']"  >Accessories</a></p>
 			</div>
 			<div class="col-md-2 col-sm-2  department">
 				<p id="head">Electronics</p>
-				<p><a href="">TV & Home Theatre</a></p>
-				<p><a href="">Computers & Printers</a></p>
-				<p><a href="">Mobile Devices</a></p>
-				<p><a href="">Cameras</a></p>
+				<p><a [routerLink]="['/Departments','elec','tv']"  >TV & Home Theatre</a></p>
+				<p><a [routerLink]="['/Departments','elec','comp']"  >Computers & Printers</a></p>
+				<p><a [routerLink]="['/Departments','elec','mobile']"  >Mobile Devices</a></p>
+				<p><a [routerLink]="['/Departments','elec','cameras']"  >Cameras</a></p>
 			</div>
 			<div class="col-md-2 col-sm-2 department">
 				<p id="head">Home</p>
-				<p><a href="">Bedroom</a></p>
-				<p><a href="">Bathroom</a></p>
-				<p><a href="">Living Room</a></p>
-				<p><a href="">Kitchen</a></p>
+				<p><a [routerLink]="['/Departments','home','bedroom']"  >Bedroom</a></p>
+				<p><a [routerLink]="['/Departments','home','bathroom']"  >Bathroom</a></p>
+				<p><a [routerLink]="['/Departments','home','livingroom']"  >Living Room</a></p>
+				<p><a [routerLink]="['/Departments','home','kitchen']"  >Kitchen</a></p>
 			</div>
 		</div>
 		<!-- <div class="center" style="color:white;vertical-align: center;height: 340px;text-align: center">

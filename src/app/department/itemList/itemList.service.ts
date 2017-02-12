@@ -19,6 +19,10 @@ export class itemListService {
 		// console.log(data);
 		
 	}
+
+	getItemParams(department:string,category:string){
+		return this.http.get(this.itemlistUrl+'/'+department+'/'+category).map(res=>res.json());
+	}
 	// private extractData(res: Response) {
 	//     let body = res.json();
 	//     return body.data || { };
