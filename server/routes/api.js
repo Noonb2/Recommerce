@@ -24,455 +24,110 @@ data = [{
 	]
 test=[
     {
-        "name": "Item 1"
+        "name": "../../img/women/bags/wb1.png"
     },
     {
-        "name": "Item 2"
+        "name": "../../img/women/bags/wb2.png"
     },
     {
-        "name": "Item 3"
+        "name": "../../img/women/bags/wb3.png"
     },
     {
-        "name": "Item 4"
+        "name": "../../img/women/bags/wb4.png"
     },
     {
-        "name": "Item 5"
+        "name": "../../img/women/bags/wb5.png"
     },
     {
-        "name": "Item 6"
+        "name": "../../img/women/bags/wb6.png"
     },
     {
-        "name": "Item 7"
+        "name": "../../img/women/bags/wb7.png"
     },
     {
-        "name": "Item 8"
+        "name": "../../img/women/bags/wb8.png"
     },
     {
-        "name": "Item 9"
+        "name": "../../img/women/bags/wb9.png"
     },
     {
-        "name": "Item 10"
+        "name": "../../img/women/bags/wb10.png"
     },
     {
-        "name": "Item 11"
+        "name": "../../img/women/bags/wb11.png"
     },
     {
-        "name": "Item 12"
+        "name": "../../img/women/bags/wb12.png"
     },
     {
-        "name": "Item 13"
+        "name": "../../img/women/bags/wb13.png"
     },
     {
-        "name": "Item 14"
+        "name": "../../img/women/bags/wb14.png"
     },
     {
-        "name": "Item 15"
+        "name": "../../img/women/bags/wb15.png"
     },
     {
-        "name": "Item 16"
+        "name": "../../img/women/bags/wb16.png"
     },
     {
-        "name": "Item 17"
+        "name": "../../img/women/bags/wb17.png"
     },
     {
-        "name": "Item 18"
+        "name": "../../img/women/bags/wb18.png"
     },
     {
-        "name": "Item 19"
+        "name": "../../img/women/bags/wb19.png"
     },
     {
-        "name": "Item 20"
+        "name": "../../img/women/bags/wb20.png"
     },
     {
-        "name": "Item 21"
+        "name": "../../img/women/bags/wb21.png"
     },
     {
-        "name": "Item 22"
+        "name": "../../img/women/bags/wb22.png"
     },
     {
-        "name": "Item 23"
+        "name": "../../img/women/bags/wb23.png"
     },
     {
-        "name": "Item 24"
+        "name": "../../img/women/bags/wb24.png"
     },
     {
-        "name": "Item 25"
+        "name": "../../img/women/bags/wb25.png"
     },
     {
-        "name": "Item 26"
+        "name": "../../img/women/bags/wb26.png"
     },
     {
-        "name": "Item 27"
+        "name": "../../img/women/bags/wb27.png"
     },
     {
-        "name": "Item 28"
+        "name": "../../img/women/bags/wb28.png"
     },
     {
-        "name": "Item 29"
+        "name": "../../img/women/bags/wb29.png"
     },
     {
-        "name": "Item 30"
+        "name": "../../img/women/bags/wb30.png"
     },
     {
-        "name": "Item 31"
+        "name": "../../img/women/bags/wb31.png"
     },
     {
-        "name": "Item 32"
+        "name": "../../img/women/bags/wb32.png"
     },
     {
-        "name": "Item 33"
+        "name": "../../img/women/bags/wb33.png"
     },
     {
-        "name": "Item 34"
+        "name": "../../img/women/bags/wb34.png"
     },
     {
-        "name": "Item 35"
+        "name": "../../img/women/bags/wb35.png"
     },
-    {
-        "name": "Item 36"
-    },
-    {
-        "name": "Item 37"
-    },
-    {
-        "name": "Item 38"
-    },
-    {
-        "name": "Item 39"
-    },
-    {
-        "name": "Item 40"
-    },
-    {
-        "name": "Item 41"
-    },
-    {
-        "name": "Item 42"
-    },
-    {
-        "name": "Item 43"
-    },
-    {
-        "name": "Item 44"
-    },
-    {
-        "name": "Item 45"
-    },
-    {
-        "name": "Item 46"
-    },
-    {
-        "name": "Item 47"
-    },
-    {
-        "name": "Item 48"
-    },
-    {
-        "name": "Item 49"
-    },
-    {
-        "name": "Item 50"
-    },
-    {
-        "name": "Item 51"
-    },
-    {
-        "name": "Item 52"
-    },
-    {
-        "name": "Item 53"
-    },
-    {
-        "name": "Item 54"
-    },
-    {
-        "name": "Item 55"
-    },
-    {
-        "name": "Item 56"
-    },
-    {
-        "name": "Item 57"
-    },
-    {
-        "name": "Item 58"
-    },
-    {
-        "name": "Item 59"
-    },
-    {
-        "name": "Item 60"
-    },
-    {
-        "name": "Item 61"
-    },
-    {
-        "name": "Item 62"
-    },
-    {
-        "name": "Item 63"
-    },
-    {
-        "name": "Item 64"
-    },
-    {
-        "name": "Item 65"
-    },
-    {
-        "name": "Item 66"
-    },
-    {
-        "name": "Item 67"
-    },
-    {
-        "name": "Item 68"
-    },
-    {
-        "name": "Item 69"
-    },
-    {
-        "name": "Item 70"
-    },
-    {
-        "name": "Item 71"
-    },
-    {
-        "name": "Item 72"
-    },
-    {
-        "name": "Item 73"
-    },
-    {
-        "name": "Item 74"
-    },
-    {
-        "name": "Item 75"
-    },
-    {
-        "name": "Item 76"
-    },
-    {
-        "name": "Item 77"
-    },
-    {
-        "name": "Item 78"
-    },
-    {
-        "name": "Item 79"
-    },
-    {
-        "name": "Item 80"
-    },
-    {
-        "name": "Item 81"
-    },
-    {
-        "name": "Item 82"
-    },
-    {
-        "name": "Item 83"
-    },
-    {
-        "name": "Item 84"
-    },
-    {
-        "name": "Item 85"
-    },
-    {
-        "name": "Item 86"
-    },
-    {
-        "name": "Item 87"
-    },
-    {
-        "name": "Item 88"
-    },
-    {
-        "name": "Item 89"
-    },
-    {
-        "name": "Item 90"
-    },
-    {
-        "name": "Item 91"
-    },
-    {
-        "name": "Item 92"
-    },
-    {
-        "name": "Item 93"
-    },
-    {
-        "name": "Item 94"
-    },
-    {
-        "name": "Item 95"
-    },
-    {
-        "name": "Item 96"
-    },
-    {
-        "name": "Item 97"
-    },
-    {
-        "name": "Item 98"
-    },
-    {
-        "name": "Item 99"
-    },
-    {
-        "name": "Item 100"
-    },
-    {
-        "name": "Item 101"
-    },
-    {
-        "name": "Item 102"
-    },
-    {
-        "name": "Item 103"
-    },
-    {
-        "name": "Item 104"
-    },
-    {
-        "name": "Item 105"
-    },
-    {
-        "name": "Item 106"
-    },
-    {
-        "name": "Item 107"
-    },
-    {
-        "name": "Item 108"
-    },
-    {
-        "name": "Item 109"
-    },
-    {
-        "name": "Item 110"
-    },
-    {
-        "name": "Item 111"
-    },
-    {
-        "name": "Item 112"
-    },
-    {
-        "name": "Item 113"
-    },
-    {
-        "name": "Item 114"
-    },
-    {
-        "name": "Item 115"
-    },
-    {
-        "name": "Item 116"
-    },
-    {
-        "name": "Item 117"
-    },
-    {
-        "name": "Item 118"
-    },
-    {
-        "name": "Item 119"
-    },
-    {
-        "name": "Item 120"
-    },
-    {
-        "name": "Item 121"
-    },
-    {
-        "name": "Item 122"
-    },
-    {
-        "name": "Item 123"
-    },
-    {
-        "name": "Item 124"
-    },
-    {
-        "name": "Item 125"
-    },
-    {
-        "name": "Item 126"
-    },
-    {
-        "name": "Item 127"
-    },
-    {
-        "name": "Item 128"
-    },
-    {
-        "name": "Item 129"
-    },
-    {
-        "name": "Item 130"
-    },
-    {
-        "name": "Item 131"
-    },
-    {
-        "name": "Item 132"
-    },
-    {
-        "name": "Item 133"
-    },
-    {
-        "name": "Item 134"
-    },
-    {
-        "name": "Item 135"
-    },
-    {
-        "name": "Item 136"
-    },
-    {
-        "name": "Item 137"
-    },
-    {
-        "name": "Item 138"
-    },
-    {
-        "name": "Item 139"
-    },
-    {
-        "name": "Item 140"
-    },
-    {
-        "name": "Item 141"
-    },
-    {
-        "name": "Item 142"
-    },
-    {
-        "name": "Item 143"
-    },
-    {
-        "name": "Item 144"
-    },
-    {
-        "name": "Item 145"
-    },
-    {
-        "name": "Item 146"
-    },
-    {
-        "name": "Item 147"
-    },
-    {
-        "name": "Item 148"
-    },
-    {
-        "name": "Item 149"
-    },
-    {
-        "name": "Item 150"
-    }
 ];
 router.get('/itemlist',function(req,res){
 	

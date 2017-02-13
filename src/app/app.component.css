@@ -199,7 +199,7 @@
         position: absolute;
       }
     }
-  @media only screen and (max-width: 767px) and (orientation: portrait) { 
+  @media only screen and (max-width: 767px){ 
     .logo.img-responsive{
       width: 50%;
       margin: auto;
@@ -225,11 +225,11 @@
     body {
       font-family: "Lato", sans-serif;
       transition: background-color .5s;
-      -webkit-transform: rotate(-90deg);
+      /*-webkit-transform: rotate(-90deg);
       -moz-transform: rotate(-90deg);
       -o-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
-      transform: rotate(-90deg);
+      transform: rotate(-90deg);*/
     }
     .sidenav {
       height: 100%;
