@@ -7,7 +7,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { PagerService } from './pager.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
-import * as _ from 'underscore';
+// import * as _ from 'underscore';
 
 
 @Component({
@@ -94,7 +94,7 @@ export class itemList implements OnInit {
         this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => this.data =data);
 
         
-        this.http.get('../../../dummy-data.json')
+        this.http.get('/api/test')
             .map((response: Response) => response.json())
             .subscribe(data => {
             // set items to json response
