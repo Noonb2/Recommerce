@@ -1,17 +1,14 @@
-<<<<<<< Updated upstream
-import { Component, AfterViewInit, ElementRef } from '@angular/core';
-import {itemListService} from './itemList.service';
-import { ActivatedRoute } from '@angular/router';
-=======
+
 import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
 import { itemListService } from './itemList.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { PagerService } from './pager.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import * as _ from 'underscore';
->>>>>>> Stashed changes
+
 
 @Component({
   selector: 'itemlist',
@@ -19,26 +16,22 @@ import * as _ from 'underscore';
   styleUrls: ['./itemlist.component.css']
 })
 
-<<<<<<< Updated upstream
-export class itemList {
+
+
+
+
+export class itemList implements OnInit {
     department:string;
     category:string;
     private sub:any;
     title = 'app works!';
     data = [];
     constructor(
-        private elementRef:ElementRef,
-        private itemlistService:itemListService, 
-        private route:ActivatedRoute
-    ){
-
-    }
-=======
-export class itemList implements OnInit {
-
-    title = 'app works!';
-    data = [];
-    constructor(private elementRef:ElementRef,private itemlistService:itemListService, private pagerService:PagerService, private http: Http){}
+      private elementRef:ElementRef,
+      private itemlistService:itemListService, 
+      private pagerService:PagerService, 
+      private http: Http,
+      private route:ActivatedRoute){}
 
     private allItems: any[];
 
@@ -46,7 +39,7 @@ export class itemList implements OnInit {
 
     pagedItems: any[];
 
->>>>>>> Stashed changes
+
     ngAfterViewInit(){
         // var s = document.createElement("script");
         // s.type = "text/javascript";
@@ -111,10 +104,7 @@ export class itemList implements OnInit {
             this.setPage(1);
         });
     }
-<<<<<<< Updated upstream
 
-   
-=======
      setPage(page: number) {
         if (page < 1 || page > this.pager.totalPages) {
             return;
@@ -126,7 +116,7 @@ export class itemList implements OnInit {
         // get current page of items
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
->>>>>>> Stashed changes
+
 
   
 }
