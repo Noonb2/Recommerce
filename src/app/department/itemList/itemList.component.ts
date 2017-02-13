@@ -1,6 +1,17 @@
+<<<<<<< Updated upstream
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import {itemListService} from './itemList.service';
 import { ActivatedRoute } from '@angular/router';
+=======
+import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { itemListService } from './itemList.service';
+
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { PagerService } from './pager.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import * as _ from 'underscore';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'itemlist',
@@ -8,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./itemlist.component.css']
 })
 
+<<<<<<< Updated upstream
 export class itemList {
     department:string;
     category:string;
@@ -21,6 +33,20 @@ export class itemList {
     ){
 
     }
+=======
+export class itemList implements OnInit {
+
+    title = 'app works!';
+    data = [];
+    constructor(private elementRef:ElementRef,private itemlistService:itemListService, private pagerService:PagerService, private http: Http){}
+
+    private allItems: any[];
+
+    pager: any = {};
+
+    pagedItems: any[];
+
+>>>>>>> Stashed changes
     ngAfterViewInit(){
         // var s = document.createElement("script");
         // s.type = "text/javascript";
@@ -75,9 +101,32 @@ export class itemList {
         this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => this.data =data);
 
         
+        this.http.get('../../../dummy-data.json')
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+            // set items to json response
+            this.allItems = data;
+
+            // initialize to page 1
+            this.setPage(1);
+        });
     }
+<<<<<<< Updated upstream
 
    
+=======
+     setPage(page: number) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.allItems.length, page);
+
+        // get current page of items
+        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
+>>>>>>> Stashed changes
 
   
 }

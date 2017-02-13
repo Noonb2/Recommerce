@@ -5,9 +5,10 @@ import { HttpModule } from '@angular/http';
 import { StickyModule } from '../ng2-sticky-kit';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import {Department} from './department/department.component';
-import {itemList} from './department/itemlist/itemList.component';
-import {itemListService} from './department/itemlist/itemList.service';
+import { Department } from './department/department.component';
+import { itemList } from './department/itemlist/itemList.component';
+import { itemListService } from './department/itemlist/itemList.service';
+import { PagerService } from './department/itemlist/pager.service';
 
 const appRoutes: Routes = [
   
@@ -29,7 +30,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     StickyModule
   ],
-  providers: [itemListService],
+  providers: [
+    itemListService,
+    PagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
