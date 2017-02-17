@@ -1,3 +1,6 @@
+body{
+  transition: background 0.5s ;
+}
 .header-container{
     width: auto;
     padding-right: 0px;

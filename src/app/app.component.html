@@ -208,3 +208,13 @@
 <div class="container">
     <router-outlet></router-outlet>
 </div>
+
+<div>
+    <button (click)="test()" id="testbutton">click</button>
+</div>
+
+<div id="message" class="center" style="z-index: 1000;position: absolute;text-align: center;width: 100%;display: none;top:25%">
+  <div class="alert" style="width: 50%" [ngClass]="{'alert-success':testvar,'alert-warning':!testvar}">
+        {{message}}
+  </div>
+</div>

@@ -1,5 +1,15 @@
 console.log('Hello Script');
 	$(document).ready(function(){
+		$('#testbutton').click(function(){
+				console.log('test click');
+				$('#message').fadeIn('400');
+				setTimeout(
+				  function() 
+				  {
+				    $('#message').fadeOut('400');
+				  }, 1000);
+
+		});
 		$('#department-menu').click(function(){
 			console.log("menu clicked")
 			$('.department-containner').fadeToggle(500);
