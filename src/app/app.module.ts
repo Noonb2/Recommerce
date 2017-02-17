@@ -9,6 +9,7 @@ import { Department } from './department/department.component';
 import { itemList } from './department/itemlist/itemList.component';
 import { itemListService } from './department/itemlist/itemList.service';
 import { PagerService } from './department/itemlist/pager.service';
+
 import {loginService} from './login.service';
 
 // import { Login } from './login/login.component';
@@ -28,7 +29,6 @@ const appRoutes: Routes = [
     AppComponent,
     Department,
     itemList,
-    // Login
   ],
   imports: [
     BrowserModule,
