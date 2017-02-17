@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 var flash    = require('connect-flash');
 var passport = require('passport');
 var bcrypt   = require('bcrypt-nodejs');
+var cookieParser = require('cookie-parser')
 
 
 // var local = require('passport-local');
@@ -15,6 +16,7 @@ var User = require('./server/models/user');
 // Get our API routes
 const api = require('./server/routes/api');
 const app = express();
+
 //connect to mongo
 mongoose.connect('mongodb://localhost:27017/Recommerce');
 var db = mongoose.connection;
@@ -25,6 +27,10 @@ db.once('open', function() {
 });
 ///////////////////
 
+
+
+
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(express.session({
@@ -36,13 +42,14 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-var myPlaintextPassword = "023799640";
-const saltRounds = 10;
-var salt = bcrypt.genSaltSync(saltRounds);
-var hash = bcrypt.hashSync(myPlaintextPassword, salt);
-console.log(hash);
-var check = bcrypt.compareSync(myPlaintextPassword, hash);
-console.log(check);
+// for encrpyt password
+// var myPlaintextPassword = "023799640";
+// const saltRounds = 10;
+// var salt = bcrypt.genSaltSync(saltRounds);
+// var hash = bcrypt.hashSync(myPlaintextPassword, salt);
+// console.log(hash);
+// var check = bcrypt.compareSync(myPlaintextPassword, hash);
+// console.log(check);
 
 app.post('/login',function(req,res){
 	console.log("login processing..");
@@ -82,8 +89,15 @@ app.use(express.static(path.join(__dirname,'src')));
 
 // Set our api routes
 app.use('/api', api);
+
+
 app.get('*', (req, res) => {
-        console.log('hi');
+	  // res.cookie('name','value');
+	  res.cookie('login',{
+	  	'id':'apiromz',
+	  	'password':'023799640'
+	  })
+	  console.log('Cookies: ', req.cookies);
       res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
 

@@ -135,12 +135,11 @@ router.get('/itemlist',function(req,res){
 })
 
 router.get('/itemlist/:department/:category',function(req,res){
-	console.log(req.params.department);
-	console.log(req.params.category);
+
 	res.json(data);
 })
 router.get('/test',function(req,res){
-	console.log('test');
+	
 	res.json(test);
 })
 module.exports = router;
