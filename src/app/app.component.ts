@@ -14,6 +14,11 @@ export class AppComponent {
       s.type = "text/javascript";
       s.src = "./app/app.script.js";
       this.elementRef.nativeElement.appendChild(s);
+
+      var l = document.createElement("script");
+      l.type = "text/javascript";
+      l.src = "./app/login.script.js";
+      this.elementRef.nativeElement.appendChild(l);
   }
   
 }
