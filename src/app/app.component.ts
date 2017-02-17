@@ -18,10 +18,17 @@ export class AppComponent implements OnInit {
   passwordLogin:string;
   checkLog:boolean;
   checkRegister:boolean;
-  usernameRegis:string;
-  passwordRegis:string;
-  name:string;
-  gender:string;
+  login={
+    username:"",
+    password:""
+  }
+  reg={
+    username:"",
+    password:"",
+    name:"",
+    email:"",
+    gender:""
+  }
   testvar = true;
   message = "register success!"
   constructor(private elementRef:ElementRef,
@@ -60,11 +67,11 @@ export class AppComponent implements OnInit {
 
 
   checkLogin(){
-    this.loginService.checkLogin(this.usernameLogin,this.passwordLogin).subscribe(bool=>this.checkLogin=bool);
+    this.loginService.checkLogin(this.login).subscribe(bool=>this.checkLogin=bool);
     console.log(this.checkLog);
   }
   register(){
-    this.loginService.register(this.usernameRegis,this.passwordRegis,this.name,this.gender).subscribe(bool =>this.checkRegister=bool);
+    this.loginService.register(this.reg).subscribe(bool =>this.checkRegister=bool);
     console.log(this.checkRegister);
   }
 
