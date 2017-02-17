@@ -57,33 +57,33 @@ console.log('Hello Script');
 		// 	$('#main').css('margin-left','0');
 		// 	$('body').css('background','white');
 		// });
-
+		var delay = 200;
 		$('#women-menu').click(function(){
 			
-			$('#men').fadeOut(400);
-			$('#electronic').fadeOut(400);
-			$('#home').fadeOut(400);
-			$('#women').fadeToggle(400);
+			$('#men').fadeOut(delay);
+			$('#electronic').fadeOut(delay);
+			$('#home').fadeOut(delay);
+			$('#women').fadeToggle(delay);
 		})
 		$('#men-menu').click(function(){
 			
-			$('#women').fadeOut(400);
-			$('#electronic').fadeOut(400);
-			$('#home').fadeOut(400);
-			$('#men').fadeToggle(400);
+			$('#women').fadeOut(delay);
+			$('#electronic').fadeOut(delay);
+			$('#home').fadeOut(delay);
+			$('#men').fadeToggle(delay);
 		})
 		$('#elec-menu').click(function(){
 			
-			$('#men').fadeOut(400);
-			$('#women').fadeOut(400);
-			$('#home').fadeOut(400);
-			$('#electronic').fadeToggle(400);
+			$('#men').fadeOut(delay);
+			$('#women').fadeOut(delay);
+			$('#home').fadeOut(delay);
+			$('#electronic').fadeToggle(delay);
 		})
 		$('#home-menu').click(function(){
 			
-			$('#men').fadeOut(400);
-			$('#electronic').fadeOut(400);
-			$('#women').fadeOut(400);
-			$('#home').fadeToggle(400);
+			$('#men').fadeOut(delay);
+			$('#electronic').fadeOut(delay);
+			$('#women').fadeOut(delay);
+			$('#home').fadeToggle(delay);
 		})
 	})
