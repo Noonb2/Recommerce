@@ -18,13 +18,13 @@ const api = require('./server/routes/api');
 const app = express();
 
 //connect to mongo
-mongoose.connect('mongodb://localhost:27017/Recommerce');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log("connection successful");
-});
+// mongoose.connect('mongodb://localhost:27017/Recommerce');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   // we're connected!
+//   console.log("connection successful");
+// });
 ///////////////////
 
 
@@ -56,14 +56,14 @@ app.post('/login',function(req,res){
 	// res.send(200);
 	console.log(req.body);
 	res.send(req.body);
-	// User.find({'username':req.username},function(err,obj){
-	// 	if(err) console.log(err);
-	// 	if(bcrypt.compareSync(req.password, hash)){
-	// 		res.send(200);
-	// 	}else{
-	// 		res.send(404);
-	// 	}
-	// })
+// 	// User.find({'username':req.username},function(err,obj){
+// 	// 	if(err) console.log(err);
+// 	// 	if(bcrypt.compareSync(req.password, hash)){
+// 	// 		res.send(200);
+// 	// 	}else{
+// 	// 		res.send(404);
+// 	// 	}
+// 	// })
 })
 // example to create user
 // var test = new User({
