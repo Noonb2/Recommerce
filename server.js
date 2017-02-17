@@ -52,18 +52,28 @@ app.use(flash());
 // console.log(check);
 
 app.post('/login',function(req,res){
-	console.log("login processing..");
-	// res.send(200);
-	console.log(req.body);
-	res.send(req.body);
-	// User.find({'username':req.username},function(err,obj){
-	// 	if(err) console.log(err);
-	// 	if(bcrypt.compareSync(req.password, hash)){
-	// 		res.send(200);
-	// 	}else{
-	// 		res.send(404);
-	// 	}
-	// })
+	console.log("login checking processing..");
+	User.find({'username':req.body.username},function(err,obj){
+		if(err) console.log(err);
+		if(bcrypt.compareSync(req.password, hash)){
+			res.send(true);
+		}else{
+			res.send(false);
+		}
+	})
+})
+
+
+app.post('/register',function(req,res){
+	console.log("Register checking processing..");
+	User.find({'username':req.body.username},function(err,obj){
+		if(err)console.log(err);
+		if(obj.length == 0){
+			res.send(true);
+		}else{
+			res.send(false);
+		}
+	})
 })
 // example to create user
 // var test = new User({

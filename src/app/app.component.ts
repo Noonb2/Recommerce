@@ -1,6 +1,11 @@
 import { Component, AfterViewInit, ElementRef,OnInit } from '@angular/core';
 import {CookieService} from 'angular2-cookie/core';
 
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { loginService } from './login.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +14,19 @@ import {CookieService} from 'angular2-cookie/core';
 
 export class AppComponent implements OnInit {
   title = 'app works!';
-
+  usernameLogin:string;
+  passwordLogin:string;
+  checkLog:boolean;
+  checkRegister:boolean;
+  usernameRegis:string;
+  passwordRegis:string;
+  name:string;
+  gender:string;
+  testvar = true;
+  message = "register success!"
   constructor(private elementRef:ElementRef,
               private _cookieService:CookieService,
+              private loginService:loginService,
     ){}
 
 
@@ -29,11 +44,14 @@ export class AppComponent implements OnInit {
   
 
   ngOnInit(){
-    var test = this._cookieService.get('login');
-    // var test = this.cookiesToJSON('login');
-    console.log(test);
-   
+    // this.checkLog = Boolean(this._cookieService.getObject('login'));
+    // if(this.checkLog==undefined){
+    //   this._cookieService.putObject('login',false);
+    //   this.checkLog = false;
+    // }
+    
   }
+
 
    cookiesToJSON(key:string){
      var _key = this._cookieService.getObject(key);
@@ -41,5 +59,26 @@ export class AppComponent implements OnInit {
   }
 
 
+  checkLogin(){
+    this.loginService.checkLogin(this.usernameLogin,this.passwordLogin).subscribe(bool=>this.checkLogin=bool);
+    console.log(this.checkLog);
+  }
+  register(){
+    this.loginService.register(this.usernameRegis,this.passwordRegis,this.name,this.gender).subscribe(bool =>this.checkRegister=bool);
+    console.log(this.checkRegister);
+  }
+
+  test(){
+    this.testvar = !this.testvar;
+    if(this.testvar == true){
+      this.message = "register success!";
+    }
+    else {
+      this.message = "existing account!";
+    }
+    
+  }
+
+  
   
 }
