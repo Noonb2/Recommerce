@@ -67,7 +67,7 @@
 				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;Cart
 			</div>
             <button type="button" class="col-md-1 col-sm-2 menu-navbar" style="" id="login-menu" data-toggle="modal" data-target="#myModal">
-				Sign In
+				Sign in
             </button>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -89,13 +89,17 @@
                                         <div class="tab-pane active" id="Login">
                                             <form role="form" class="form-horizontal">
                                             <div class="form-group">
-                                                <label for="email" class="col-sm-2 control-label">Username</label>
+                                                <label for="username" class="col-sm-2 control-label">Username</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<<<<<<< HEAD
                                                     <input type="text" class="form-control" id="email1" placeholder="Email" style="width: 100%"
                                                     [(ngModel)]="login.username"
                                                     name="username"
                                                     required/>
+=======
+                                                    <input type="text" class="form-control" id="username" placeholder="Username" style="width: 100%"/>
+>>>>>>> 2ec8353c2c39e2e40b5c02d6657c0f3be2c2693d
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -106,6 +110,7 @@
                                                     [(ngModel)]="login.password"
                                                     name="username"
                                                     required/>
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -121,11 +126,12 @@
                                         <div class="tab-pane" id="Registration">
                                             <form role="form" class="form-horizontal">
                                             <div class="form-group">
-                                                <label for="email" class="col-sm-2 control-label">Username</label>
+                                                <label for="username" class="col-sm-2 control-label">Username</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                     <input type="text" class="form-control" id="email" placeholder="Email" 
                                                     [(ngModel)]="reg.username" name="username" required/>
+                                                    <input type="text" class="form-control" id="username" placeholder="Username" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -137,10 +143,17 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="email" class="col-sm-2 control-label">Name</label>
+                                                <label for="name" class="col-sm-2 control-label">Name</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                                                     <input type="text" class="form-control" placeholder="Name" [(ngModel)]="reg.name" name="name" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="col-sm-2 control-label">Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                    <input type="email" class="form-control" placeholder="Email" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -159,6 +172,15 @@
                                                         </label>
                                                     </form>
                                                 <!--</div>-->
+                                                <form class="input-group">
+                                                    <label class="radio-inline">
+                                                    <input type="radio" name="optradio">Male
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" name="optradio">Female
+                                                    </label>
+                                                </form>
+
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-2">
