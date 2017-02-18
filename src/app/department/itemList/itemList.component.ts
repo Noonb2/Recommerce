@@ -11,9 +11,9 @@ import 'rxjs/add/operator/map'
 
 
 @Component({
-  selector: 'itemlist',
-  templateUrl: './itemlist.component.html',
-  styleUrls: ['./itemlist.component.css']
+  selector: 'itemList',
+  templateUrl: './itemList.component.html',
+  styleUrls: ['./itemList.component.css']
 })
 
 
