@@ -5,22 +5,23 @@ import { HttpModule } from '@angular/http';
 import { StickyModule } from '../ng2-sticky-kit';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+import { loginService } from './login.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
 import { Department } from './department/department.component';
 import { itemList } from './department/itemlist/itemList.component';
 import { itemListService } from './department/itemlist/itemList.service';
 import { PagerService } from './department/itemlist/pager.service';
 
-import {loginService} from './login.service';
+import { myCart } from './myCart/myCart.component';
+import { itemCart } from './myCart/itemCart/itemCart.component';
 
-// import { Login } from './login/login.component';
-
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 
 const appRoutes: Routes = [
   
-  { path: 'Departments/:department/:category', component:Department},
-  
+  { path: 'Departments/:department/:category', component:Department },
+  { path: 'myCart', component:myCart }
   
 ];
 
@@ -29,6 +30,8 @@ const appRoutes: Routes = [
     AppComponent,
     Department,
     itemList,
+    myCart,
+    itemCart
   ],
   imports: [
     BrowserModule,

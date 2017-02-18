@@ -3,7 +3,7 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'department',
-  template:"<itemlist>",
+  template:"<itemList>",
 })
 
 export class Department {

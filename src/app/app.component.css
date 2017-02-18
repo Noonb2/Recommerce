@@ -181,6 +181,10 @@ body{
   .menu-navbar{
     background: transparent;
   }
+  #mycart{
+    color: #fcf192;
+    text-decoration: none;
+  }
 
   @media only screen and (min-width: 768px){ 
     .logo.img-responsive{
