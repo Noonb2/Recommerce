@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
     email:"",
     gender:""
   }
-  testvar = true;
-  message = "register success!"
+  logmessage = "Please fill up the form!";
+  message = "Please fill up the form!";
   constructor(private elementRef:ElementRef,
               private _cookieService:CookieService,
               private loginService:loginService,
@@ -67,24 +67,45 @@ export class AppComponent implements OnInit {
 
 
   checkLogin(){
-    this.loginService.checkLogin(this.login).subscribe(bool=>this.checkLogin=bool);
-    console.log(this.checkLog);
-  }
-  register(){
-    this.loginService.register(this.reg).subscribe(bool =>this.checkRegister=bool);
-    console.log(this.checkRegister);
-  }
+    this.loginService.checkLogin(this.login).subscribe(bool=>{
+      this.checkLog=bool
+      console.log(this.checkLog);
+      if(this.checkLog == true){
+        this.logmessage = "login success!";
+        
+      }
+      else if(this.checkLog==false){
+        this.logmessage = "wrong Username or Password!";
+      }
 
-  test(){
-    this.testvar = !this.testvar;
-    if(this.testvar == true){
-      this.message = "register success!";
-    }
-    else {
-      this.message = "existing account!";
-    }
+
+    });
     
   }
+  register(){
+    this.loginService.register(this.reg).subscribe(res =>{
+      this.checkRegister=res;
+      console.log(this.checkRegister);
+      if(this.checkRegister){
+        this.message = "register success!";
+        this.reg={
+        username:"",
+        password:"",
+        name:"",
+        email:"",
+        gender:""
+        }
+      }
+      else {
+        this.message = "Sorry, This username has already used!";
+      }
+      
+    });
+    
+  }
+
+
+
 
   
   
