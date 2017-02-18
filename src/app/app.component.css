@@ -155,6 +155,12 @@ body{
     margin-left: 15px;
     margin-right: 15px;
   }
+
+  .modal-backdrop{
+    z-index: 0!important;
+  }
+
+
   textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
     border-color: rgba(44, 0, 63, 0.8);
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(44, 0, 63, 0.6);

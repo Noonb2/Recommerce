@@ -18,7 +18,12 @@ const api = require('./server/routes/api');
 const app = express();
 
 // connect to mongo
-mongoose.connect('mongodb://localhost:27017/Recommerce');
+// mongoose.connect('mongodb://localhost:27017/Recommerce');
+var options = {
+  user: 'apiromz',
+  pass: '023799640'
+}
+mongoose.connect('mongodb://ds133348.mlab.com:33348/recommerce',options);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -60,21 +65,28 @@ app.use(flash());
 app.post('/login',function(req,res){
 
 	console.log("login checking processing..");
-	console.log(req.body.username);
+	data = {
+					login:false
+				}
 	User.find({'username':req.body.username},function(err,obj){
 		if(err) console.log(err);
 		if(obj.length!=0){
 			if(bcrypt.compareSync(req.body.password, obj[0].password)){
-				res.send(true);
+				data = {
+					login:true,
+					data :obj[0]
+				}
+				res.json(data);
 			}else{
-				res.send(false);
+				
+				res.json(data);
 			}
 		}else{
-			res.send(false);
+			res.json(data);
 		}
 	})
 })
-// var myPlaintextPassword = "023799640";
+// var myPlaintextPassword = "12345";
 // const saltRounds = 10;
 // var salt = bcrypt.genSaltSync(saltRounds);
 // var hash = bcrypt.hashSync(myPlaintextPassword, salt);
@@ -89,7 +101,6 @@ app.post('/register',function(req,res){
 	
 	User.find({'username':req.body.username},function(err,obj){
 		if(err)console.log('It\'s error : ',err);
-		console.log('Hello');
 		if(obj.length == 0){
 			console.log('can register');
 			var myPlaintextPassword = req.body.password;
@@ -128,13 +139,15 @@ app.post('/register',function(req,res){
 // example to create user
 // var test = new User({
 // 	username:"apiromz",
-// 	password:hash,
+// 	password:"023799640",
 // 	name:"Sam",
 // 	gender:"male",
 // 	buys: [],
 // });
 
-// test.save();
+// test.save(function(err,obj){
+// 	if(err)console.log(err);
+// });
 
 // Parsers for POST data
 

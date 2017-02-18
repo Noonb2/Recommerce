@@ -67,129 +67,13 @@
 				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 <a [routerLink]="['/myCart']"  id="mycart">&nbsp;Cart</a>
 			</div>
-            <button type="button" class="col-md-1 col-sm-2 menu-navbar" style="" id="login-menu" data-toggle="modal" data-target="#myModal">
-				Sign in
+            <button type="button" class="col-md-1 col-sm-2 menu-navbar" style="" id="login-menu" data-toggle="modal" data-target="#myModalSignOut" *ngIf="checkLog"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				&nbsp;Sign out
             </button>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" [ngClass]="{'hidemodal':checkRegister||checkLog}">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fcf192">×</button>
-                            <h4 class="modal-title" id="myModalLabel">Welcome to Recommerce!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12" style="">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#Login" data-toggle="tab">Sign in</a></li>
-                                        <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                                    </ul>
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="Login">
-                                            <form role="form" class="form-horizontal" 
-                                            (ngSubmit)="checkLogin()" >
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label">Username</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input type="text" class="form-control" id="email1" placeholder="Email" style="width: 100%"
-                                                    [(ngModel)]="login.username"
-                                                    name="username"
-                                                    required/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1" class="col-sm-2 control-label">Password</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Email" 
-                                                    [(ngModel)]="login.password"
-                                                    name="username"
-                                                    required/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                </div>
-                                                <div class="col-sm-10" id="submit">
-                                                    <button type="submit" class="btn btn-primary btn-sm"
-                                                    id="loginsubmit">Submit</button>
-                                                </div>
-                                            </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="Registration">
-                                            <form role="form" class="form-horizontal" 
-                                            (ngSubmit)="register()" >
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label">Username</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input type="text" class="form-control" id="email" placeholder="Email" 
-                                                    [(ngModel)]="reg.username" name="username" required/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password" class="col-sm-2 control-label">Password</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                                    <input type="password" class="form-control" id="password" placeholder="Password" 
-                                                    [(ngModel)]="reg.password" name="password" required/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="name" class="col-sm-2 control-label">Name</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="reg.name" name="name" required/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email" class="col-sm-2 control-label">Email</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                    <input type="email" class="form-control" placeholder="Email" 
-                                                    [(ngModel)]="reg.email" name="email" required/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="mobile" class="col-sm-2 control-label">Gender</label>
-                                                <!--<div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
-                                                    <input type="email" class="form-control" id="mobile" placeholder="Mobile" />-->
-                                                    <form class="input-group" >
-                                                        <label class="radio-inline">
-                                                        <input type="radio" name="optradio" value="male"
-                                                        [(ngModel)]="reg.gender" required>Male
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                        <input type="radio" name="optradio" value="female"
-                                                        [(ngModel)]="reg.gender" required>Female
-                                                        </label>
-                                                    </form>
-                                                <!--</div>-->
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                </div>
-                                                <div class="col-sm-10" id="save">
-                                                    <button type="button" class="btn btn-primary btn-sm">Save & Continue</button>
-                                                    <button type="submit" class="btn btn-primary btn-sm"
-                                                    id="regsubmit">Save & Continue</button>
-                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" id="cancel">Cancel</button>
-                                                </div>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button type="button" class="col-md-1 col-sm-2 menu-navbar" style="" id="login-menu" data-toggle="modal" data-target="#myModalSignIn" *ngIf="!checkLog">
+                &nbsp;Sign in
+            </button>
+ 
 		</div>
 	</div>
 	<div class="col-md-12 col-sm-12 department-containner">
@@ -234,20 +118,16 @@
     <button (click)="test()" id="testbutton">click</button>
 </div> -->
 
-<div id="message" class="center" style="z-index: 9999;position: absolute;text-align: center;width: 100%;display: none;top:25%">
+<div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="statusRegister" >
   <div class="alert" style="width: 50%" [ngClass]="{
   'alert-success':checkRegister ,
-  'alert-warning':!checkRegister}" >
-        {{message}}
-  </div>
+  'alert-warning':!checkRegister}" >{{message}}</div>
 </div>
 
-<div id="loginmessage" class="center" style="z-index: 9999;position: absolute;text-align: center;width: 100%;display: none;top:25%">
+<div id="loginmessage" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="statusLogin" >
   <div class="alert" style="width: 50%" [ngClass]="{
   'alert-success':checkLog ,
-  'alert-warning':!checkLog }" >
-        {{logmessage}}
-  </div>
+  'alert-warning':!checkLog }" >{{logmessage}}</div>
 </div>
 
 
@@ -257,4 +137,150 @@
   'alert-warning':!testvar||!checkRegister }" >
         {{message}}
   </div>
+</div> -->
+
+           <div class="modal fade {{class}}" id="myModalSignIn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" [ngClass]="{'hidemodal':checkRegister||checkLog}">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fcf192">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Welcome to Recommerce!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12" style="">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#Login" data-toggle="tab">Sign in</a></li>
+                                        <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Login">
+                                            <form role="form" class="form-horizontal" 
+                                            (ngSubmit)="checkLogin()" >
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label">Username</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input type="text" class="form-control" id="email1" placeholder="Email" style="width: 100%"
+                                                    [(ngModel)]="login.username"
+                                                    name="username"
+                                                    required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1" class="col-sm-2 control-label">Password</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Email" 
+                                                    [(ngModel)]="login.password"
+                                                    name="password"
+                                                    required/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10" id="submit">
+                                                    <button type="submit" class="btn btn-primary btn-sm"
+                                                    id="loginsubmit">Submit</button>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="Registration">
+                                            <form role="form" class="form-horizontal" 
+                                            (ngSubmit)="register()" >
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label">Username</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input type="text" class="form-control" id="email"  
+                                                    [(ngModel)]="reg.username" name="username" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="col-sm-2 control-label">Password</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                    <input type="password" class="form-control" id="password" placeholder="Password" 
+                                                    [(ngModel)]="reg.password" name="password" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-2 control-label">Name</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="reg.name" name="name" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="col-sm-2 control-label">Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                    <input type="email" class="form-control" 
+                                                    [(ngModel)]="reg.email" name="email" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mobile" class="col-sm-2 control-label">Gender</label>
+                                                <!--<div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+                                                    <input type="email" class="form-control" id="mobile" placeholder="Mobile" />-->
+                                                    <form class="input-group" >
+                                                        <label class="radio-inline">
+                                                        <input type="radio" name="optradio" value="male"
+                                                        [(ngModel)]="reg.gender" required>Male
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                        <input type="radio" name="optradio" value="female"
+                                                        [(ngModel)]="reg.gender" required>Female
+                                                        </label>
+                                                    </form>
+                                                <!--</div>-->
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10" id="save">
+                                                    <button type="submit" class="btn btn-primary btn-sm"
+                                                    id="regsubmit">Save & Continue</button>
+                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" id="cancel">Cancel</button>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModalSignOut" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Sign out?</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p><span style="text-transform: capitalize;">{{name}}</span>, Are you sure to sign out?&hellip;</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" 
+                            (click)="signOut()" id="signOut">Sign out</button>
+                          </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+            </div>
+
+
+<!-- <div style=""><button class="btn btn-primary" (click)="test()">click</button></div>
+<div id="message" class="center" style="text-align: center;width: 100%;top:25%" [@fadeIn]="status" >
+  <div class="alert" style="width: 50%" [ngClass]="{
+  'alert-success':checkRegister ,
+  'alert-warning':!checkRegister}" >{{message}}</div>
 </div> -->
