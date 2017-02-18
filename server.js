@@ -17,13 +17,13 @@ var User = require('./server/models/user');
 const api = require('./server/routes/api');
 const app = express();
 
-//connect to mongo
-// mongoose.connect('mongodb://localhost:27017/Recommerce');
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   console.log("connection successful");
-// });
+// connect to mongo
+mongoose.connect('mongodb://localhost:27017/Recommerce');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("connection successful");
+});
 ///////////////////
 
 
@@ -49,36 +49,72 @@ app.use(flash());
 // console.log(hash);
 // var check = bcrypt.compareSync(myPlaintextPassword, hash);
 // console.log(check);
-
+// User.find({'username':'apiromz'},function(error,obj){
+// 	if(error) console.log(error);
+// 		if(bcrypt.compareSync('023799640', obj[0].password)){
+// 			console.log('correct');
+// 		}else{
+// 			console.log('wrong!!');
+// 		}
+// })
 app.post('/login',function(req,res){
 
 	console.log("login checking processing..");
+	console.log(req.body.username);
 	User.find({'username':req.body.username},function(err,obj){
 		if(err) console.log(err);
-		if(bcrypt.compareSync(req.password, hash)){
-			res.send(true);
+		if(obj.length!=0){
+			if(bcrypt.compareSync(req.body.password, obj[0].password)){
+				res.send(true);
+			}else{
+				res.send(false);
+			}
 		}else{
 			res.send(false);
 		}
 	})
 })
-
-
+// var myPlaintextPassword = "023799640";
+// const saltRounds = 10;
+// var salt = bcrypt.genSaltSync(saltRounds);
+// var hash = bcrypt.hashSync(myPlaintextPassword, salt);
+// console.log(hash);
+// if(bcrypt.compareSync('023799640', hash)){
+// 	console.log('same password');
+// }else{
+// 	console.log('not same password')
+// }
 app.post('/register',function(req,res){
 	console.log("Register checking processing..");
+	
 	User.find({'username':req.body.username},function(err,obj){
-		if(err)console.log(err);
+		if(err)console.log('It\'s error : ',err);
+		console.log('Hello');
 		if(obj.length == 0){
+			console.log('can register');
+			var myPlaintextPassword = req.body.password;
+			const saltRounds = 10;
+			var salt = bcrypt.genSaltSync(saltRounds);
+			var hash = bcrypt.hashSync(myPlaintextPassword, salt);
+			var user = new User({
+				username:req.body.username,
+				password:hash,
+				name:req.body.name,
+				email:req.body.email,
+				buys:[]
+			})
+			user.save();
 			res.send(true);
 		}else{
+			console.log('cannot register');
 			res.send(false);
 		}
 	})
 
-	console.log("login processing..");
-	// res.send(200);
-	console.log(req.body);
-	res.send(req.body);
+	// console.log("login processing..");
+	// // res.send(200);
+	// console.log(req.body);
+	// res.send(req.body);
 // 	// User.find({'username':req.username},function(err,obj){
 // 	// 	if(err) console.log(err);
 // 	// 	if(bcrypt.compareSync(req.password, hash)){
@@ -117,11 +153,11 @@ app.use('/api', api);
 
 app.get('*', (req, res) => {
 	  // res.cookie('name','value');
-	  res.cookie('login',{
-	  	'id':'apiromz',
-	  	'password':'023799640'
-	  })
-	  console.log('Cookies: ', req.cookies);
+	  // res.cookie('login',{
+	  // 	'id':'apiromz',
+	  // 	'password':'023799640'
+	  // })
+	  // console.log('Cookies: ', req.cookies);
       res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
 
