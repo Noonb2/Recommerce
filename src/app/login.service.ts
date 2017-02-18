@@ -14,25 +14,15 @@ export class loginService {
 	constructor(private http:Http){
 
 	}
-	checkLogin(username:string,password:string){
+	checkLogin(login:Object){
 
-		return this.http.post(this.loginUrl
-			,{
-				'username':username,
-				'password':password
-			}).map((res:Response) => res.json());
+		return this.http.post(this.loginUrl,login).map((res:Response) => res.json());
 		// console.log(data);
 		
 	}
 
-	register(username:string,password:string,name:string,gender:string){
-		return this.http.post(this.registerUrl,
-			{
-				'username':username,
-				'password':password,
-				'name':name,
-				'gender':gender,
-			}).map(res=>res.json());
+	register(reg:Object){
+		return this.http.post(this.registerUrl,reg).map(res=>res.json());
 	}
 	// private extractData(res: Response) {
 	//     let body = res.json();
