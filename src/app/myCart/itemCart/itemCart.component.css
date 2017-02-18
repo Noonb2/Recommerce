@@ -1,0 +1,27 @@
+body {
+	margin-top: 20px;
+}
+
+#img{
+    width: auto;
+}
+
+.btn-group-lg>.btn, .btn-lg{
+    padding: 0px;
+    cursor: pointer;
+}
+
+.panel-info>.panel-heading {
+    border-color: transparent;
+    color: #330431;
+    background-color: transparent;
+}
+
+.panel-info {
+    border-color: #330431;
+}
+
+.glyphicon-trash:before {
+    content: "\e020";
+    color: gray;
+}
