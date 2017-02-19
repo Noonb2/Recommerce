@@ -65,7 +65,7 @@
 			</div>
 			<div class="col-md-1 col-sm-2 menu-navbar" style="" id="others" >
 				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                <a [routerLink]="['/myCart']"  id="mycart">&nbsp;Cart</a>
+                <a [routerLink]="['/myCart']"  id="mycart">&nbsp;Cart ({{sharedService.getNumCarts()}})</a>
 			</div>
             <button type="button" class="col-md-1 col-sm-2 menu-navbar" style="" id="login-menu" data-toggle="modal" data-target="#myModalSignOut" *ngIf="checkLog"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				&nbsp;Sign out
@@ -110,9 +110,9 @@
 	</div>
     </sticky>
   </div>
-<div class="container">
+
     <router-outlet></router-outlet>
-</div>
+
 
 <!-- <div>
     <button (click)="test()" id="testbutton">click</button>

@@ -14,10 +14,11 @@
 						<div style="width: 100%">name: Women's Bag</div>
 						<div style="width: 100%">price: 200 Baht</div>
 						<div style="display: flex;justify-content: center;">
-							<div id="add-cart" style="width: 100%" onclick="location.href='My cart.html'">Add to cart</div>
+							<div id="add-cart" style="width: 100%" (click)="addToCart(item)">Add to cart</div>
 						</div>
 					</div>
 				</div>
+
 			</div>	
 			<!--<hr />-->
             <!-- pager -->
@@ -39,7 +40,14 @@
                 </li>
             </ul>
         </div>
+
     </div>
+
+</div>
+<div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="status" >
+  <div class="alert" style="width: 50%" [ngClass]="{
+  'alert-success':checkAddToCart ,
+  'alert-warning':!checkAddToCart}" >{{message}}</div>
 </div>
 
 <!--<div class="itemlist">

@@ -96,6 +96,22 @@ app.post('/login',function(req,res){
 // }else{
 // 	console.log('not same password')
 // }
+app.post('/addCart',function(req,res){
+	User.find({'username':req.body.username},function(err,obj){
+		if(err)console.log(err);
+		obj=obj[0];
+		obj.carts.set(obj.carts.length,req.body.item);
+		obj.markModified('Object');
+		obj.save(function(err,result){
+			if(err){
+				console.log(err);
+				res.send(false);
+			} 
+			res.send(true);
+		});
+	});
+});
+
 app.post('/register',function(req,res){
 	console.log("Register checking processing..");
 	
@@ -112,7 +128,8 @@ app.post('/register',function(req,res){
 				password:hash,
 				name:req.body.name,
 				email:req.body.email,
-				buys:[]
+				buys:[],
+				carts:[],
 			})
 			user.save();
 			res.send(true);
