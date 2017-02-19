@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ElementRef,OnInit, animate, style, state, tra
 import {CookieService} from 'angular2-cookie/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { loginService } from './login.service';
+import {SharedService} from './shared.service';
+// import { itemListService } from './department/itemList/itemList.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
@@ -16,6 +18,7 @@ import 'rxjs/add/operator/map'
       transition("closed <=> open", animate(500)),
     ])
   ],
+  providers:[SharedService]
 })
 
 export class AppComponent implements OnInit {
@@ -41,12 +44,15 @@ export class AppComponent implements OnInit {
   message = "Loading... ..";
   statusRegister="closed";
   statusLogin="closed";
-  $: any;
+  numCarts = this.sharedService.getNumCarts();
   constructor(private elementRef:ElementRef,
               private _cookieService:CookieService,
               private loginService:loginService,
-    ){}
-
+              private sharedService:SharedService,
+              // private _itemListService:itemListService,
+    ){
+  }
+  // numCarts= this._itemListService.getNumCarts();
 
   ngAfterViewInit(){
       var s = document.createElement("script");
@@ -84,7 +90,7 @@ export class AppComponent implements OnInit {
   }
 
 
-   cookiesToJSON(key:string){
+  cookiesToJSON(key:string){
      var _key = this._cookieService.getObject(key);
     return JSON.parse(JSON.stringify(_key));
   }
@@ -122,7 +128,6 @@ export class AppComponent implements OnInit {
         }, 700);
       }
     });
-    
   }
   register(){
     this.loginService.register(this.reg).subscribe(res =>{

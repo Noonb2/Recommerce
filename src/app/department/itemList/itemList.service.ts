@@ -10,9 +10,11 @@ export class itemListService {
 
 	private itemlistUrl = '/api/itemlist';
 
-	constructor(private http:Http){
+	constructor(private http:Http,
+		){
 
 	}
+
 	getItem(){
 
 		return this.http.get(this.itemlistUrl).map((res:Response) => res.json());
@@ -23,6 +25,12 @@ export class itemListService {
 	getItemParams(department:string,category:string){
 		return this.http.get(this.itemlistUrl+'/'+department+'/'+category).map(res=>res.json());
 	}
+
+	addToCart(item:Object){
+		return this.http.post('/addCart',item).map(res=>res.json());
+	}
+
+
 	// private extractData(res: Response) {
 	//     let body = res.json();
 	//     return body.data || { };

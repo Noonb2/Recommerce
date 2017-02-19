@@ -1,8 +1,9 @@
 
-import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnInit, animate, style, state, transition, trigger } from '@angular/core';
 import { itemListService } from './itemList.service';
+import {SharedService} from '../../shared.service';
 import { ActivatedRoute } from '@angular/router';
-
+import {CookieService} from 'angular2-cookie/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { PagerService } from './pager.service';
 import { Observable } from 'rxjs/Observable';
@@ -13,7 +14,15 @@ import 'rxjs/add/operator/map'
 @Component({
   selector: 'itemList',
   templateUrl: './itemList.component.html',
-  styleUrls: ['./itemList.component.css']
+  styleUrls: ['./itemList.component.css'],
+  animations: [
+    trigger("fadeIn", [
+      state("open", style({opacity: 1})),
+      state("closed", style({opacity: 0,display:'none'})),
+      transition("closed <=> open", animate(500)),
+    ])
+  ],
+
 })
 
 
@@ -26,12 +35,19 @@ export class itemList implements OnInit {
     private sub:any;
     title = 'app works!';
     data = [];
+    status="closed";
+    message="";
+    checkAddToCart=false;
+    numCarts = this.sharedService.getNumCarts();
     constructor(
       private elementRef:ElementRef,
       private itemlistService:itemListService, 
       private pagerService:PagerService, 
       private http: Http,
-      private route:ActivatedRoute){}
+      private route:ActivatedRoute,
+      private _cookieService:CookieService,
+      private sharedService:SharedService,
+      ){}
 
     private allItems: any[];
 
@@ -117,6 +133,57 @@ export class itemList implements OnInit {
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 
-
+    addToCart(item:Object){
+      var recieveCookie = this._cookieService.getObject('login');
+      if(recieveCookie==undefined){
+        this.checkAddToCart=false;
+        this.message="Please sign in before Add an item to cart";
+        this.status="open";
+      
+        setTimeout(() => {  
+          this.status="closed";
+        }, 700);
+      }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
+         var username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
+         var json = {
+           'username':username,
+           'item':item
+         };
+        console.log(json);
+        this.itemlistService.addToCart(json).subscribe(res=>{
+          this.checkAddToCart=res;
+          if(this.checkAddToCart){
+            this.message="Add to cart";
+            this.status="open";     
+            setTimeout(() => {  
+              this.status="closed";
+              var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));  
+              data.data.carts.push(item);
+              console.log(data.data.carts.length);
+              this._cookieService.putObject('login',data);
+            }, 700);
+          }else{
+            this.checkAddToCart=false;
+            this.message="Please sign in before Add an item to cart";
+            this.status="open";
+          
+            setTimeout(() => {  
+              this.status="closed";
+            }, 700);
+          }
+        });
+        
+      }
+      else{
+        this.checkAddToCart=false;
+        this.message="Please sign in before Add an item to cart";
+        this.status="open";
+      
+        setTimeout(() => {  
+          this.status="closed";
+        }, 700);
+      }
+      
+    }
   
 }
