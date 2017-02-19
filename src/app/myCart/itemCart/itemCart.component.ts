@@ -16,9 +16,17 @@ export class itemCart implements OnInit{
          private elementRef:ElementRef,
          private route:ActivatedRoute){}
     
+    ngAfterViewInit(){
+        var q = document.createElement("script");
+        q.type = "text/javascript";
+        q.src = "./app/myCart/itemCart/quantity.script.js"
+        this.elementRef.nativeElement.appendChild(q);
+    }
+    
     ngOnInit(){
         this.cart = this.route.params.subscribe(params => { this.mycart = params['myCart']});
     }
 
+ 
     
 }

@@ -11,17 +11,169 @@ body {
     cursor: pointer;
 }
 
+h3{
+    margin-top: 5px;
+}
+
+.panel{
+    border: 0px;
+}
+
 .panel-info>.panel-heading {
     border-color: transparent;
     color: #330431;
-    background-color: transparent;
+    background-color: whitesmoke;
 }
 
 .panel-info {
-    border-color: #330431;
+    /*border-color: #330431;*/
+    border-color: transparent;
 }
 
 .glyphicon-trash:before {
     content: "\e020";
     color: gray;
 }
+
+/*#plus-minus{
+    display: inline;
+}*/
+
+/*.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}*/
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+ 
+#plus-minus button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button:focus,
+input:focus {
+  outline:0;
+}
+
+/*#trash{
+    display: inline-block;
+}*/
+
+#trash:focus{
+    outline: none;
+}
+
+#checkout{
+    border-color: #330431;
+    background-color: transparent;
+}
+
+#btn-checkout:focus{
+    outline: none;
+}
+
+#mycart{
+    background-color: transparent;
+}
+
+#recommended{
+    background-color: #330431;
+    color: #fcf192;
+    border-color: #fcf192;
+}
+
+#cnt-shopping.panel-footer{
+    padding: 0px 0px;
+}
+
+#btn-cnt{
+    background-color: #330431;
+    border-color: transparent;
+    color: #fcf192;
+}
+
+#btn-cnt:focus{
+    outline: none;
+}
+
+#btn-cnt:hover{
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(252,241,146,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(252,241,146,1);
+    box-shadow: 0px 0px 9px 0px rgba(252,241,146,1);
+    border: 1px solid #f1f79c;
+    text-shadow: rgb(255, 252, 176) 0px 0px 7px;
+}
+
+#addtocart{
+    width: 90%;
+}
+
+#addtocart:focus{
+    outline: none;
+}
+
+#number{
+    width: 49%;
+}
+
+@media only screen and (max-width: 767px){
+    #total{
+        width: 50%;
+    }
+
+    #check{
+        width: 50%;
+    }
+
+    #price{
+        display: inline-block;
+        text-align: left;
+    }
+
+    #plus-minus{
+        display: inline-flex;
+        width: 40%;
+    }
+
+    #trash{
+        width: 10%;
+        display: inline-flex;
+    }
+
+    #number{
+        width: 100%;
+        text-align: -webkit-center;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    #number{
+        width: 48%;
+        display: -webkit-inline-box;
+    }
+} 
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    #number{
+        width: 45%;
+        display: -webkit-inline-box;
+    }
+
+    #plus-minus{
+        width: 53%;
+    }
+}   
+
+

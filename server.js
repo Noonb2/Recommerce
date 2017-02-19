@@ -98,7 +98,7 @@ app.post('/login',function(req,res){
 // }
 app.post('/register',function(req,res){
 	console.log("Register checking processing..");
-	
+	console.log(req.body);
 	User.find({'username':req.body.username},function(err,obj){
 		if(err)console.log('It\'s error : ',err);
 		if(obj.length == 0){
