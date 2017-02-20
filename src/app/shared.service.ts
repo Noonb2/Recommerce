@@ -11,12 +11,13 @@ export class SharedService {
 
 	cookiesToJSON(key:string){
 	    var _key = this.cookieService.getObject(key);
+	    if(_key!= undefined)
 	    return JSON.parse(JSON.stringify(_key));
 	}
-	numCarts= this.cookiesToJSON('login').data.carts===undefined? 0:this.cookiesToJSON('login').data.carts.length;
+	numCarts= this.cookiesToJSON('login')===undefined||this.cookiesToJSON('login').data.carts===undefined? 0:this.cookiesToJSON('login').data.carts.length;
 
 	getNumCarts(){
-		this.numCarts = this.cookiesToJSON('login').data.carts===undefined? 0:this.cookiesToJSON('login').data.carts.length;
+		this.numCarts = this.cookiesToJSON('login')===undefined||this.cookiesToJSON('login').data.carts===undefined? 0:this.cookiesToJSON('login').data.carts.length;
 		return this.numCarts;
 	}
 
