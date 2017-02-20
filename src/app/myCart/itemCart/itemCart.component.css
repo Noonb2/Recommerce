@@ -24,7 +24,12 @@ h3{
     color: #330431;
     background-color: whitesmoke;
 }
-
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
+  }
 .panel-info {
     /*border-color: #330431;*/
     border-color: transparent;

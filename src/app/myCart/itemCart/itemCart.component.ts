@@ -1,12 +1,19 @@
-import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, AfterViewInit, ElementRef, OnInit, animate, style, state, transition, trigger } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
 import {itemCartService} from './itemCart.service';
 import {CookieService} from 'angular2-cookie/core';
 
 @Component({
   selector: 'itemCart',
   templateUrl: './itemCart.component.html',
-  styleUrls: ['./itemCart.component.css']
+  styleUrls: ['./itemCart.component.css'],
+  animations: [
+    trigger("fadeIn", [
+      state("open", style({opacity: 1})),
+      state("closed", style({opacity: 0,display:'none'})),
+      transition("closed <=> open", animate(500)),
+    ])
+  ],
 })
 
 export class itemCart implements OnInit{
@@ -14,6 +21,7 @@ export class itemCart implements OnInit{
     private cart:any;
     title = 'app works!';
     itemCarts = [];
+    status="closed"
     constructor(
          private elementRef:ElementRef,
          private route:ActivatedRoute,
@@ -63,6 +71,32 @@ export class itemCart implements OnInit{
         }
 
 
+    }
+    checkout(){
+      var checkLogin = this._cookieService.getObject('login');
+        if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
+
+        }else{
+          var username = JSON.parse(JSON.stringify(this._cookieService.getObject('login'))).data.username;
+          var json = {
+            'username':username,
+            'item':this.itemCarts,
+          }
+          this._itemCartService.checkout(json).subscribe(res=>{
+            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
+            data.data.carts=[];
+            
+            this.status="open";
+      
+            setTimeout(() => {  
+              this.status="closed";
+              this._cookieService.putObject('login',data);
+              this.itemCarts=[];
+              location.href="/";
+            }, 700);
+          });
+        }
+      
     }
 
  

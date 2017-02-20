@@ -11,9 +11,7 @@ export class itemCartService {
 	private itemCartUrl = '/api/myCarts';
 
 	constructor(private http:Http,
-		){
-
-	}
+		){}
 
 
 
@@ -22,6 +20,9 @@ export class itemCartService {
 	}
 	deleteItem(object:Object){
 		return this.http.post('/api/deleteItem',object).map(res=>res.json());
+	}
+	checkout(object:Object){
+		return this.http.post('/api/checkout',object).map(res=>res.json());
 	}
 
 

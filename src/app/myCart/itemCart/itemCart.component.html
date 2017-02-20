@@ -14,6 +14,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
+					<div *ngIf="itemCarts.length==0">No item in your cart</div>
 					<div class="row" *ngFor="let item of itemCarts ; let i = index; trackBy: trackByFn">
 						<div class="col-xs-2" id="img"><img class="img-responsive" src="../{{item.name}}" style="width: 100px; height: 100px">
 						</div>
@@ -102,7 +103,7 @@
 							<h4 class="text-right">Total <strong>$50.00</strong></h4>
 						</div>
 						<div class="col-xs-3" id="check">
-							<button type="button" class="btn btn-success btn-block" id="btn-checkout">
+							<button type="button" class="btn btn-success btn-block" id="btn-checkout" (click)="checkout()">
 								Checkout
 							</button>
 						</div>
@@ -198,7 +199,9 @@
         </div>
 	</div>
 </div>
-
+<div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%;" [@fadeIn]="status" >
+  <div class="alert alert-success" style="width: 50%" >Thank you for your shopping.</div>
+</div>
            <!--<div class="col-xs-2">-->
                                     <!--<button type="button" class="btn btn-link btn-xs" style="display: inline">
                                         <span class="glyphicon glyphicon-plus-sign"> </span>

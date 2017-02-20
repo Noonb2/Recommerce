@@ -150,6 +150,26 @@ router.post('/myCarts',function(req,res){
         res.send(obj[0].carts);
     });
 })
+router.post('/checkout',function(req,res){
 
+    User.find({'username':req.body.username},function(err,obj){
+        if(err)console.log(err);
+        obj = obj[0];
+        array = req.body.item;
+        console.log(array);
+        array.forEach( function(element, index) {
+            // statements
+            obj.buys.push(element);
+        });
+        // array.forEach( function(element, index) {
+        //     // statements
+        //     obj.carts.obj.carts.splice(index, 1);
+        // });
+        obj.carts=[];
+        obj.save();
+        console.log(obj);
+        res.send(obj.carts);
+    });
+})
 
 module.exports = router;
