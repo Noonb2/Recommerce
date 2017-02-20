@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'itemCart',
@@ -14,6 +15,7 @@ export class itemCart implements OnInit{
     
     constructor(
          private elementRef:ElementRef,
+         private location: Location,
          private route:ActivatedRoute){}
     
     ngAfterViewInit(){
@@ -27,6 +29,8 @@ export class itemCart implements OnInit{
         this.cart = this.route.params.subscribe(params => { this.mycart = params['myCart']});
     }
 
- 
+    continue(){
+        this.location.back();
+    }
     
 }

@@ -357,4 +357,12 @@ body{
 
    }
 
+@media only screen and (max-width: 1024px){
+  #others{
+    width: inherit;
+  }
 
+  #login-menu{
+    width: inherit;
+  }
+}
