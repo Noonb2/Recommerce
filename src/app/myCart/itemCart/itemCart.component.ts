@@ -1,5 +1,11 @@
+
 import { Component, AfterViewInit, ElementRef, OnInit, animate, style, state, transition, trigger } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+
+
+import { Location } from '@angular/common';
+
+
 import {itemCartService} from './itemCart.service';
 import {CookieService} from 'angular2-cookie/core';
 
@@ -24,6 +30,7 @@ export class itemCart implements OnInit{
     status="closed"
     constructor(
          private elementRef:ElementRef,
+         private location: Location,
          private route:ActivatedRoute,
          private _itemCartService:itemCartService,
          private _cookieService:CookieService,){}
@@ -99,6 +106,8 @@ export class itemCart implements OnInit{
       
     }
 
- 
+    continue(){
+        this.location.back();
+    }
     
 }

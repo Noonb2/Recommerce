@@ -35,6 +35,12 @@ h3{
     border-color: transparent;
 }
 
+.panel-body{
+    overflow-y: auto;
+    max-height: 300px;
+    max-width: 100%; 
+}
+
 .glyphicon-trash:before {
     content: "\e020";
     color: gray;
