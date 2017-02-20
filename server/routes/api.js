@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+var User = require('../models/user');
+var mongoose = require('mongoose');
 /* GET api listing. */
 router.get('/', (req, res) => {
   res.send('api works');
@@ -142,4 +143,13 @@ router.get('/test',function(req,res){
 	
 	res.json(test);
 })
+
+router.post('/myCarts',function(req,res){
+    User.find({'username':req.body.username},function(err,obj){
+        if(err)console.log(err);
+        res.send(obj[0].carts);
+    });
+})
+
+
 module.exports = router;

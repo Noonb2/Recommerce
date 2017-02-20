@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { loginService } from './login.service';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-
+import {itemCartService} from './myCart/itemCart/itemCart.service';
 import { Department } from './department/department.component';
 import { itemList } from './department/itemlist/itemList.component';
 import { itemListService } from './department/itemlist/itemList.service';
@@ -44,7 +44,8 @@ const appRoutes: Routes = [
     itemListService,
     PagerService,
     CookieService,
-    loginService
+    loginService,
+    itemCartService,
   ],
   bootstrap: [AppComponent]
 })

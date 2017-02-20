@@ -3,6 +3,9 @@ import {CookieService} from 'angular2-cookie/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { loginService } from './login.service';
 import {SharedService} from './shared.service';
+import { ActivatedRoute } from '@angular/router';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+
 // import { itemListService } from './department/itemList/itemList.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
@@ -18,7 +21,7 @@ import 'rxjs/add/operator/map'
       transition("closed <=> open", animate(500)),
     ])
   ],
-  providers:[SharedService]
+  providers:[SharedService,Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 
 export class AppComponent implements OnInit {
@@ -44,11 +47,14 @@ export class AppComponent implements OnInit {
   message = "Loading... ..";
   statusRegister="closed";
   statusLogin="closed";
+  checkUrl:any;
   numCarts = this.sharedService.getNumCarts();
   constructor(private elementRef:ElementRef,
               private _cookieService:CookieService,
               private loginService:loginService,
               private sharedService:SharedService,
+              private route:ActivatedRoute,
+              private _location: Location
               // private _itemListService:itemListService,
     ){
   }
@@ -97,6 +103,7 @@ export class AppComponent implements OnInit {
 
 
   checkLogin(){
+    var path = JSON.parse(JSON.stringify(this._location))._platformStrategy._platformLocation._location.pathname;
     this.loginService.checkLogin(this.login).subscribe(bool=>{
       this.checkLog=bool.login
       console.log('checklog: ',this.checkLog);
@@ -115,6 +122,10 @@ export class AppComponent implements OnInit {
       
         setTimeout(() => {  
           this.statusLogin="closed";
+          if(path==='/myCart'){
+            console.log(path,': refresh');
+            location.reload();
+          }
         }, 700);
       }
       else if(this.checkLog==false){
@@ -125,6 +136,10 @@ export class AppComponent implements OnInit {
       
         setTimeout(() => {  
           this.statusLogin="closed";
+          if(path==='/myCart'){
+            console.log(path,': refresh');
+            location.reload();
+          }
         }, 700);
       }
     });
@@ -166,13 +181,17 @@ export class AppComponent implements OnInit {
   }
 
   signOut(){
-   
+    var path = JSON.parse(JSON.stringify(this._location))._platformStrategy._platformLocation._location.pathname;
     this._cookieService.putObject('login',{
       login:false,
       data:[]
     })
     console.log('sign out');
      this.checkLog=false;
+     if(path==='/myCart'){
+       console.log(path,': refresh');
+        location.reload();
+      }
   }
 
 
