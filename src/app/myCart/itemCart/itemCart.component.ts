@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {itemCartService} from './itemCart.service';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
   selector: 'itemCart',
@@ -11,10 +13,12 @@ export class itemCart implements OnInit{
     mycart:string;
     private cart:any;
     title = 'app works!';
-    
+    itemCarts = [];
     constructor(
          private elementRef:ElementRef,
-         private route:ActivatedRoute){}
+         private route:ActivatedRoute,
+         private _itemCartService:itemCartService,
+         private _cookieService:CookieService,){}
     
     ngAfterViewInit(){
         var q = document.createElement("script");
@@ -25,6 +29,40 @@ export class itemCart implements OnInit{
     
     ngOnInit(){
         this.cart = this.route.params.subscribe(params => { this.mycart = params['myCart']});
+        var checkLogin = this._cookieService.getObject('login');
+        if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
+          this.itemCarts = [];
+        }else{
+          var username = JSON.parse(JSON.stringify(this._cookieService.getObject('login'))).data.username;
+          var json = {
+            'username':username
+          }
+          this._itemCartService.getItemCarts(json).subscribe(res=>this.itemCarts=res);
+        }
+        
+
+
+    }
+
+    deleteItem(object:Number){
+       var checkLogin = this._cookieService.getObject('login');
+        if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
+          this.itemCarts = [];
+        }else{
+          var username = JSON.parse(JSON.stringify(this._cookieService.getObject('login'))).data.username;
+          var json = {
+            'username':username,
+            'item':object,
+          }
+          this._itemCartService.deleteItem(json).subscribe(res=>{
+            this.itemCarts=res
+            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
+            data.data.carts.pop(object);
+            this._cookieService.putObject('login',data);
+          });
+        }
+
+
     }
 
  
