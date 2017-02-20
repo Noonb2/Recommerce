@@ -23,9 +23,16 @@ var options = {
   user: 'apiromz',
   pass: '023799640'
 }
-mongoose.connect('mongodb://ds133348.mlab.com:33348/recommerce',options);
+mongoose.connect('mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce',{server:{auto_reconnect:true}});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+db.on('reconnected', function () {
+console.log('MongoDB reconnected!');
+});
+db.on('disconnected', function() {
+console.log('MongoDB disconnected!');
+mongoose.connect('mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce', {server:{auto_reconnect:true}});
+});
 db.once('open', function() {
   console.log("connection successful");
 });
