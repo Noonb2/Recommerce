@@ -71,9 +71,7 @@ export class itemCart implements OnInit{
           }
           this._itemCartService.deleteItem(json).subscribe(res=>{
             this.itemCarts=res
-            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
-            data.data.carts.pop(object);
-            this._cookieService.putObject('login',data);
+            this._cookieService.putObject('login',this.itemCarts);
           });
         }
 

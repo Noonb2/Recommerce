@@ -125,7 +125,7 @@ app.post('/api/deleteItem',function(req,res){
         obj.carts.splice(req.body.item, 1);
         obj.markModified('Object');
         obj.save();
-        res.send(obj.carts);
+        res.send(obj);
     });
 })
 app.post('/register',function(req,res){
