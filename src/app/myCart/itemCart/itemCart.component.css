@@ -139,6 +139,32 @@ input:focus {
     width: 49%;
 }
 
+.container-outer { 
+        position: relative;
+        height: 330px;
+        width: 99%;
+        margin: 2px auto;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        vertical-align:middle; 
+    }
+
+    .container-outer div { 
+        display: inline-block;
+        width: 10em;
+        height: 6em;
+        margin: 1.5em;
+        padding: 3px;
+        white-space: normal;
+        text-align: center; 
+    }
+
+    .swal2-modal .swal2-styled{
+        background-color: #330431 !important;
+    }
+
 @media only screen and (max-width: 767px){
     #total{
         width: 50%;
@@ -167,6 +193,29 @@ input:focus {
         width: 100%;
         text-align: -webkit-center;
     }
+
+    .container-outer { 
+        position: relative;
+        height: 300px;
+        width: 99%;
+        margin: 2px auto;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        vertical-align:middle; 
+    }
+
+    .container-outer div { 
+        display: inline-block;
+        width: 8em;
+        height: 6em;
+        margin: 1.0em;
+        padding: 3px;
+        white-space: normal;
+        text-align: center; 
+    }
+    
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){

@@ -87,6 +87,7 @@ export class itemCart implements OnInit{
               'login':true,
               'data': res,
             }
+            console.log(json);
             this._cookieService.putObject('login',json);
           });
         }

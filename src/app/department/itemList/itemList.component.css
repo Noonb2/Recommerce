@@ -52,6 +52,33 @@ hr:before {
     color:white;
 }
 
+/*.alert.addtocart-success{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    color: #9e9e9e;
+    display: inline-block;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 30px;
+    margin: 35px 7px 10px;
+    max-width: 310px;
+    min-width: 250px;
+    height: 300px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-top: 5px solid rebeccapurple;
+    border-bottom: 5px solid rebeccapurple;
+}*/
+
+/*.alert.addtocart-fail{
+
+}*/
+
+/*.swal2-modal .swal2-styled{
+    background-color: #330431 !important;
+}*/
+
 .pagination>li>a{
     background-color: transparent;
     color: #330431;

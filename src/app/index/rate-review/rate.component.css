@@ -20,25 +20,27 @@
 .head{
 	width: 100%;
 	height: 10%;
-	background-color: #330431;
-	color:#fcf192;
+	/*background-color: #330431;*/
+	color:#330431;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: large;
 }
 .footer{
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	height :10%;
-	background-color: #330431;
+	background-color: #333;
 	color:#fcf192;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor:pointer;
+	font-size: medium;
 }
 .footer:hover{
 	background: black;
@@ -53,20 +55,89 @@
 	float: left;
 	/*background: yellow;*/
 	width: 100%;
-	border-bottom: 2px solid grey;
+	/*border: 5px solid grey;*/
+	margin-bottom: 15px;
 }
 .item{
 	float: left;
 	margin: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-.rating{
+.rating-box{
 	float: left;
 	height: 180px;
-	background: pink;
+	/*background: pink;*/
 	width: 50%;
-	margin:20px 0px 20px 0px;
+	/*margin:40px 0px 40px 0px;*/
+	padding-top: 50px; 
 }
+
+#img-rating{
+	width: 200px;
+	height: 200px;
+}
+
+/*Overall rating*/
+.overall {
+	unicode-bidi:bidi-override;
+	direction:rtl;
+	font-size:20px;
+	display: inline-block;
+}
+
+.overall span.star {
+	font-family:FontAwesome;
+	font-weight:normal;
+	font-style:normal;
+	display:inline-block
+}
+
+.overall span.star:hover {
+	cursor:pointer
+}
+
+.overall span.star:before {
+	content:"\f006";
+	padding-right:5px;
+	color:gray;
+}
+.overall span.star:hover:before,.overall span.star:hover~span.star:before {
+	content:"\f005";
+	color:orange;
+}
+
+/*Multi-criteria rating*/
+.rating {
+	unicode-bidi:bidi-override;
+	direction:rtl;
+	font-size:20px;
+	display: inline-block;
+}
+
+.rating span.star {
+	font-family:FontAwesome;
+	font-weight:normal;
+	font-style:normal;
+	display:inline-block
+}
+
+.rating span.star:hover {
+	cursor:pointer
+}
+
+.rating span.star:before {
+	content:"\f006";
+	padding-right:5px;
+	color:#ccc;
+}
+.rating span.star:hover:before,.rating span.star:hover~span.star:before {
+	content:"\f005";
+	color:#fcf192;
+}
+
+
 @media screen and (min-width: 769px){ /* For PC */
 	.rating-window{	  
 	  width:50%;
@@ -83,7 +154,7 @@
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px){ /* For ipad */
+@media screen and (min-width: 768px) and (max-width: 1024px){ /* For ipad */
 	.rating-window{
 	  width:80%;
 	  height:80%;
@@ -94,7 +165,35 @@
 		width: 35%;
 	}
 	.rating{
+		width: 100%;
+		font-size: 15px;
+	}
+	.overall{
+		width: 100%;
+		font-size: 15px;
+	}
+	#img-rating{
+		width: 150px;
+		height: 150px;
+	}
+	.row.criteria{
+		display: flex;
+	}
+	.rating-box{
+		float: left;
+		height: 120px;
+		/*background: pink;*/
 		width: 50%;
+		/*margin:40px 0px 40px 0px;*/
+		padding-top: 50px; 
+	}
+	#criteria{
+		width: 80%;
+		font-size: 12px;
+	}
+	#overall{
+		width: 80%;
+		font-size: 12px;
 	}
 }
 
@@ -111,25 +210,66 @@
 	}
 	.rating{
 		width: 100%;
+		font-size: 15px;
+	}
+	.overall{
+		width: 100%;
+		font-size: 15px;
+	}
+	.head{
+		font-size: small;
+	}
+	.footer{
+		font-size: smaller;
+	}
+	.item {
+		/*float: left;*/
+		/*margin: 20px;*/
+		margin-top: 0px;
+		margin-bottom: 0px;
+		display: inline-block;
+	}
+	.rating-box{
+		float: left;
+		height: 120px;
+		/*background: pink;*/
+		width: 100%;
+		/*margin:40px 0px 40px 0px;*/
+		padding-top: 20px; 
+	}
+	#img-rating{
+		width: 150px;
+		height: 150px;
+	}
+	.row.criteria{
+		display: flex;
+	}
+	#criteria{
+		width: 80%;
+		font-size: 12px;
+	}
+	#overall{
+		width: 80%;
+		font-size: 12px;
 	}
 }
 
 #style-2::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
 	/*border-radius: 10px;*/
-	background-color: #F5F5F5;
+	background-color: transparent;
 }
 
 #style-2::-webkit-scrollbar
 {
 	width: 8px;
-	background-color: #F5F5F5;
+	background-color: transparent;
 }
 
 #style-2::-webkit-scrollbar-thumb
 {
 	border-radius: 15px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #692589;
+	background-color: #F5F5F5;
 }
