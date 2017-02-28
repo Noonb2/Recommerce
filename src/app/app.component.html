@@ -63,7 +63,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true" style=""></span>
 				</div>
 			</div>
-			<div class="col-md-1 col-sm-2 menu-navbar" style="" id="others" >
+			<div class="col-md-1 col-sm-2 menu-navbar" style="" id="others" [routerLink]="['/myCart']"  >
 				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 <a [routerLink]="['/myCart']"  id="mycart">&nbsp;Cart ({{sharedService.getNumCarts()}})</a>
 			</div>

@@ -15,11 +15,11 @@ import { PagerService } from './department/itemlist/pager.service';
 
 import { myCart } from './myCart/myCart.component';
 import { itemCart } from './myCart/itemCart/itemCart.component';
-
-
+import {Indexpage} from './index/index.component';
+import {Rate} from './index/rate-review/rate.component';
 
 const appRoutes: Routes = [
-  
+  { path: '',component:Indexpage },
   { path: 'Departments/:department/:category', component:Department },
   { path: 'myCart', component:myCart }
   
@@ -31,7 +31,9 @@ const appRoutes: Routes = [
     Department,
     itemList,
     myCart,
-    itemCart
+    itemCart,
+    Indexpage,
+    Rate
   ],
   imports: [
     BrowserModule,

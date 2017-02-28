@@ -52,8 +52,19 @@ export class itemCart implements OnInit{
           var json = {
             'username':username
           }
-          this._itemCartService.getItemCarts(json).subscribe(res=>this.itemCarts=res);
+          this._itemCartService.getItemCarts(json).subscribe(res=>{
+            this.itemCarts=res;
+            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
+            data.data.carts = res;
+            var json = {
+              'login':true,
+              'data': data.data,
+            }
+            this._cookieService.putObject('login',json);
+          });
+
         }
+
         
 
 

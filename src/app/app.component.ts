@@ -85,6 +85,7 @@ export class AppComponent implements OnInit {
     }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
        this.name = this.cookiesToJSON('login').data.name;
        this.checkLog = true;
+       
     }
     else{
       this.checkLog = false;
@@ -139,6 +140,7 @@ export class AppComponent implements OnInit {
           if(path==='/myCart'){
             console.log(path,': refresh');
             location.reload();
+            
           }
         }, 700);
       }
