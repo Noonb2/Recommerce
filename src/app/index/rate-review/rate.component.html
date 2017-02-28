@@ -1,0 +1,43 @@
+<div class="btn btn-primary" (click)="toggle()"> check </div>
+<div class="overlay" [@fadeIn]="state">
+    <div class="rating-window">
+        <div class="head">Please rate the items below to improve recommendation</div>
+        <div class="content" id="style-2">
+          <div class="item-rating">
+              <div class="item">
+                <div style="display: flex;justify-content: center;align-items: center">
+                  <img id="img-rating" src="http://placehold.it/160x160">
+                </div>
+                <div style="text-align: center">Item name</div>
+              </div>
+              <div class="rating">
+                test
+              </div>
+          </div>
+          <div class="item-rating">
+              <div class="item">
+                <div style="display: flex;justify-content: center;align-items: center">
+                  <img id="img-rating" src="http://placehold.it/160x160">
+                </div>
+                <div style="text-align: center">Item name</div>
+              </div>
+              <div class="rating">
+                test
+              </div>
+          </div>
+          <div class="item-rating">
+              <div class="item">
+                <div style="display: flex;justify-content: center;align-items: center">
+                  <img id="img-rating" src="http://placehold.it/160x160">
+                </div>
+                <div style="text-align: center">Item name</div>
+              </div>
+              <div class="rating">
+                test
+              </div>
+          </div>
+        </div>
+        <div class="footer" (click)="toggle()">Thank you</div>
+        <!-- <div class="btn btn-primary" (click)="toggle()"> check </div> -->
+    </div>
+</div>
