@@ -75,6 +75,10 @@ hr:before {
 
 }*/
 
+/*.swal2-modal .swal2-styled{
+    background-color: #330431 !important;
+}*/
+
 .pagination>li>a{
     background-color: transparent;
     color: #330431;
