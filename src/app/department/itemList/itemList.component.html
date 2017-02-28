@@ -44,11 +44,17 @@
     </div>
 
 </div>
-<div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="status" >
-  <div class="alert" style="width: 50%" [ngClass]="{
-  'alert-success':checkAddToCart ,
-  'alert-warning':!checkAddToCart}" >{{message}}</div>
-</div>
+<!--<div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="status" >
+  <div class="swal" style="width: 50%" [ngClass]="{  
+  'success':checkAddToCart ,
+  'addtocart-fail':!checkAddToCart}" >{{message}}</div>
+</div>-->
+
+<!--swal(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+)-->
 
 <!--<div class="itemlist">
 	<div class="item" >

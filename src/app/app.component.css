@@ -145,9 +145,15 @@ body{
       margin-top: 25px;
       padding: 20px;
   }
+
+  button#login-menu{
+    display: inline-block;
+  }
+
   #login-menu:focus{
     outline: 0 !important;
   }
+
   .modal-header{
     background-color: #2a062d;
     color: #fcf192;
@@ -195,6 +201,70 @@ body{
   #mycart{
     color: #fcf192;
     text-decoration: none;
+  }
+
+  .alert.regis-success{
+    background: #fefefe;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    border-color: #cef2b8;
+  }
+
+  .alert.regis-fail{
+    background: #fefefe;
+    color: darkred;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    border-color: #db9e34;
+  }
+
+  .alert.login-success{
+    background: #fefefe;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    border-color: #cef2b8;
+  }
+
+  .alert.login-fail{
+    background: #fefefe;
+    color: darkred;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    border-color: #db9e34;
   }
 
   @media only screen and (min-width: 768px){ 

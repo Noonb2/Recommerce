@@ -120,14 +120,14 @@
 
 <div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="statusRegister" >
   <div class="alert" style="width: 50%" [ngClass]="{
-  'alert-success':checkRegister ,
-  'alert-warning':!checkRegister}" >{{message}}</div>
+  'regis-success':checkRegister ,
+  'regis-fail':!checkRegister}" >{{message}}</div>
 </div>
 
 <div id="loginmessage" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="statusLogin" >
   <div class="alert" style="width: 50%" [ngClass]="{
-  'alert-success':checkLog ,
-  'alert-warning':!checkLog }" >{{logmessage}}</div>
+  'login-success':checkLog ,
+  'login-fail':!checkLog }" >{{logmessage}}</div>
 </div>
 
 

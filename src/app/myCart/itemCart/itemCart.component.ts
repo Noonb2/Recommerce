@@ -70,12 +70,13 @@ export class itemCart implements OnInit{
             'item':object,
           }
           this._itemCartService.deleteItem(json).subscribe(res=>{
-
-            this.itemCarts=res;
+            console.log(res);
+            this.itemCarts=res.carts;
              var json = {
               'login':true,
-              'data': this.itemCarts,
+              'data': res,
             }
+            console.log(json);
             this._cookieService.putObject('login',json);
           });
         }

@@ -9,7 +9,7 @@ import { PagerService } from './pager.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 // import * as _ from 'underscore';
-
+import { default as swal } from 'sweetalert2';
 
 @Component({
   selector: 'itemList',
@@ -56,12 +56,12 @@ export class itemList implements OnInit {
     pagedItems: any[];
 
 
-    ngAfterViewInit(){
-        // var s = document.createElement("script");
-        // s.type = "text/javascript";
-        // s.src = "/app/app.script.js";
-        // this.elementRef.nativeElement.appendChild(s);
-    }
+    // ngAfterViewInit(){
+    //     var s = document.createElement("script");
+    //     s.type = "text/javascript";
+    //     s.src = "./app/department/itemList/itemList.script.js";
+    //     this.elementRef.nativeElement.appendChild(s);
+    // }
     ngOnInit(){
         this.sub = this.route.params.subscribe(params => {
            this.department = params['department'];
@@ -137,7 +137,7 @@ export class itemList implements OnInit {
       var recieveCookie = this._cookieService.getObject('login');
       if(recieveCookie==undefined){
         this.checkAddToCart=false;
-        this.message="Please sign in before Add an item to cart";
+        this.message="Please sign in before add an item to cart";
         this.status="open";
       
         setTimeout(() => {  
@@ -161,14 +161,15 @@ export class itemList implements OnInit {
               data.data.carts.push(item);
               console.log(data.data.carts.length);
               this._cookieService.putObject('login',data);
+              swal("Good Choice!", "You confirm to add this product", "success");
             }, 700);
           }else{
             this.checkAddToCart=false;
-            this.message="Please sign in before Add an item to cart";
+            this.message="Please sign in before add an item to cart";
             this.status="open";
-          
             setTimeout(() => {  
               this.status="closed";
+              swal('Try Again','Waiting for service', 'info');
             }, 700);
           }
         });
@@ -176,11 +177,12 @@ export class itemList implements OnInit {
       }
       else{
         this.checkAddToCart=false;
-        this.message="Please sign in before Add an item to cart";
+        this.message="Please sign in before add an item to cart";
         this.status="open";
       
         setTimeout(() => {  
           this.status="closed";
+          swal('Please Sign in','Thank You','warning');
         }, 700);
       }
       
