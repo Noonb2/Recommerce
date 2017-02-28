@@ -172,5 +172,20 @@ router.post('/checkout',function(req,res){
     });
 })
 
+router.post('/rating',function(req,res){
+    User.find({'username':req.body.username},function(err,obj){
+        if(err)console.log(err);
+        array = obj[0].buys;
+        result= [];
+        array.forEach( function(element, index) {
+            // statements
+            if(element.rating==undefined){
+                result.push(element);
+            }
+        });
+        console.log(result);
+        res.send(result);
+    });
+})
 
 module.exports = router;

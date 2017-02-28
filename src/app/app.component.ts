@@ -5,7 +5,6 @@ import { loginService } from './login.service';
 import {SharedService} from './shared.service';
 import { ActivatedRoute } from '@angular/router';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-
 // import { itemListService } from './department/itemList/itemList.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
@@ -120,7 +119,6 @@ export class AppComponent implements OnInit {
           password:""
         };
         this.statusLogin="open";
-      
         setTimeout(() => {  
           this.statusLogin="closed";
           if(path==='/myCart'){

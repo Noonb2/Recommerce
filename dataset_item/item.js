@@ -2,7 +2,6 @@ var item = {
 	department:String,
 	category:String,
 	name:String,
-	description:String,
 	price:String,
 	img:String,
 	rating:[{
@@ -11,5 +10,6 @@ var item = {
 		quality:Number,
 		design:Number,
 		sustainability:Number
-	}]
+	}],
+	count:Number,
 }

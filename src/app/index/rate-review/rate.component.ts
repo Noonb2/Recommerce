@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, ElementRef , animate, style, state, transition, trigger} from '@angular/core';
-
+import { Component, AfterViewInit, ElementRef , animate, style, state, transition, trigger ,OnInit} from '@angular/core';
+import {RateService} from './rate.service';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
   selector: 'rating',
@@ -22,17 +23,60 @@ import { Component, AfterViewInit, ElementRef , animate, style, state, transitio
    //    ])],
 })
 
-export class Rate {
+export class Rate implements OnInit{
   title = 'app works!';
   state = "closed";
-  constructor(private elementRef:ElementRef){}
+  itemRating = [];
+  constructor(private elementRef:ElementRef,
+              private rateService:RateService,
+              private _cookieService:CookieService,
+    ){}
   ngAfterViewInit(){
+    console.log('Afterview');
       // var s = document.createElement("script");
       // s.type = "text/javascript";
       // s.src = "/app/app.script.js";
       // this.elementRef.nativeElement.appendChild(s);
+      var recieveCookie = this._cookieService.getObject('login');
+      if(recieveCookie==undefined){
+        
+      }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
+         var username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
+         var json = {
+           'username':username,
+         };
+        console.log(json);
+        this.rateService.getItem(json).subscribe(res=>{
+          this.itemRating = res;
+          console.log(this.itemRating);
+          this.state = "open";
+        });
+        
+      }
   }
-  toggle(){
-    this.state = this.state==="closed"? "open": "closed";
+  ngOnInit(){
+    // console.log('on init');
+    // var recieveCookie = this._cookieService.getObject('login');
+    //   if(recieveCookie==undefined){
+        
+    //   }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
+    //      var username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
+    //      var json = {
+    //        'username':username,
+    //      };
+    //     console.log(json);
+    //     this.rateService.getItem(json).subscribe(res=>{
+    //       this.itemRating = res;
+    //       console.log(this.itemRating);
+    //       this.state = "open";
+    //     });
+        
+    //   }
+    
   }
+
+  rateItem(){
+    this.state="closed";
+  }
+
 }
