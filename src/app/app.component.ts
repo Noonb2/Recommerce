@@ -109,7 +109,7 @@ export class AppComponent implements OnInit {
       console.log('checklog: ',this.checkLog);
       console.log('checkRegister: ',this.checkRegister);
       if(this.checkLog == true){
-        this.logmessage = "Login Successful!";
+        this.logmessage = "login success!";
         this.class="ready";
         this._cookieService.putObject('login',bool);
         this.name= this.cookiesToJSON('login').data.name;
@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
       }
       else if(this.checkLog==false){
         this.checkLog=false;
-        this.logmessage = "Wrong Username or Password!";
+        this.logmessage = "wrong Username or Password!";
         this.class="ready";
               this.statusLogin="open";
       
@@ -150,7 +150,7 @@ export class AppComponent implements OnInit {
       console.log(this.checkRegister);
       if(this.checkRegister){
 
-        this.message = "Register Successful!";
+        this.message = "register success!";
         this.reg={
         username:"",
         password:"",
@@ -194,7 +194,7 @@ export class AppComponent implements OnInit {
       }
   }
 
-
+  
 
 
 

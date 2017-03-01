@@ -9,10 +9,10 @@
             <!-- items being paged -->
            <div class="itemlist">
 				<div class="item" *ngFor="let item of pagedItems">
-					<img src="{{item.name}}" class="item-pic">
+					<img src="{{item.img}}" class="item-pic">
 					<div id="item-content">
-						<div style="width: 100%">name: Women's Bag</div>
-						<div style="width: 100%">price: 200 Baht</div>
+						<div style="width: 100%" class="limit-text">{{item.name}}</div>
+						<div style="width: 100%">{{item.price}} baht</div>
 						<div style="display: flex;justify-content: center;">
 							<div id="add-cart" style="width: 100%" (click)="addToCart(item)">Add to cart</div>
 						</div>
