@@ -55,13 +55,6 @@ export class itemList implements OnInit {
 
     pagedItems: any[];
 
-
-    // ngAfterViewInit(){
-    //     var s = document.createElement("script");
-    //     s.type = "text/javascript";
-    //     s.src = "./app/department/itemList/itemList.script.js";
-    //     this.elementRef.nativeElement.appendChild(s);
-    // }
     ngOnInit(){
         this.sub = this.route.params.subscribe(params => {
            this.department = params['department'];
@@ -114,18 +107,7 @@ export class itemList implements OnInit {
             this.setPage(1);
           });
         });
-        
 
-        
-        // this.http.get('/api/test')
-        //     .map((response: Response) => response.json())
-        //     .subscribe(data => {
-        //     // set items to json response
-        //     this.allItems = data;
-
-        //     // initialize to page 1
-        //     this.setPage(1);
-        // });
     }
 
      setPage(page: number) {
@@ -144,53 +126,27 @@ export class itemList implements OnInit {
       var recieveCookie = this._cookieService.getObject('login');
       if(recieveCookie==undefined){
         this.checkAddToCart=false;
-        this.message="Please sign in before add an item to cart";
-        this.status="open";
-      
-        setTimeout(() => {  
-          this.status="closed";
-        }, 700);
+        swal('Please Sign in','Thank You','warning');
       }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
-         var username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
-         var json = {
+        var username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
+        var json = {
            'username':username,
            'item':item
-         };
-        console.log(json);
+        };
         this.itemlistService.addToCart(json).subscribe(res=>{
-          this.checkAddToCart=res;
-          if(this.checkAddToCart){
-            this.message="Add to cart";
-            this.status="open";     
-            setTimeout(() => {  
-              this.status="closed";
-              var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));  
-              data.data.carts.push(item);
-              console.log(data.data.carts.length);
-              this._cookieService.putObject('login',data);
-              swal("Good Choice!", "You confirm to add this product", "success");
-            }, 700);
-          }else{
-            this.checkAddToCart=false;
-            this.message="Please sign in before add an item to cart";
-            this.status="open";
-            setTimeout(() => {  
-              this.status="closed";
-              swal('Try Again','Waiting for service', 'info');
-            }, 700);
-          }
+        this.checkAddToCart=res;
+        if(this.checkAddToCart){
+          this.sharedService.addCarts();
+          swal("Good Choice!", "You confirm to add this product", "success");
+          
+        }else{
+          swal('Try Again','Waiting for service', 'info');
+        }
         });
         
       }
       else{
-        this.checkAddToCart=false;
-        this.message="Please sign in before add an item to cart";
-        this.status="open";
-      
-        setTimeout(() => {  
-          this.status="closed";
           swal('Please Sign in','Thank You','warning');
-        }, 700);
       }
       
     }

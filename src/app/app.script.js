@@ -1,4 +1,4 @@
-console.log('Hello Script');
+
 	$(document).ready(function(){
 		$('#testbutton').click(function(){
 				$('#message').fadeIn('400');

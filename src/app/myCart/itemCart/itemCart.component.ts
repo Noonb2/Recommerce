@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 
 import {itemCartService} from './itemCart.service';
 import {CookieService} from 'angular2-cookie/core';
+import {SharedService} from '../../shared.service';
 
 @Component({
   selector: 'itemCart',
@@ -33,7 +34,9 @@ export class itemCart implements OnInit{
          private location: Location,
          private route:ActivatedRoute,
          private _itemCartService:itemCartService,
-         private _cookieService:CookieService,){}
+         private _cookieService:CookieService,
+         private sharedService:SharedService
+         ){}
     
     ngAfterViewInit(){
         var q = document.createElement("script");
@@ -43,7 +46,6 @@ export class itemCart implements OnInit{
     }
     
     ngOnInit(){
-        this.cart = this.route.params.subscribe(params => { this.mycart = params['myCart']});
         var checkLogin = this._cookieService.getObject('login');
         if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
           this.itemCarts = [];
@@ -54,13 +56,6 @@ export class itemCart implements OnInit{
           }
           this._itemCartService.getItemCarts(json).subscribe(res=>{
             this.itemCarts=res;
-            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
-            data.data.carts = res;
-            var json = {
-              'login':true,
-              'data': data.data,
-            }
-            this._cookieService.putObject('login',json);
           });
 
         }
@@ -81,14 +76,8 @@ export class itemCart implements OnInit{
             'item':object,
           }
           this._itemCartService.deleteItem(json).subscribe(res=>{
-            console.log(res);
-            this.itemCarts=res.carts;
-             var json = {
-              'login':true,
-              'data': res,
-            }
-            console.log(json);
-            this._cookieService.putObject('login',json);
+            this.itemCarts=res;
+            this.sharedService.deleteItem();
           });
         }
 
@@ -104,15 +93,10 @@ export class itemCart implements OnInit{
             'username':username,
             'item':this.itemCarts,
           }
-          this._itemCartService.checkout(json).subscribe(res=>{
-            var data = JSON.parse(JSON.stringify(this._cookieService.getObject('login')));
-            data.data.carts=[];
-            
-            this.status="open";
-      
+          this._itemCartService.checkout(json).subscribe(res=>{           
+            this.status="open";     
             setTimeout(() => {  
               this.status="closed";
-              this._cookieService.putObject('login',data);
               this.itemCarts=[];
               location.href="/";
             }, 700);

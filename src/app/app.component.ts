@@ -106,14 +106,11 @@ export class AppComponent implements OnInit {
     var path = JSON.parse(JSON.stringify(this._location))._platformStrategy._platformLocation._location.pathname;
     this.loginService.checkLogin(this.login).subscribe(bool=>{
       this.checkLog=bool.login
-      console.log('checklog: ',this.checkLog);
-      console.log('checkRegister: ',this.checkRegister);
       if(this.checkLog == true){
         this.logmessage = "login success!";
         this.class="ready";
         this._cookieService.putObject('login',bool);
         this.name= this.cookiesToJSON('login').data.name;
-        console.log(this._cookieService.getObject('login'));
         this.login={
           username:"",
           password:""

@@ -80,13 +80,15 @@ app.post('/login',function(req,res){
 		if(err) console.log(err);
 		if(obj.length!=0){
 			if(bcrypt.compareSync(req.body.password, obj[0].password)){
+				obj[0].buys=[];
+				obj[0].carts=[];
 				data = {
 					login:true,
 					data :obj[0]
 				}
+				console.log(data);
 				res.json(data);
 			}else{
-				
 				res.json(data);
 			}
 		}else{
@@ -126,15 +128,13 @@ app.post('/api/deleteItem',function(req,res){
         obj.carts.splice(req.body.item, 1);
         obj.markModified('Object');
         obj.save();
-        res.send(obj);
+        res.send(obj.carts);
     });
 })
 app.post('/register',function(req,res){
-	console.log("Register checking processing..");
 	User.find({'username':req.body.username},function(err,obj){
 		if(err)console.log('It\'s error : ',err);
 		if(obj.length == 0){
-			console.log('can register');
 			var myPlaintextPassword = req.body.password;
 			const saltRounds = 10;
 			var salt = bcrypt.genSaltSync(saltRounds);
