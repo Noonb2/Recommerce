@@ -203,16 +203,11 @@ app.post('/register',function(req,res){
 
 // elec/cameras
 
-
-
-
-
-
-data.forEach( function(element, index) {
-	// statements
-	var temp = new Item(element);
-	temp.save();
-});
+// data.forEach( function(element, index) {
+// 	// statements
+// 	var temp = new Item(element);
+// 	temp.save();
+// });
 
 
 

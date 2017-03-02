@@ -10,7 +10,15 @@ body {
     padding: 0px;
     cursor: pointer;
 }
-
+.limit-text{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   line-height: 1.4;        /* fallback */
+   max-height: 70px;       /* fallback */
+}
 h3{
     margin-top: 5px;
 }

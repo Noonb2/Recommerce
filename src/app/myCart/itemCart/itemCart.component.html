@@ -15,14 +15,14 @@
 				<div class="panel-body">
 					<div *ngIf="itemCarts.length==0">No item in your cart</div>
 					<div class="row" *ngFor="let item of itemCarts ; let i = index; trackBy: trackByFn">
-						<div class="col-xs-2" id="img"><img class="img-responsive" src="../{{item.name}}" style="width: 100px; height: 100px">
+						<div class="col-xs-2" id="img"><img class="img-responsive" src="{{item.img}}" style="width: 100px; height: 100px;margin-bottom: 15px">
 						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+						<div class="col-xs-4 limit-text" >
+							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>{{item.name}}</small></h4>
 						</div>
 						<div class="col-xs-6" id="number">
 							<div class="col-md-4 text-right" id="price">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+								<h6><strong>{{item.price}}<span class="text-muted">x</span></strong></h6>
 							</div>
                             <div class="col-md-6 quantity" id="plus-minus">
                                 <button class="minus-btn" type="button" name="button">

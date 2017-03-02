@@ -106,19 +106,26 @@ export class itemList implements OnInit {
                    break;
            }
        // In a real app: dispatch action to load the details here.
-        });
-        this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => this.data =data);
-
-        
-        this.http.get('/api/test')
-            .map((response: Response) => response.json())
-            .subscribe(data => {
-            // set items to json response
+           this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => {
+            this.data =data;
             this.allItems = data;
 
-            // initialize to page 1
+              // initialize to page 1
             this.setPage(1);
+          });
         });
+        
+
+        
+        // this.http.get('/api/test')
+        //     .map((response: Response) => response.json())
+        //     .subscribe(data => {
+        //     // set items to json response
+        //     this.allItems = data;
+
+        //     // initialize to page 1
+        //     this.setPage(1);
+        // });
     }
 
      setPage(page: number) {
