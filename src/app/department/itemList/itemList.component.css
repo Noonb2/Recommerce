@@ -4,9 +4,10 @@ body {
   background: #ede9de; 
 }
 .container-spinner {
+  height: 100%;
   left: 50%;
   margin: auto -50px;
-  position: absolute;
+  position: fixed;
   top: 50%;
 }
 .swing div {

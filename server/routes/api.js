@@ -103,6 +103,13 @@ router.post('/rating',function(req,res){
         array.forEach( function(element, index) {
             // statements
             if(element.myrate==undefined){
+                element.myrate={
+                    overall:0,
+                    price:0,
+                    quality:0,
+                    design:0,
+                    sustainability:0
+                }
                 result.push(element);
             }
         });
