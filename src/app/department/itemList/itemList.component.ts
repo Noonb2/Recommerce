@@ -38,6 +38,7 @@ export class itemList implements OnInit {
     status="closed";
     message="";
     checkAddToCart=false;
+    spinner:boolean;
     numCarts = this.sharedService.getNumCarts();
     constructor(
       private elementRef:ElementRef,
@@ -57,6 +58,7 @@ export class itemList implements OnInit {
 
     ngOnInit(){
         this.sub = this.route.params.subscribe(params => {
+           this.spinner=true;
            this.department = params['department'];
            this.category = params['category'];
            switch (this.department) {
@@ -102,6 +104,7 @@ export class itemList implements OnInit {
            this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => {
             this.data =data;
             this.allItems = data;
+            this.spinner=false;
 
               // initialize to page 1
             this.setPage(1);
