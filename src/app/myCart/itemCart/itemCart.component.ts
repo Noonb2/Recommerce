@@ -47,6 +47,7 @@ export class itemCart implements OnInit{
     }
     
     ngOnInit(){
+        window.scrollTo(0,0);
         var checkLogin = this._cookieService.getObject('login');
         if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
           this.itemCarts = [];

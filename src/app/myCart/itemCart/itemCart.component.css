@@ -1,7 +1,10 @@
 body {
 	margin-top: 20px;
 }
-
+.product-name{
+    font-family: 'Athiti', sans-serif !important;
+    font-weight: bold;
+}
 #img{
     width: auto;
 }

@@ -50,6 +50,7 @@ export class Rate implements OnInit{
           this.itemRating = res;
           console.log(this.itemRating);
           this.state = "open";
+          document.querySelector('body').classList.add('ovh');
         });
         
       }
@@ -77,6 +78,7 @@ export class Rate implements OnInit{
 
   rateItem(){
     this.state="closed";
+    document.querySelector('body').classList.remove('ovh');
   }
 
 }

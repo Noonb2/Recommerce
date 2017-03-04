@@ -1,0 +1,13 @@
+.details{
+	font-family: 'Athiti', sans-serif !important;
+	font-weight: bold;
+}
+.details h1{
+	font-weight: bolder;
+}
+@media screen and (min-width: 768px){
+	.details{
+		padding-left: 100px !important;
+		padding-right: 100px !important;
+	}
+}

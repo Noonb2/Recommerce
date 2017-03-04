@@ -205,6 +205,8 @@ hr:before {
   }
 #item-content{
     padding:10px;
+    font-family: 'Athiti', sans-serif !important;
+    font-weight: bold;
 }
 .item{
     cursor:pointer;

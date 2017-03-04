@@ -55,8 +55,16 @@ export class itemList implements OnInit {
     pager: any = {};
 
     pagedItems: any[];
+    ngAfterViewInit(){
+      
 
+      var l = document.createElement("script");
+      l.type = "text/javascript";
+      l.src = "./app/department/itemlist/itemlist.script.js";
+      this.elementRef.nativeElement.appendChild(l);
+    }
     ngOnInit(){
+        window.scrollTo(0,0);
         this.sub = this.route.params.subscribe(params => {
            this.spinner=true;
            this.department = params['department'];
@@ -114,6 +122,7 @@ export class itemList implements OnInit {
     }
 
      setPage(page: number) {
+
         if (page < 1 || page > this.pager.totalPages) {
             return;
         }
@@ -123,6 +132,8 @@ export class itemList implements OnInit {
 
         // get current page of items
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        window.scrollTo(0,0);
+
     }
 
     addToCart(item:Object){

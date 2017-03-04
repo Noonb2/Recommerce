@@ -1,4 +1,4 @@
-<div class="overlay" [@fadeIn]="state">
+<div class="overlay" [@fadeIn]="state" style="overflow: hidden;">
     <div class="rating-window">
         <div class="head">Please rate items below for improving recommendation</div>
         <div class="content" id="style-2">
@@ -7,7 +7,7 @@
               <div style="display: flex;justify-content: center;align-items: center">
                 <img id="img-rating" src="{{item.img}}">
               </div>
-              <div style="text-align: center">{{item.name}}</div>
+              <div class="limit-text" style="text-align: center">{{item.name}}</div>
             </div>
             <div class="container rating-box">
               <div class="row criteria"> 

@@ -17,6 +17,7 @@ import { myCart } from './myCart/myCart.component';
 import { itemCart } from './myCart/itemCart/itemCart.component';
 import {Indexpage} from './index/index.component';
 import {Rate} from './index/rate-review/rate.component';
+import {Carousel} from './index/carousel/carousel.component';
 import {RateService} from './index/rate-review/rate.service';
 
 
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     myCart,
     itemCart,
     Indexpage,
-    Rate
+    Rate,
+    Carousel
   ],
   imports: [
     BrowserModule,

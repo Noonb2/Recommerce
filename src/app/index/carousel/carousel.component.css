@@ -1,0 +1,22 @@
+.carousel-caption{
+	top:50%;
+	font-family: 'Athiti', sans-serif !important;
+	/*font-size: 5em;
+
+}*/
+}
+#img-carousel{
+	/*background: url('../../img/home-5.jpg');
+	width: 100%;
+	height: calc(100% - 259px);
+	background-size: contain;*/
+}
+@media only screen and (min-width: 768px){
+
+}
+
+@media only screen and(max-width: 767px){
+	.carousel{
+		margin-top: -10px !important;
+	}
+}
