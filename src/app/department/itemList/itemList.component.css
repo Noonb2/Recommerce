@@ -172,7 +172,7 @@ body {
   animation: shadow-r-n .425s ease-in-out infinite alternate;
 }
 .limit-text{
-    overflow: hidden;
+   overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-box-orient: vertical;

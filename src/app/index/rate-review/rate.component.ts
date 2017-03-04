@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, ElementRef , animate, style, state, transition, trigger ,OnInit} from '@angular/core';
+import { Component, AfterViewInit, ElementRef , animate, style, state, transition, trigger ,OnInit, AfterViewChecked} from '@angular/core';
 import {RateService} from './rate.service';
 import {CookieService} from 'angular2-cookie/core';
+
 
 @Component({
   selector: 'rating',
@@ -13,6 +14,7 @@ import {CookieService} from 'angular2-cookie/core';
       transition("closed <=> open", animate(500)),
     ])
   ],
+
    // animations: [trigger(
    //    'fadeIn',
    //    [
@@ -21,6 +23,7 @@ import {CookieService} from 'angular2-cookie/core';
    //      transition(
    //          'closed<=> open', [animate(500, style({height: '250px'})), animate(500)])
    //    ])],
+   
 })
 
 export class Rate implements OnInit{
@@ -33,10 +36,8 @@ export class Rate implements OnInit{
     ){}
   ngAfterViewInit(){
     console.log('Afterview');
-      // var s = document.createElement("script");
-      // s.type = "text/javascript";
-      // s.src = "/app/app.script.js";
-      // this.elementRef.nativeElement.appendChild(s);
+      
+      
       var recieveCookie = this._cookieService.getObject('login');
       if(recieveCookie==undefined){
         
@@ -73,12 +74,21 @@ export class Rate implements OnInit{
     //     });
         
     //   }
+    // this.inpustName = this.itemId + '_rating';
     
   }
-
+  ngAfterViewChecked(){
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = "/app/index/rate-review/rate.script.js";
+      this.elementRef.nativeElement.appendChild(s);
+  }  
+  
   rateItem(){
     this.state="closed";
     document.querySelector('body').classList.remove('ovh');
   }
+
+  
 
 }
