@@ -28,7 +28,8 @@ export class itemCart implements OnInit{
     private cart:any;
     title = 'app works!';
     itemCarts = [];
-    status="closed"
+    status="closed";
+    sum=0;
     constructor(
          private elementRef:ElementRef,
          private location: Location,
@@ -56,6 +57,12 @@ export class itemCart implements OnInit{
           }
           this._itemCartService.getItemCarts(json).subscribe(res=>{
             this.itemCarts=res;
+            for (var i in this.itemCarts) {
+              // code...
+              console.log(parseFloat(this.itemCarts[i].price) );
+              this.sum = this.sum  + parseFloat(this.itemCarts[i].price) ;
+              console.log(this.sum);
+            }
           });
 
         }
@@ -65,7 +72,8 @@ export class itemCart implements OnInit{
 
     }
 
-    deleteItem(object:Number){
+    deleteItem(object){
+       var temp = parseFloat(this.itemCarts[object].price) ;
        var checkLogin = this._cookieService.getObject('login');
         if(checkLogin==undefined||JSON.parse(JSON.stringify(checkLogin)).login==false){
           this.itemCarts = [];
@@ -78,6 +86,7 @@ export class itemCart implements OnInit{
           this._itemCartService.deleteItem(json).subscribe(res=>{
             this.itemCarts=res;
             this.sharedService.deleteItem();
+            this.sum = this.sum - temp;
           });
         }
 

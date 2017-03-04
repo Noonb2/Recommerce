@@ -105,7 +105,7 @@ export class itemList implements OnInit {
             this.data =data;
             this.allItems = data;
             this.spinner=false;
-
+            window.scrollTo(0,0);
               // initialize to page 1
             this.setPage(1);
           });

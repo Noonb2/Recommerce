@@ -3,7 +3,7 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'index',
-  template:"<rating>",
+  templateUrl:'./index.component.html',
 })
 
 export class Indexpage {
