@@ -1,9 +1,9 @@
-console.log("Rate Script");
+// console.log("Rate Script");
 $(document).ready(function(){
   /* 1. Visualizing things on Hover - See next part for action on click */
   $('#stars li').on('mouseover', function(){ 
     var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-    console.log("onStar")
+    // console.log("onStar")
     // Now highlight all the stars that's not after the current hovered star
     $(this).parent().children('li.star').each(function(e){
       if (e < onStar) {

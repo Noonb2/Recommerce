@@ -22,6 +22,11 @@ export class RateService {
 	}
 
 
+	rateItem(object:Object){
+		return this.http.post('/api/rateItem',object).map((res:Response) => res.json());
+	}
+
+
 
 
 
