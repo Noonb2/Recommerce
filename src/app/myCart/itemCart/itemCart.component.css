@@ -10,6 +10,11 @@ body {
     padding: 0px;
     cursor: pointer;
 }
+
+.panel-body .row{
+    padding-bottom: 20px;
+}
+
 .limit-text{
     overflow: hidden;
    text-overflow: ellipsis;
@@ -198,8 +203,8 @@ input:focus {
     }
 
     #number{
-        width: 100%;
-        text-align: -webkit-center;
+        width: 90%;
+        text-align: -webkit-right;
     }
 
     .container-outer { 

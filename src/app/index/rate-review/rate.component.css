@@ -57,12 +57,25 @@
 	width: 100%;
 	/*border: 5px solid grey;*/
 	margin-bottom: 15px;
+	padding-bottom: 25px;
 }
 .item{
 	float: left;
 	margin: 20px;
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+
+.limit-text{
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   line-height: 1.4;        /* fallback */
+   padding-left: 15px;
+   padding-right: 15px;
+   font-size: smaller;
 }
 
 .rating-box{
@@ -79,64 +92,66 @@
 	height: 200px;
 }
 
-/*Overall rating*/
-.overall {
-	unicode-bidi:bidi-override;
-	direction:rtl;
-	font-size:20px;
+#criteria{
+	width: 40%;
+}
+#rating {
+	/*unicode-bidi:bidi-override;
+	direction:rtl;*/
+	font-size:8px;
 	display: inline-block;
+	width: 60%;
 }
 
-.overall span.star {
-	font-family:FontAwesome;
-	font-weight:normal;
-	font-style:normal;
-	display:inline-block
+/*Overall rating*/
+.rating-stars-overall ul {
+  list-style-type:none;
+  padding:0;
+  -moz-user-select:none;
+  -webkit-user-select:none;
 }
-
-.overall span.star:hover {
-	cursor:pointer
+.rating-stars-overall ul > li.star {
+  display:inline-block;
+  
 }
-
-.overall span.star:before {
-	content:"\f006";
-	padding-right:5px;
-	color:gray;
+/* Idle State of the stars */
+.rating-stars-overall ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
 }
-.overall span.star:hover:before,.overall span.star:hover~span.star:before {
-	content:"\f005";
-	color:orange;
+/* Hover state of the stars */
+.rating-stars-overall ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+/* Selected state of the stars */
+.rating-stars-overall ul > li.star.selected > i.fa {
+  color:#FF912C;
 }
 
 /*Multi-criteria rating*/
-.rating {
-	unicode-bidi:bidi-override;
-	direction:rtl;
-	font-size:20px;
-	display: inline-block;
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  -moz-user-select:none;
+  -webkit-user-select:none;
 }
-
-.rating span.star {
-	font-family:FontAwesome;
-	font-weight:normal;
-	font-style:normal;
-	display:inline-block
+.rating-stars ul > li.star {
+  display:inline-block;
+  
 }
-
-.rating span.star:hover {
-	cursor:pointer
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
 }
-
-.rating span.star:before {
-	content:"\f006";
-	padding-right:5px;
-	color:#ccc;
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FF912C;
 }
-.rating span.star:hover:before,.rating span.star:hover~span.star:before {
-	content:"\f005";
-	color:#fcf192;
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FFCC36;
 }
-
 
 @media screen and (min-width: 769px){ /* For PC */
 	.rating-window{	  
@@ -148,9 +163,9 @@
 	.item{
 		width: 35%;
 	}
-	.rating{
-		width: 50%;
-	}
+	/*.rating{
+		width: 90%;
+	}*/
 
 }
 
@@ -164,13 +179,13 @@
 	.item{
 		width: 35%;
 	}
-	.rating{
-		width: 100%;
-		font-size: 15px;
+	#criteria{
+		width: 40%;
+		font-size: 12px;
 	}
-	.overall{
-		width: 100%;
-		font-size: 15px;
+	#rating{
+		width: 60%;
+		font-size: 8px;
 	}
 	#img-rating{
 		width: 150px;
@@ -187,14 +202,6 @@
 		/*margin:40px 0px 40px 0px;*/
 		padding-top: 50px; 
 	}
-	#criteria{
-		width: 80%;
-		font-size: 12px;
-	}
-	#overall{
-		width: 80%;
-		font-size: 12px;
-	}
 }
 
 @media screen and (max-width: 767px){ /* For iphone */
@@ -208,9 +215,13 @@
 		margin:10px 0px 10px 0px;
 		width: 100%
 	}
-	.rating{
-		width: 100%;
-		font-size: 15px;
+	#criteria{
+		width: 80%;
+		font-size: 12px;
+	}
+	#rating{
+		width: 80%;
+		font-size: 6px;
 	}
 	.overall{
 		width: 100%;
@@ -243,14 +254,6 @@
 	}
 	.row.criteria{
 		display: flex;
-	}
-	#criteria{
-		width: 80%;
-		font-size: 12px;
-	}
-	#overall{
-		width: 80%;
-		font-size: 12px;
 	}
 }
 
