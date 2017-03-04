@@ -5,6 +5,9 @@
 
 }*/
 }
+.carousel-indicators{
+	z-index: 1 !important;
+}
 #img-carousel{
 	/*background: url('../../img/home-5.jpg');
 	width: 100%;
