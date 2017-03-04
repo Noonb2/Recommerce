@@ -14,6 +14,7 @@
 				</div>
 				<div class="panel-body">
 					<div *ngIf="itemCarts.length==0">No item in your cart</div>
+					
 					<div class="row" *ngFor="let item of itemCarts ; let i = index; trackBy: trackByFn">
 						<div class="col-xs-2" id="img"><img class="img-responsive" src="{{item.img}}" style="width: 100px; height: 100px;margin-bottom: 15px">
 						</div>
@@ -38,62 +39,9 @@
 									<span class="glyphicon glyphicon-trash" id="trash"> </span>
 								</button>
 						    </div>	
-						</div> 
+						<hr> 
+						</div>
 					</div>
-					<hr>
-<!-- 					<div class="row">
-						<div class="col-xs-2" id="img"><img class="img-responsive" src="../../../img/women/bags/wb6.png" style="width: 100px; height: 100px">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
-						</div>
-						<div class="col-xs-6" id="number">
-							<div class="col-md-4 text-right" id="price">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-							</div>
-                            <div class="col-md-6 quantity" id="plus-minus">
-                                <button class="minus-btn" type="button" name="button">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                </button>
-                                <input type="text" name="name" value="1">
-                                <button class="plus-btn" type="button" name="button">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <div class="col-md-2 delete" id="trash">
-								<button type="button" class="btn btn-link" id="trash">
-									<span class="glyphicon glyphicon-trash"> </span>
-								</button>
-						    </div>	
-						</div> 
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-xs-2" id="img"><img class="img-responsive" src="../../../img/women/bags/wb7.png" style="width: 100px; height: 100px">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
-						</div>
-						<div class="col-xs-6" id="number">
-							<div class="col-md-4 text-right" id="price">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-							</div>
-                            <div class="col-md-6 quantity" id="plus-minus">
-                                <button class="minus-btn" type="button" name="button">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                </button>
-                                <input type="text" name="name" value="1">
-                                <button class="plus-btn" type="button" name="button">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <div class="col-md-2 delete" id="trash">
-								<button type="button" class="btn btn-link" id="trash">
-									<span class="glyphicon glyphicon-trash"> </span>
-								</button>
-						    </div>	
-						</div> 
-					</div> -->
 					<!--<hr>-->
 				</div>
 				<div class="panel-footer" id="checkout">
@@ -133,7 +81,6 @@
                             <span class="glyphicon glyphicon-plus-sign"></span> Add to cart
                             </button>
 						</div>
-                        
 					</div>
 					<hr>
 					<div class="row">
@@ -283,7 +230,7 @@
 	</div>
 </div>
 <div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%;" [@fadeIn]="status" >
-  <div class="alert alert-success" style="width: 50%" >Thank you for your shopping.</div>
+  <div class="alert thank" style="width: 50%" >Thank you for your shopping.</div>
 </div>
            <!--<div class="col-xs-2">-->
                                     <!--<button type="button" class="btn btn-link btn-xs" style="display: inline">

@@ -110,6 +110,21 @@ input:focus {
 #btn-checkout:focus{
     outline: none;
 }
+.alert.thank{
+    background: #fefefe;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+    border-color: #cef2b8;
+}
 
 #mycart{
     background-color: transparent;
@@ -181,6 +196,7 @@ input:focus {
         background-color: #330431 !important;
     }
 
+
 @media only screen and (max-width: 767px){
     #total{
         width: 50%;
@@ -230,6 +246,9 @@ input:focus {
         padding: 3px;
         white-space: normal;
         text-align: center; 
+    }
+    .row hr{
+        width: 115% !important; 
     }
     
 }
