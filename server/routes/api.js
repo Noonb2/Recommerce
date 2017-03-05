@@ -57,16 +57,10 @@ router.get('/itemlist/:department/:category',function(req,res){
     }
     Item.find({'department':dep,'category':cat},function(err,obj){
         if(err)concole.log(err);
-        // console.log(obj);
         res.json(obj);
     })
- //    console.log(dep);
-	// res.json(data);
 })
-// router.get('/test',function(req,res){
-	
-// 	res.json(test);
-// })
+
 
 router.post('/myCarts',function(req,res){
     User.find({'username':req.body.username},function(err,obj){
@@ -84,10 +78,6 @@ router.post('/checkout',function(req,res){
             // statements
             obj.buys.push(element);
         });
-        // array.forEach( function(element, index) {
-        //     // statements
-        //     obj.carts.obj.carts.splice(index, 1);
-        // });
         obj.carts=[];
         obj.save();
 
@@ -147,12 +137,6 @@ router.post('/rateItem',function(req,res){
             obj.rating[0].quality = obj.rating[0].quality + element.myrate.quality;
             obj.rating[0].design = obj.rating[0].design + element.myrate.design;
             obj.rating[0].sustainability = obj.rating[0].sustainability + element.myrate.sustainability;
-             // obj.count = 0;
-            // obj.rating[0].overall = 0;
-            // obj.rating[0].price = 0;
-            // obj.rating[0].quality = 0;
-            // obj.rating[0].design = 0;
-            // obj.rating[0].sustainability = 0;
             obj.save(function(err,obj){
             
         });
