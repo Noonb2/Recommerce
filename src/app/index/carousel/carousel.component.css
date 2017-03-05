@@ -280,10 +280,10 @@
 }
 
 /*------------------------------------------------------*/
-/* RESPONSIVE
+/* RESPONSIVE */
 /*------------------------------------------------------*/
 
-@media (max-width: 991px) {
+@media screen and (max-width: 991px) {
     .slide-text h1 {
         font-size: 40px;
         line-height: 50px;
@@ -297,7 +297,7 @@
 
 
 /*---------- MEDIA 480px ----------*/
-@media  (max-width: 768px) {
+@media screen and  (max-width: 768px) {
     .slide-text {
         padding: 10px 50px;
     }
@@ -316,7 +316,7 @@
     }
 
 }
-@media  (max-width: 480px) {
+@media screen and  (max-width: 480px) {
     .slide-text {
         padding: 10px 30px;
     }
