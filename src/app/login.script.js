@@ -1,34 +1,21 @@
 
 $(document).ready(function(){
-
-	// $('#login-menu').click(function(){
- //        console.log("logged in!")
- //        $('#myModal').modal('show');
- //    });
-	
 	$('#regsubmit').click(function(){
-		setTimeout(function(){
-			setTimeout(
-			  function() 
-			  {
-			    if($('#message')[0].childNodes[1].className!="alert alert-warning"){
+		var loops = setInterval(function(){
+			if($('#message')[0].childNodes[1].className=="alert regis-success"){
 				$('#myModalSignIn').modal('hide');
-				
+				clearInterval(loops);				
 			}
-			  }, 1000);
-		},500);
+		}, 250);
 	});
 	$('#loginsubmit').click(function(){
-		setTimeout(function(){
-			$('#loginmessage').fadeIn('400');
-			setTimeout(
-			  function() 
-			  {
-			    if($('#loginmessage')[0].childNodes[1].className!="alert alert-warning"){
-					$('#myModalSignIn').modal('hide');
-				}
-			  }, 1000);
-		},500);
+		var loops = setInterval(function(){
+			if($('#loginmessage')[0].childNodes[1].className=="alert login-success"){
+				$('#myModalSignIn').modal('hide');
+				clearInterval(loops);
+				
+			}
+		}, 250);
 	});
 	$('#signOut').click(function(){
 		$('#myModalSignOut').modal('hide');

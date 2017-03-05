@@ -113,6 +113,7 @@
   <div style="min-height: 1000px">
     <router-outlet></router-outlet>
   </div>
+
     <div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%" [@fadeIn]="statusRegister" >
         <div class="alert" style="width: 50%" [ngClass]="{
         'regis-success':checkRegister ,
@@ -184,6 +185,7 @@
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                             <input type="text" class="form-control" id="email"  
                                             [(ngModel)]="reg.username" name="username" required/>
+
                                         </div>
                                     </div>
                                     <div class="form-group">
