@@ -54,8 +54,8 @@ h3{
 }
 
 .panel-body{
-    overflow-y: auto;
-    max-height: 300px;
+    /*overflow-y: auto;*/
+    /*max-height: 300px;*/
     max-width: 100%; 
 }
 

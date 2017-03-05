@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
         <br><br>
-		<div class="col-md-8">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-info">
 				<div class="panel-heading" id="mycart">
 					<div class="panel-title">
@@ -46,7 +46,7 @@
 				<div class="panel-footer" id="checkout">
 					<div class="row text-center">
 						<div class="col-xs-9" id="total">
-							<h4 class="text-right">(นี่เป็นเพียงการจำลองระบบ จึงไม่มีการเก็บเงินแต่อย่างใด) Total <strong>{{sum}} ฿</strong></h4>
+							<h4 class="text-right">Total <strong>{{sum}} ฿</strong></h4>
 						</div>
 						<div class="col-xs-3" id="check">
 							<button type="button" class="btn btn-success btn-block" id="btn-checkout" (click)="checkout()">
@@ -58,7 +58,7 @@
 			</div>
 		</div>
         <!--Recommend-->
-        <div class="col-md-4">
+        <div class="col-md-4" style="display: none">
             <div class="panel panel-info">
 				<div class="panel-heading" id="recommended">
 					<div class="panel-title">
@@ -129,7 +129,6 @@
                             </button>
 						</div>
 					</div>
-					<!--<hr>-->
 	            </div> 
                 <div class="panel-footer" id="cnt-shopping">
 					<div class="row text-center">
@@ -143,7 +142,7 @@
 			</div>  
         </div>
 
-		<div class="container-outer">
+		<div class="container-outer" style="display: none">
 			<div id="img-rec">
 				<img class="img-responsive" src="../../../img/women/shoes/ws1.png">
 				<h4 class="product-name"><strong>Product name</strong></h4>
