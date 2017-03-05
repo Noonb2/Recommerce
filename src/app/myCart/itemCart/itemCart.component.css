@@ -1,10 +1,10 @@
 body {
 	margin-top: 20px;
 }
-.product-name{
+/*.product-name{
     font-family: 'Athiti', sans-serif !important;
     font-weight: bold;
-}
+}*/
 #img{
     width: auto;
 }
@@ -89,6 +89,10 @@ input:focus {
 
 #trash:focus{
     outline: none;
+}
+.text-right{
+    font-family: 'Athiti', sans-serif !important;
+    font-weight: bold;
 }
 
 #checkout{
