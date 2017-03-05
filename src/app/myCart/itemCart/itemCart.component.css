@@ -25,6 +25,8 @@ body {
    -webkit-box-orient: vertical;
    -webkit-line-clamp: 2; /* number of lines to show */
    line-height: 1.4;        /* fallback */
+   font-family: 'Athiti', sans-serif !important;
+    font-weight: bold;
    
 }
 h3{

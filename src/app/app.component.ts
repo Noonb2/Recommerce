@@ -24,9 +24,6 @@ import 'rxjs/add/operator/map'
 })
 
 export class AppComponent implements OnInit {
-  title = 'app works!';
-  usernameLogin:string;
-  passwordLogin:string;
   checkLog:boolean;
   checkRegister:boolean;
   login={
@@ -40,13 +37,11 @@ export class AppComponent implements OnInit {
     email:"",
     gender:""
   }
-  class="";
   name="";
   logmessage = "Loading... ..";
   message = "Loading... ..";
   statusRegister="closed";
   statusLogin="closed";
-  checkUrl:any;
   numCarts = this.sharedService.getNumCarts();
   constructor(private elementRef:ElementRef,
               private _cookieService:CookieService,
@@ -108,7 +103,6 @@ export class AppComponent implements OnInit {
       this.checkLog=bool.login
       if(this.checkLog == true){
         this.logmessage = "login success!";
-        this.class="ready";
         this._cookieService.putObject('login',bool);
         this.name= this.cookiesToJSON('login').data.name;
         this.login={
@@ -119,24 +113,17 @@ export class AppComponent implements OnInit {
         setTimeout(() => {  
           this.statusLogin="closed";
           if(path==='/myCart'){
-            console.log(path,': refresh');
             location.reload();
           }
         }, 700);
       }
       else if(this.checkLog==false){
-        this.checkLog=false;
         this.logmessage = "wrong Username or Password!";
-        this.class="ready";
-              this.statusLogin="open";
+        this.statusLogin="open";
       
         setTimeout(() => {  
           this.statusLogin="closed";
-          if(path==='/myCart'){
-            console.log(path,': refresh');
-            location.reload();
-            
-          }
+          
         }, 700);
       }
     });
@@ -149,28 +136,25 @@ export class AppComponent implements OnInit {
 
         this.message = "register success!";
         this.reg={
-        username:"",
-        password:"",
-        name:"",
-        email:"",
-        gender:""
+          username:"",
+          password:"",
+          name:"",
+          email:"",
+          gender:""
         }
         
-        console.log('CheckRegister : ',this.checkRegister);
-        console.log('add class : ',this.class);
-              this.statusRegister="open";
+        this.statusRegister="open";
       
-      setTimeout(() => {  
-        this.statusRegister="closed";
-      }, 700);
+        setTimeout(() => {  
+          this.statusRegister="closed";
+        }, 700);
       }
       else {
         this.message = "Sorry, This username has already used!";
-              this.statusRegister="open";
-      
-      setTimeout(() => {  
-        this.statusRegister="closed";
-      }, 700);
+        this.statusRegister="open";
+        setTimeout(() => {  
+          this.statusRegister="closed";
+        }, 700);
       }
 
     });
@@ -184,11 +168,10 @@ export class AppComponent implements OnInit {
       data:[]
     })
     console.log('sign out');
-     this.checkLog=false;
-     if(path==='/myCart'){
-       console.log(path,': refresh');
-        location.reload();
-      }
+    this.checkLog=false;
+    if(path==='/myCart'){
+      location.reload();
+    }
   }
 
   
