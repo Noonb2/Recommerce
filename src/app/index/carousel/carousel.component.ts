@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
 
 
 @Component({
@@ -7,14 +7,15 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
   styleUrls: ['./carousel.component.css'],
 })
 
-export class Carousel {
+export class Carousel implements OnInit{
   title = 'app works!';
   constructor(private elementRef:ElementRef){}
-  ngAfterViewInit(){
-      // var s = document.createElement("script");
-      // s.type = "text/javascript";
-      // s.src = "/app/app.script.js";
-      // this.elementRef.nativeElement.appendChild(s);
+  
+  ngOnInit(){
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = "/app/index/carousel/carousel.script.js";
+      this.elementRef.nativeElement.appendChild(s);
   }
   
 }

@@ -34,7 +34,6 @@
 .head{
 	width: 100%;
 	height: 10%;
-	/*background-color: #330431;*/
 	color:#330431;
 	text-align: center;
 	display: flex;
@@ -63,13 +62,10 @@
 	width: 100%;
 	height: 80%;
 	overflow-y: scroll;
-	/*background: pink;*/
 }
 .item-rating{
 	float: left;
-	/*background: yellow;*/
 	width: 100%;
-	/*border: 5px solid grey;*/
 	margin-bottom: 15px;
 	padding-bottom: 25px;
 }
@@ -95,9 +91,7 @@
 .rating-box{
 	float: left;
 	height: 180px;
-	/*background: pink;*/
 	width: 50%;
-	/*margin:40px 0px 40px 0px;*/
 	padding-top: 50px; 
 }
 
@@ -110,8 +104,6 @@
 	width: 40%;
 }
 #rating {
-	/*unicode-bidi:bidi-override;
-	direction:rtl;*/
 	font-size:8px;
 	display: inline-block;
 	width: 60%;
@@ -177,10 +169,6 @@
 	.item{
 		width: 35%;
 	}
-	/*.rating{
-		width: 90%;
-	}*/
-
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px){ /* For ipad */
@@ -211,9 +199,7 @@
 	.rating-box{
 		float: left;
 		height: 120px;
-		/*background: pink;*/
 		width: 50%;
-		/*margin:40px 0px 40px 0px;*/
 		padding-top: 50px; 
 	}
 }
@@ -248,8 +234,6 @@
 		font-size: smaller;
 	}
 	.item {
-		/*float: left;*/
-		/*margin: 20px;*/
 		margin-top: 0px;
 		margin-bottom: 0px;
 		display: inline-block;
@@ -257,9 +241,7 @@
 	.rating-box{
 		float: left;
 		height: 120px;
-		/*background: pink;*/
 		width: 100%;
-		/*margin:40px 0px 40px 0px;*/
 		padding-top: 20px; 
 	}
 	#img-rating{
@@ -273,8 +255,6 @@
 
 #style-2::-webkit-scrollbar-track
 {
-	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
-	/*border-radius: 10px;*/
 	background-color: transparent;
 }
 

@@ -61,15 +61,6 @@ h3{
     content: "\e020";
     color: gray;
 }
-
-/*#plus-minus{
-    display: inline;
-}*/
-
-/*.quantity {
-  padding-top: 20px;
-  margin-right: 60px;
-}*/
 .quantity input {
   -webkit-appearance: none;
   border: none;
@@ -93,10 +84,6 @@ button:focus,
 input:focus {
   outline:0;
 }
-
-/*#trash{
-    display: inline-block;
-}*/
 
 #trash:focus{
     outline: none;

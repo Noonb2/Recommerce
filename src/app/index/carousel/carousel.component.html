@@ -1,49 +1,73 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000" style="">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-  </ol>
+<div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000" >
+          <!-- Indicators -->
+          <!--<ol class="carousel-indicators">
+              <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+              <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+              <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+          </ol>-->
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img id="img-carousel" src="../../img/home-5.jpg" alt="...">
-      <div class="carousel-caption">
-         Onlineshopping website ที่มีหลากหลายสไตล์
-      </div>
-    </div>
-    <div class="item">
-      <img id="img-carousel" src="../../img/home-2.jpg" alt="...">
-      <div class="carousel-caption">
-        ทั้งความหลากหลายทาง Fashion
-      </div>
-    </div>
-    <div class="item">
-      <img id="img-carousel" src="../../img/home-3.jpg" alt="...">
-      <div class="carousel-caption">
-        อุปกรณ์ไอทีต่างๆ 
-      </div>
-    </div>
-    <div class="item">
-      <img id="img-carousel" src="../../img/home-4.jpg" alt="...">
-      <div class="carousel-caption">
-        รวมถึงเฟอร์นิเจอร์
-      </div>
-    </div>
+          <!-- Wrapper For Slides -->
+          <div class="carousel-inner" role="listbox">
 
-    
-  </div>
+              <!-- Third Slide -->
+              <div class="item active">
 
-  <!-- Controls -->
-  <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a> -->
-</div>
+                  <!-- Slide Background -->
+                  <img src="../../img/home-5.jpg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                  <div class="bs-slider-overlay"></div>
+
+                  <div class="container">
+                      <div class="row">
+                          <!-- Slide Text Layer -->
+                          <div class="slide-text slide_style_right">
+                              <h1 data-animation="animated zoomInRight">Passion for Fashion</h1>
+                              <p data-animation="animated fadeInLeft">Style is a way to say who you are</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- End of Slide -->
+
+              <!-- Second Slide -->
+              <div class="item">
+
+                  <!-- Slide Background -->
+                  <img src="../../img/home-2.jpg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                  <div class="bs-slider-overlay"></div>
+                  <!-- Slide Text Layer -->
+                  <div class="slide-text slide_style_center">
+                      <h1 data-animation="animated flipInX">Surrounded by Electronics</h1>
+                      <p data-animation="animated lightSpeedIn">The future of us</p>
+                  </div>
+              </div>
+              <!-- End of Slide -->
+
+              <!-- Third Slide -->
+              <div class="item">
+
+                  <!-- Slide Background -->
+                  <img src="../../img/home-4.jpg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                  <div class="bs-slider-overlay"></div>
+                  <!-- Slide Text Layer -->
+                  <div class="slide-text slide_style_left">
+                      <h1 data-animation="animated zoomInLeft">Good to be Home</h1>
+                      <p data-animation="animated fadeInRight">Where our stories begin</p>
+                  </div>
+              </div>
+              <!-- End of Slide -->
+
+
+          </div><!-- End of Wrapper For Slides -->
+
+          <!-- Left Control -->
+          <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+              <span class="fa fa-angle-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+
+          <!-- Right Control -->
+          <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+              <span class="fa fa-angle-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+</div> 
