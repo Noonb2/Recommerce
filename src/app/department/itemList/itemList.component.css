@@ -178,6 +178,11 @@ body {
    line-height: 1.4;        /* fallback */
    max-height: 17px;       /* fallback */
 }
+
+#font{
+  font-family: 'Athiti', sans-serif !important;
+  font-weight: bold;
+}
 .center{
     display: flex;
     justify-content: center;
