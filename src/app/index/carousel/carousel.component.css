@@ -297,9 +297,11 @@
 
 
 /*---------- MEDIA 480px ----------*/
-@media screen and  (max-width: 768px) {
+
+@media screen and (max-width: 768px) {
     .slide-text {
         padding: 10px 50px;
+        top: 10%;
     }
     .slide-text h1 {
         font-size: 30px;
