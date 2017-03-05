@@ -6,23 +6,40 @@ export class PagerService {
         let totalPages = Math.ceil(totalItems / pageSize);
         
         let startPage: number, endPage: number;
-        if (totalPages <= numpage) {
-            // less than 5 total pages so show all
-            startPage = 1;
-            endPage = totalPages;
-        } else {
-            // more than 5 total pages so calculate start and end pages
-            if (currentPage <= ((numpage/2)+1)) {
+        if(numpage != 2){
+            if (totalPages <= numpage) {
+                // less than 5 total pages so show all
                 startPage = 1;
-                endPage = numpage;
-            } else if (currentPage + Math.floor(numpage/2) >= totalPages) {
-                startPage = totalPages - (numpage-1);
                 endPage = totalPages;
             } else {
-                startPage = currentPage - Math.floor(numpage/2);
-                endPage = currentPage + Math.floor(numpage/2);
+                // more than 5 total pages so calculate start and end pages
+                if (currentPage <= ((numpage/2)+1)) {
+                    startPage = 1;
+                    endPage = numpage;
+                } else if (currentPage + Math.floor(numpage/2) >= totalPages) {
+                    startPage = totalPages - (numpage-1);
+                    endPage = totalPages;
+                } else {
+                    startPage = currentPage - Math.floor(numpage/2);
+                    endPage = currentPage + Math.floor(numpage/2);
+                }
             }
-        }
+        } else if(numpage == 2){
+            if (totalPages <= numpage) {
+                // less than 5 total pages so show all
+                startPage = 1;
+                endPage = totalPages;
+            } else {
+                // more than 5 total pages so calculate start and end pages
+                if (currentPage + Math.floor(numpage/2) >= totalPages) {
+                    startPage = totalPages - (numpage-1);
+                    endPage = totalPages;
+                } else {
+                    startPage = currentPage;
+                    endPage = currentPage + Math.floor(numpage/2);
+                }
+            }
+        }   
 
         // calculate start and end item indexes
         let startIndex = (currentPage - 1) * pageSize;
