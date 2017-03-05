@@ -40,6 +40,7 @@ export class itemList implements OnInit {
     checkAddToCart=false;
     spinner:boolean;
     numCarts = this.sharedService.getNumCarts();
+    screen: number; 
     constructor(
       private elementRef:ElementRef,
       private itemlistService:itemListService, 
@@ -64,6 +65,8 @@ export class itemList implements OnInit {
       this.elementRef.nativeElement.appendChild(l);
     }
     ngOnInit(){
+        console.log(window.innerWidth);
+        this.screen = window.innerWidth;
         window.scrollTo(0,0);
         this.sub = this.route.params.subscribe(params => {
            this.spinner=true;
@@ -128,7 +131,17 @@ export class itemList implements OnInit {
         }
 
         // get pager object from service
-        this.pager = this.pagerService.getPager(this.allItems.length, page);
+        var numpage;
+        if(this.screen >= 768){
+            numpage = 5;
+        }
+        else if(this.screen <= 320){
+            numpage = 1;
+        }
+        else{
+            numpage = 3;
+        } 
+        this.pager = this.pagerService.getPager(this.allItems.length, page,12, numpage);
 
         // get current page of items
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);

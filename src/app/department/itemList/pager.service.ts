@@ -1,26 +1,26 @@
 // import * as _ from 'underscore';
 
 export class PagerService {
-    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 12) {
+    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 12, numpage: number) {
         // calculate total pages
         let totalPages = Math.ceil(totalItems / pageSize);
         
         let startPage: number, endPage: number;
-        if (totalPages <= 10) {
-            // less than 10 total pages so show all
+        if (totalPages <= numpage) {
+            // less than 5 total pages so show all
             startPage = 1;
-            endPage = 10;
+            endPage = totalPages;
         } else {
-            // more than 10 total pages so calculate start and end pages
-            if (currentPage <= 6) {
+            // more than 5 total pages so calculate start and end pages
+            if (currentPage <= ((numpage/2)+1)) {
                 startPage = 1;
-                endPage = 10;
-            } else if (currentPage + 4 >= totalPages) {
-                startPage = totalPages - 9;
+                endPage = numpage;
+            } else if (currentPage + Math.floor(numpage/2) >= totalPages) {
+                startPage = totalPages - (numpage-1);
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 5;
-                endPage = currentPage + 4;
+                startPage = currentPage - Math.floor(numpage/2);
+                endPage = currentPage + Math.floor(numpage/2);
             }
         }
 
