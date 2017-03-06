@@ -127,6 +127,11 @@ app.post('/register',function(req,res){
 
 
 })
+
+var method_cf = require('./server/method/cf-method');
+method_cf("58b7c0d74c15a929fccd31de",5);
+
+// var regression = require('./server/method/linear-regression');
 // example to create user
 // var test = new User({
 // 	username:"apiromz",
