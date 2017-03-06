@@ -136,7 +136,7 @@ export class itemList implements OnInit {
             numpage = 5;
         }
         else if(this.screen <= 320){
-            numpage = 1;
+            numpage = 2;
         }
         else{
             numpage = 3;
