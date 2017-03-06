@@ -97,4 +97,5 @@
 			$('#women').fadeOut(delay);
 			$('#home').fadeToggle(delay);
 		})
+		
 	})
