@@ -82,10 +82,6 @@ function getItem(list,option){
     );
     
 }
-listRes = list("58c40eee80c5000bb852bbfc");
-listRes.then(function(list){
-	console.log(list);
-})
 
 module.exports = list;
 // console.log(list[0]);
