@@ -23,7 +23,11 @@ var options = {
   user: 'apiromz',
   pass: '023799640'
 }
-mongoose.connect('mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce',{server:{auto_reconnect:true}});
+// var connectionString = 'mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce'
+var connectionString = 'mongodb://apiromz:023799640@ds129050.mlab.com:29050/test_recommerce'
+
+
+mongoose.connect(connectionString,{server:{auto_reconnect:true}});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.on('reconnected', function () {
@@ -31,7 +35,7 @@ console.log('MongoDB reconnected!');
 });
 db.on('disconnected', function() {
 console.log('MongoDB disconnected!');
-mongoose.connect('mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce', {server:{auto_reconnect:true}});
+mongoose.connect(connectionString, {server:{auto_reconnect:true}});
 });
 db.once('open', function() {
   console.log("connection successful");
@@ -137,8 +141,8 @@ app.post('/register',function(req,res){
 // var method_cf = require('./server/method/cf-method');
 // method_cf("58b7c0d74c15a929fccd31de",5);
 
-// var regression = require('./server/method/linear-regression');
-// example to create user
+//var regression = require('./server/method/linear-regression');
+//example to create user
 // var test = new User({
 // 	username:"apiromz",
 // 	password:"023799640",
@@ -155,11 +159,31 @@ app.post('/register',function(req,res){
 // store data
 // data=
 // data.forEach( function(element, index) {
-// 	// statements
+	// statements
 // 	var temp = new Item(element);
 // 	temp.save();
 // });
+User.find({},function(err,obj){
+	if(err)console.log(err)
+		obj = obj[0];
+	
+		obj.buys.forEach( function(element, index) {
+				// statements
+			Item.find({'name':element.name},function(err,item){
+				if(err)console.log(err);
+				obj.buys[index]._id=item[0]._id;
 
+			})
+			obj.markModified('buys');
+			obj.save(function(err,obj){
+			console.log(obj);
+			});	
+		});
+		
+	
+	
+	
+})
 
 
 // Point static path to dist
