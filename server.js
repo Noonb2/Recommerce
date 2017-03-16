@@ -6,14 +6,14 @@ var flash    = require('connect-flash');
 var passport = require('passport');
 var bcrypt   = require('bcrypt-nodejs');
 var cookieParser = require('cookie-parser')
-
+var async = require('async');
 
 // var local = require('passport-local');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var User = require('./server/models/user');
 var Item = require('./server/models/item');
-
+var Eval = require('./server/models/eval');
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -124,6 +124,7 @@ app.post('/register',function(req,res){
 				password:hash,
 				name:req.body.name,
 				email:req.body.email,
+				gender:req.body.gender,
 				buys:[],
 				carts:[],
 			})
@@ -138,8 +139,43 @@ app.post('/register',function(req,res){
 
 })
 
+app.post('/recommend',function(req,res){
+	Eval.findById(req.body._id,function(err,obj){
+		if(err)console.log(err);
+		if(obj.length!=0){
+			item_id = obj.concat;
+			temp = [];
+			item_id.forEach( function(element, index) {
+				// statements
+				temp.push(element.id);
+			});
+			method1 = obj.cf_regression;
+			method2 = obj.assrule_cf;
+			method1.forEach( function(element, index) {
+				// statements
+				if(!temp.includes(element.id)){
+					item_id.push(element);
+				}
+			});
+			method2.forEach( function(element, index) {
+				// statements
+				if(!temp.includes(element.id)){
+					item_id.push(element);
+				}
+			});
+			json = {
+				data:item_id
+			};
+			res.send(json);
+
+		}else{
+			///////////////// for store list of recommendation to Eval
+		}
+	})
+})
+
 // var method_cf = require('./server/method/cf-method');
-// method_cf("58b7c0d74c15a929fccd31de",5);
+// method_cf("58c40eee80c5000bb852bbf9",5);
 
 //var regression = require('./server/method/linear-regression');
 //example to create user
@@ -163,27 +199,9 @@ app.post('/register',function(req,res){
 // 	var temp = new Item(element);
 // 	temp.save();
 // });
-User.find({},function(err,obj){
-	if(err)console.log(err)
-		obj = obj[0];
-	
-		obj.buys.forEach( function(element, index) {
-				// statements
-			Item.find({'name':element.name},function(err,item){
-				if(err)console.log(err);
-				obj.buys[index]._id=item[0]._id;
 
-			})
-			obj.markModified('buys');
-			obj.save(function(err,obj){
-			console.log(obj);
-			});	
-		});
-		
-	
-	
-	
-})
+
+var ahp = require('./server/method/AHP');
 
 
 // Point static path to dist
