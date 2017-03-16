@@ -177,32 +177,18 @@ app.post('/recommend',function(req,res){
 // var method_cf = require('./server/method/cf-method');
 // method_cf("58c40eee80c5000bb852bbf9",5);
 
-//var regression = require('./server/method/linear-regression');
-//example to create user
-// var test = new User({
-// 	username:"apiromz",
-// 	password:"023799640",
-// 	name:"Sam",
-// 	gender:"male",
-// 	buys: [],
-// });
 
-// test.save(function(err,obj){
-// 	if(err)console.log(err);
-// });
+// var regression = require('./server/method/linear-regression');
 
-// Parsers for POST data
-// store data
-// data=
-// data.forEach( function(element, index) {
-	// statements
-// 	var temp = new Item(element);
-// 	temp.save();
-// });
-
-
-var ahp = require('./server/method/AHP');
-
+// var ahp = require('./server/method/AHP');
+var moduleItem = require('./server/modules/get_item');
+moduleItem("58c40eee80c5000bb852bbfc").then(function(list){
+	targetUser = list[0];
+	item_res = list[1];
+	item_longtail = list[2];
+	console.log(item_res);
+})
+// var ahp = require('./server/method/AHP');
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
