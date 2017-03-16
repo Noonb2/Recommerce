@@ -177,10 +177,16 @@ app.post('/recommend',function(req,res){
 // var method_cf = require('./server/method/cf-method');
 // method_cf("58c40eee80c5000bb852bbf9",5);
 
+
 // var regression = require('./server/method/linear-regression');
 
 // var ahp = require('./server/method/AHP');
 var moduleItem = require('./server/modules/get_item');
+
+
+
+var ahp = require('./server/method/AHP');
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
