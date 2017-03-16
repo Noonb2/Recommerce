@@ -1,19 +1,24 @@
 var Item = require('../models/item');
 var User = require('../models/user');
 var regression = require('regression');
-
+var sortBy = require('sort-by');
 var method = function(targetUser_id,numList){
 	User.findById(targetUser_id,function(err,obj){
 		if(err) console.log(err);
 		buys = obj.buys;
+		Id_buys = [];
+		buys.forEach( function(element, index) {
+			// statements
+			Id_buys.push(element.name);
+		});
 		avgRate = getAVGrate(buys);
-		Item.find({}).where('count').gt(0).exec(function(err,obj){
+		Item.find({}).where('count').ne("0").where('name').nin(Id_buys).exec(function(err,obj){
 			if(err)console.log(err);
-			// console.log(obj);
 			itemList = itemWithRate(obj);
 			simList = getListSim(avgRate,itemList);
 			rank = getRank(simList,numList);
 			rank = predictRate(rank);
+			rank = rank.sort(sortBy('-prediction'));
 			console.log(rank);
 
 		})
@@ -82,6 +87,7 @@ var itemWithRate = function(obj){
 		var count = obj[i].count;
 		var temp = {
 			'_id' : "",
+			'name':obj[i].name,
 			'overall':0,
 			'price':0,
 			'quality':0,
@@ -111,6 +117,7 @@ var getListSim = function(a,b_obj){
 var similarity = function(a,b){
 	var json={
 		'_id':b._id,
+		'name':b.name,
 		'similarity':0,
 		'overall':b.overall,
 		'price':b.price,
@@ -156,4 +163,5 @@ function getRank(simList,numList){
 	}
 	return list;
 }
+
 module.exports = method;
