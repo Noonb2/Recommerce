@@ -182,10 +182,13 @@ app.post('/recommend',function(req,res){
 
 // var ahp = require('./server/method/AHP');
 var moduleItem = require('./server/modules/get_item');
-
-
-
-var ahp = require('./server/method/AHP');
+moduleItem("58c40eee80c5000bb852bbfc").then(function(list){
+	targetUser = list[0];
+	item_res = list[1];
+	item_longtail = list[2];
+	console.log(item_res);
+})
+// var ahp = require('./server/method/AHP');
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
