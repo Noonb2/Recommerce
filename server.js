@@ -178,55 +178,9 @@ app.post('/recommend',function(req,res){
 // method_cf("58c40eee80c5000bb852bbf9",5);
 
 // var regression = require('./server/method/linear-regression');
-// example to create user
-// var test = new User({
-// 	username:"apiromz",
-// 	password:"023799640",
-// 	name:"Sam",
-// 	gender:"male",
-// 	buys: [],
-// });
 
-// test.save(function(err,obj){
-// 	if(err)console.log(err);
-// });
-
-// Parsers for POST data
-// store data
-// data=
-// data.forEach( function(element, index) {
-// 	// statements
-// 	var temp = new Item(element);
-// 	temp.save();
-// });
-// User.find({},function(err,obj){
-// 	if(err)console.log(err)
-// 		obj = obj[9];
-// 		var calls = [];
-// 		obj.buys.forEach( function(element, index) {
-// 				// statements
-// 				calls.push(function(callback){
-// 					Item.find({'name':element.name},function(err,item){
-// 						if(err)console.log(err);
-// 						obj.buys[index]._id=item[0]._id;
-// 						callback(null,obj);
-// 					})
-// 				})
-			
-// 		});
-// 		async.parallel(calls,function(err,result){
-// 			if (err)
-// 		        return console.log(err);
-// 		    // console.log(result);
-// 		    obj.markModified('buys');
-// 			obj.save(function(err,obj){
-// 				console.log(obj);
-// 			});	
-// 		})
-		
-// })
-var ahp = require('./server/method/AHP');
-
+// var ahp = require('./server/method/AHP');
+var moduleItem = require('./server/modules/get_item');
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
