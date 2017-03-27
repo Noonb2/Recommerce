@@ -26,7 +26,9 @@ export class RateService {
 		return this.http.post('/api/rateItem',object).map((res:Response) => res.json());
 	}
 
-
+	recommendItem(object:Object){
+		return this.http.post('/recommend',object).map((res:Response) => res.json());
+	}
 
 
 

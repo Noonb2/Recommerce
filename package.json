@@ -34,6 +34,7 @@
     "core-js": "^2.4.1",
     "express": "^4.14.1",
     "express-session": "^1.15.1",
+    "linear-solve": "^1.2.1",
     "matrix-js": "^1.2.1",
     "mongoose": "^4.8.3",
     "ng2-rating": "0.0.7",

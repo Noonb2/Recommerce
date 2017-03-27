@@ -2,7 +2,8 @@
     <div class="rating-window">
         <div class="head">Please rate items below for improving recommendation</div>
         <div class="content" id="style-2">
-          <div class="item-rating" *ngFor="let item of itemRating">
+          <template  *ngFor="let item of itemRating" [ngIf]="!recommendStatus">
+          <div class="item-rating">
             <div class="item">
               <div style="display: flex;justify-content: center;align-items: center">
                 <img id="img-rating" src="{{item.img}}">
@@ -133,7 +134,59 @@
               </div>
             </div> 
           </div>
+
+          </template>
+          <div class="container-spinner" *ngIf="recommendStatus">
+              <div class="flex">
+                <div class="loader"></div>
+              </div>
+              <div class="load-text">
+                Please waiting for recommendation...
+              </div>
+            </div>
+          <template  *ngFor="let item of itemRecommend" [ngIf]="recommendItem">
+            <div class="item-rating">
+            <div class="item">
+              <div style="display: flex;justify-content: center;align-items: center">
+                <img id="img-rating" src="{{item.img}}">
+              </div>
+              <div class="limit-text" style="text-align: center">{{item.name}}</div>
+              <div id="font" style="text-align: center">{{item.price}} บาท</div>
+            </div>
+            <div class="container rating-box">
+              <div class="row criteria"> 
+                <div class="col-md-6" id="criteria">Overall rating</div> 
+                <div class="col-md-6" id="rating">
+                    <div class='rating-stars-overall text-right'>
+                      <ul id='stars'>
+                        <li class='star' title='Poor' data-value='1' (click)="onClickRecommend(item._id,'overall',1)">
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2' (click)="onClickRecommend(item._id,'overall',2)">
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3' (click)="onClickRecommend(item._id,'overall',3)">
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4' (click)="onClickRecommend(item._id,'overall',4)">
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5' (click)="onClickRecommend(item._id,'overall',5)">
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+              </div> 
+            </div> 
+            </div>
+
+          </template>
         </div>
-        <div class="footer" (click)="rateItem()">Thank you and Continue shopping &nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span></div>
+        <div *ngIf="!recommendStatus">
+        <div class="footer" (click)="rateItem()">Next &nbsp;<span class="glyphicon glyphicon-circle-arrow-right" 
+        ></span></div></div>
+        <div *ngIf="recommendItem">
+        <div class="footer" (click)="rateRecommend()">thank you &nbsp;<span class="glyphicon glyphicon-circle-arrow-right" ></span></div></div>
       </div>
 </div>
