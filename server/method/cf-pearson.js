@@ -1,214 +1,215 @@
-// var Rule = require('../models/rules');
 var User = require('../models/user');
-var targetuser = { _id: '58c40eee80c5000bb852bbfc',
-    name: 'U7',
-    email: '1234',
-    username: 'U7',
-    password: '1234',
-    cart: [],
-    __v: 23,
-    carts: [],
-    buys:
-    [ { _id: '58c5f897dde5ba2c38bb001b',
-        myrate: {
-                "design": 4,
-                "overall": 3,
-                "price": 2,
-                "quality": 4,
-                "sustainability": 4
-            },
-        category: 'apparels',
-        name: 'MAp3',
-        department: 'men' },
-        { _id: '58c5f897dde5ba2c38bb002a',
-        myrate: {
-                "design": 3,
-                "overall": 3,
-                "price": 2,
-                "quality": 3,
-                "sustainability": 4
-            },
-        category: 'bags',
-        name: 'MB2',
-        department: 'men' },
-        { _id: '58c5f897dde5ba2c38bb0013',
-        myrate: {
-                "design": 4,
-                "overall": 3,
-                "price": 2,
-                "quality": 3,
-                "sustainability": 3
-            },
-        category: 'shoes',
-        name: 'MS1',
-        department: 'men' },
-        { _id: '58c5f897dde5ba2c38bb002b',
-        myrate: {
-                "design": 4,
-                "overall": 3,
-                "price": 3,
-                "quality": 4,
-                "sustainability": 3
-            },
-        category: 'mobile',
-        name: 'Mo2',
-        department: 'elec' },
-        { _id: '58c5f897dde5ba2c38bb0023',
-        myrate: {
-                "design": 5,
-                "overall": 3,
-                "price": 3,
-                "quality": 3,
-                "sustainability": 3
-            },
-        category: 'livingroom',
-        name: 'Liv3',
-        department: 'Home' } 
-    ] };
-var Rule = [ { _id: '58c5f897dde5ba2c38bb0016',
-    category: 'bathroom',
-    department: 'home',
-    name: 'Bath3',
-    price: '200',
-    count: 2,
-    img: 'http://th-live-02.slatic.net/p/8/zazzy-dolls-aephkhkhuunaalikaa-chuue-1-aethm-1-run-zd-0112-rg-rg-siiphingokld-frii-taanghuuephchrcz-run-bg-e0006-5-cl-sudfrungfring-naalikaakh-muue-phuuhying-naalikaasaitlekaahlii-naalikaaaefchan-naalikaaekaahlii-naalikaaaephkhkhuu-6175-97266011-29f8dc7069fc4390b8f9fa2a28452eac-catalog_233.jpg',
-    rating: [ {
-            "overall": 6,
-            "price": 5,
-            "quality": 8,
-            "design": 8,
-            "sustainability": 4} ] },
-  { _id: '58c5f897dde5ba2c38bb0024',
-    category: 'apparels',
-    department: 'men',
-    name: 'MAp1',
-    price: '200',
-    count: 2,
-    img: 'http://th-live-01.slatic.net/p/2/gadgets-guru-aihmpii-2017-2gb-16gb-s905x-quad-core-6-0-h-265-4k-tx5-pro-android-tv-box-ae-phduuhnang-b-l-kiilaa-kaartuun-chiiriiy-thiiwiidicchit-l-yuuthuup-efchbukh-aela-uuen-ekuue-b-70-ae-ph-hdmi-remote-adapter-khuumuue-tidtangaelaaichngaan-thaan-aaa-4-k-n-7236-15355301-8460ed3d5cce842bb498305dd1f1293a-catalog_233.jpg',
-    rating: [ [{
-            "overall": 8,
-            "price": 9,
-            "quality": 6,
-            "design": 4,
-            "sustainability": 8}] ] },
-  { _id: '58c5f897dde5ba2c38bb0026',
-    category: 'cameras',
-    department: 'elec',
-    name: 'Cam3',
-    price: '200',
-    count: 3,
-    img: 'http://th-live-03.slatic.net/p/2/i-smart-mini-led-projecteur-800x480-pixels-1200-lumens-home-cinema-hdmi-usb-vga-av-runc6-black-7105-6677687-007d336af418656e1235f371135999ea-catalog_233.jpg',
-    rating: [ [{
-            "overall": 9,
-            "price": 8,
-            "quality": 13,
-            "design": 11,
-            "sustainability": 10}] ] }];
+var Rule = require('../models/rules-CF');
+var Item = require('../models/item');
+var sortBy = require('sort-by');
 
-var method = function(users, item_AssRule, targetuser){
-    User.findById(tergetuser,function(err,obj){
+var method = function(targetuser){
+    User.find({},function(err,obj){
          if(err) console.log(err);
-         Rule.find({}).where('coun').gt(0).exec(function(err,obj){
-             if(err)console.log(err);
-               sets = restructureData(users, item_AssRule);
-               sim = PearsonCorrelation(targetuser, sets, item_AssRule);
-               item_list = findItemList(targetuser, item_AssRule, sets);
-               predict = predictRate(item_list, sim, sets);
-         })
+         users = obj;
+         Rule.find({}, function(err,obj){
+            if(err) console.log(err);
+            rules = obj;
+            console.log(rules);
+            Item.find({}, function(err,obj){
+                if(err) console.log(err);
+                items = obj;
+                var assRules = []
+                var temp = [];
+                var t = 0;
+                rules.forEach(function(element,index){
+                    items.forEach(function(element2,index2){
+                        if(element2._id.equals(element.r)){
+                            if(!temp.includes(element2._id)){
+                                temp.push(element2._id);
+                                assRules.push(element2)
+                            }
+                        }
+                    })
+                })
+                console.log('Ass --> ', assRules);
+                console.log('\n')
+
+                sets = restructureData(users, assRules);
+                sets.forEach(function(element3,index3){
+                    console.log('userID --> ',element3._id,'\t','items --> ', element3.items)
+                })
+                console.log('\n')
+
+                sim = PearsonCorrelation(targetuser, sets, assRules);
+                console.log('Sim --> ', sim);
+                console.log('\n')
+
+                item_list = findItemList(targetuser, assRules, sets);
+                console.log('item_list --> ', item_list);
+                console.log('\n')
+
+                predict = predictRate(item_list, sim, sets);
+                rank = predict.sort(sortBy('-rate'));
+                res = []
+                rank.forEach(function(element4,index4){
+                    items.forEach(function(element5,index5){
+                        if(element5._id.equals(element4.itemID)){
+                            res.push({'data':element5, 'score':element4.rate});
+                        }
+                    })
+                })
+                console.log('Predict --> ', res)
+    
+            })
+    
+        })
+    
      })
 }
 
 var restructureData = function(users, items){
     var res = [];
-    for(var i in users){
+    users.forEach(function(element,index) {
         var temp = {};
         var avg = 0;
-        temp['username'] = i['username'];
-        for(var j in i['buys']){
-            if(j['itemID'] in items) {
-                avg = sum(j['rating'])/5;
-                temp[j['itemID']] = avg;
-            }
-        } 
+        temp._id = element._id;
+        temp.items = [];
+
+        element.buys.forEach(function(element2,index2){
+            items.forEach(function(element3,index3) {
+                if(element3._id.equals(element2._id)){
+                    avg = (
+                        element2.myrate.overall + 
+                        element2.myrate.price +
+                        element2.myrate.quality +
+                        element2.myrate.design +
+                        element2.myrate.sustainability)/5;
+                    item_id = element3._id;
+                    temp.items.push({'item_id':item_id, 'avgRate':avg});  
+                };
+            });
+        })
         res.push(temp);
-    } 
+    }); 
     return res;
 } 
 
 var PearsonCorrelation = function(targetuser, sets, items){
     var similarityToTargetUser = [];
-    var N = length(items);
+    var N = items.length;
     var sumX = 0;
     var sumXX = 0;
     var sumX2 = 0;
-    for(var i in items){
-        try{
-            sumX = sumX + sets[targetuser][i];
-            sumXX = sumXX + sets[targetuser][i] ** 2;
-        } catch(err) {
+    var targetuser_obj;
+
+    sets.forEach(function(element,index){
+        if(element._id.equals(targetuser._id)){
+            element.items.forEach(function(element2,index2){
+                sumX = sumX + element2.avgRate;
+                sumXX = sumXX + Math.pow(element2.avgRate, 2);
+            })
+            targetuser_obj = element;
+            console.log('targetuser_obj --> ', targetuser_obj);
+            console.log('\n')
+        }
+        else{
             sumX = sumX + 0;
         }
-    } sumX2 = sumX ** 2;
-    for(var i in Range(length(sets))){
-        if(i != targetuser) {
+    })
+    sumX2 = Math.pow(sumX, 2);
+    
+    sets.forEach(function(element2,index2){
+        if(!element2._id.equals(targetuser._id)){
             var sumXY = 0;
             var sumY = 0;
             var sumYY = 0;
+            var sumY2 = 0;
             var r = 0;
-            for(var j in items){
-                try{
-                    sumY = sumY + sets[i][j];
-                    sumYY = sumYY + sets[i][j] ** 2;
-                    sumXY = sumXY + sets[targetuser][j] * sets[i][j];
-                } catch(err){
-                    sumXY = sumXY + 0;
-                } sumY2 = sumY ** 2;
-            }
+            // console.log('userID --> ',element2._id)
+            element2.items.forEach(function(element3, index3){
+                // console.log('avgRate --> ',element3.avgRate);
+                sumY = sumY + element3.avgRate;
+                sumYY = sumYY + Math.pow(element3.avgRate, 2);  
+                targetuser_obj.items.forEach(function(element4,index4){
+                    if(element4.item_id.equals(element3.item_id)){
+                        // console.log('/// Equals ///')
+                        sumXY = sumXY + (element4.avgRate * element3.avgRate);
+                    }
+                    else{
+                        sumXY = sumXY + 0;
+                    }
+                })
+            })
+            sumY2 = Math.pow(sumY, 2);
+
+            // console.log('(N:',N,'* sumXY:',sumXY,'- sumX:',sumX, '* sumY:', sumY,')')  
+            // console.log('(N:',N,'* sumXX:',sumXX,'- sumX2:',sumX2,')*(','N:',N,'* sumYY:',sumYY,'- sumY2:',sumY2,')')
+            // console.log('A --> ', (N * sumXY - sumX * sumY))
+            // console.log('B --> ', (N * sumXX - sumX2))
+            // console.log('C --> ', (N * sumYY - sumY2))
+            // console.log('Math.sqrt --> ', Math.sqrt((N * sumXX - sumX2) * (N * sumYY - sumY2)))
+         
             try{
-                r = (N * sumXY - sumX * sumY) / math.sqrt((N * sumXX - sumX2) * (N * sumYY - sumY2));    
+               r = (N * sumXY - sumX * sumY) / Math.sqrt((N * sumXX - sumX2) * (N * sumYY - sumY2)); 
+            //    console.log('R --> ',r)
             } catch(err){
-                r = -1000;
-            }
+               r = -1000; 
+            //    console.log('R --> ', r)
+            }  
             if(r != -1000){
-                similarityToTargetUser.push((sets[i]['username'], r, i));
+                similarityToTargetUser.push({'userID': element2._id, 'sim': r, 'index': index2});
             }
+            // console.log('\n')
         }
-    }
+    })
+    
     return similarityToTargetUser;
 }
 
 var findItemList = function(targetuser, items, sets){
     var item_rec = [];
-    var temp;
-    for( var i in items){
-       try{
-           temp = sets[targetuser][i];
-       } catch(err){
-           item_rec.push(i);
-       }
-    }
+    var temp = [];
+    sets.forEach(function(element,index){
+        if(element._id.equals(targetuser._id)){
+            element.items.forEach(function(element2,index2){
+                temp.push(element2.item_id);
+            })
+        }
+    })
+    items.forEach(function(element3,index3){
+        if(!temp.includes(element3._id)){
+            item_rec.push(element3._id);
+        }
+    })
     return item_rec;
 }
 
 var predictRate = function(item_list, sim, sets){
     var rank = [];
-    for(var i in item_list){
+    item_list.forEach(function(element,index){
         var sum = 0;
         var count = 0;
-        var t = 0;
-        for(var j in sim){
-            try{
-                t = sets[j[2]][i] * j[1];
-                sum = sum + sets[j[2]][i] * j[1];
-                count = count + 1;
-            } catch(err){
-                sum = sum + 0;
-            }
-        }
+        sim.forEach(function(element2,index2){
+            sets.forEach(function(element3,index3){
+                if(isNaN(element2.sim)==false && element2.userID.equals(element3._id)){
+                    element3.items.forEach(function(element4,index4){
+                        if(element4.item_id.equals(element)){
+                            try{
+                                sum = sum + element4.avgRate * element2.sim;
+                                data = element3;
+                                // console.log('item --> ', element)
+                                // console.log('avgRate: ',element4.avgRate, '* sim: ',element2.sim, '--> ', element4.avgRate * element2.sim,'\t', 'Sum --> ', sum, '\n')
+                                count = count + 1;
+                            }
+                            catch(err){
+                                sum = sum + 0;
+                            } 
+                        }
+                    })
+                }
+            })
+            
+        })
         if(count != 0){
-            rank.push((i, sum/count));
+            rank.push({'itemID':element, 'rate':sum/count})
         }
-    } 
+    })
     return rank;
 }
 

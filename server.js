@@ -182,12 +182,16 @@ app.post('/recommend',function(req,res){
 
 // var ahp = require('./server/method/AHP');
 var moduleItem = require('./server/modules/get_item');
-moduleItem("58c40eee80c5000bb852bbfc").then(function(list){
+var cfpearson = require('./server/method/cf-pearson');
+moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
 	targetUser = list[0];
 	item_res = list[1];
+	// console.log(item_res.length)
 	item_longtail = list[2];
-	console.log(item_res);
+	cfpearson(targetUser);
 })
+
+
 // var ahp = require('./server/method/AHP');
 
 // Point static path to dist
