@@ -8,12 +8,14 @@ var bcrypt   = require('bcrypt-nodejs');
 var cookieParser = require('cookie-parser')
 var async = require('async');
 
-// var local = require('passport-local');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var User = require('./server/models/user');
 var Item = require('./server/models/item');
 var Eval = require('./server/models/eval');
+var method_cf = require('./server/method/cf-method');
+var ahp = require('./server/method/AHP');
+var moduleItem = require('./server/modules/get_item');
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -139,10 +141,13 @@ app.post('/register',function(req,res){
 
 })
 
+method_cf("58c40eee80c5000bb852bbfd",5,function(res){
+	// console.log(res);
+});
 app.post('/recommend',function(req,res){
 	Eval.findById(req.body._id,function(err,obj){
 		if(err)console.log(err);
-		if(obj.length!=0){
+		if(obj!=undefined){
 			item_id = obj.concat;
 			temp = [];
 			item_id.forEach( function(element, index) {
@@ -170,15 +175,78 @@ app.post('/recommend',function(req,res){
 
 		}else{
 			///////////////// for store list of recommendation to Eval
+			moduleItem(req.body.id).then(function(list){
+				targetUser = list[0];
+				item_res = list[1];
+				item_longtail = list[2];
+			// console.log(item_res);
+			// ahp(targetUser,item_res,item_longtail);
+				method_cf(req.body.id,5,function(result){
+					cf_list = result;
+					if(item_res.length!=0){
+						ahp_list = ahp(targetUser,item_res,item_longtail);
+						concat_list = ahp_list[0];
+						reAHP_list = ahp_list[1];
+						weight_list = ahp_list[2];
+					}
+					else{
+						concat_list = []
+						reAHP_list = [];
+						weight_list = [];
+					}
+					
+					list = ahp_list[0].slice(0,ahp_list[0].length);
+					temp = [];
+					list.forEach( function(element, index) {
+						// statements
+						temp.push(element._id);
+					});
+					list = addList(list,cf_list,temp);
+					var eval = new Eval({
+						id:req.body.id,
+						concat:concat_list,
+						reAHP:reAHP_list,
+						weight:weight_list,
+						cf_regression:cf_list,
+						assrule_cf:[]
+					});
+					eval.save();
+					json = {
+						data:list
+					}
+					res.send(json);
+
+				});
+			
+				function addList(list,insertedList,temp){
+					insertedList.forEach( function(element1, index1) {
+						// statements
+						var count = 0;
+						temp.forEach( function(element2, index2) {
+							// statements
+
+							if(element1._id.equals(element2)){
+								count = count+1;
+							}
+
+						});
+						if(count==0){
+							temp.push(element1._id);
+							list.push(element1);
+						}
+					});
+					return list;
+				}
+			// console.log(ahp_list);
+			})
+
 		}
 	})
 })
 
-// var method_cf = require('./server/method/cf-method');
-// method_cf("58c40eee80c5000bb852bbf9",5);
 
 
-// var regression = require('./server/method/linear-regression');
+
 
 // var ahp = require('./server/method/AHP');
 var moduleItem = require('./server/modules/get_item');
@@ -193,6 +261,7 @@ moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
 
 
 // var ahp = require('./server/method/AHP');
+
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));

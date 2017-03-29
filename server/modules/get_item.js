@@ -12,7 +12,7 @@ var list = function(user_id){
 	    list= [];
 	    userBuys.forEach( function(element, index) {
 	        // statements
-	        list.push(element._id);
+	        list.push(mongoose.Types.ObjectId(element._id));
 
 	    });
 	    result = getItem(list,"rules");

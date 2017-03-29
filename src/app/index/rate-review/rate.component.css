@@ -94,7 +94,7 @@
 
 .rating-box{
 	float: left;
-	height: 180px;
+	height: auto;
 	width: 50%;
 	padding-top: 50px; 
 }
@@ -202,7 +202,7 @@
 	}
 	.rating-box{
 		float: left;
-		height: 120px;
+		height: auto;
 		width: 50%;
 		padding-top: 50px; 
 	}
@@ -244,7 +244,7 @@
 	}
 	.rating-box{
 		float: left;
-		height: 120px;
+		height: auto;
 		width: 100%;
 		padding-top: 20px; 
 	}
@@ -273,4 +273,62 @@
 	border-radius: 15px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #F5F5F5;
+}
+
+
+.container-spinner {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex {
+  min-height: 60pt;
+}
+
+@keyframes loading {
+  0% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+  25% {
+    height: 4pt;
+    margin-top: 23pt;
+  }
+  50% {
+    width: 4pt;
+  }
+  75% {
+    width: 50pt;
+  }
+  100% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+}
+
+.loader {
+  width: 50pt;
+  height: 50pt;
+  border-radius: 100%;
+  border: #6767fa 4pt solid;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  animation: loading 1s infinite;
+}
+
+.load-text {
+  padding-top: 15px;
+  text-align: center;
+  font: 14pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: lighten(#6767fa, 75%);
 }

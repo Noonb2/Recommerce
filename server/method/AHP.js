@@ -6,52 +6,7 @@ var Item = require('../models/item');
 var User = require('../models/user');
 
 
-function getItem(list,option){
-    return new Promise(
-        function(resolve,reject){
-            if(option=="rules"){
-               Rule.find({},function(err,obj){
-                if(err)console.log(err);
-                array = [];
-                obj.forEach( function(element1, index1) {
-                    // statements
-                    list.forEach( function(element2, index2) {
-                        // statements
-                        id1 =element2
-                        id2 =element1.r1;
-                        if(id1.equals(id2)){
-                            array.push(element1.r2);
-                        }
-                    });
-                    
-                });
-                resolve(array);
-                }) 
-            }
-            else if(option=="item_res"){
-                Item.find({},function(err,obj){
-                if(err)console.log(err);
-                array = [];
-                obj.forEach( function(element1, index1) {
-                    // statements
-                    list.forEach( function(element2, index2) {
-                        // statements
-                        id1 =element2
-                        id2 =element1._id;
-                        if(id1.equals(id2)){
-                            array.push(element1);
-                        }
-                    });
-                    
-                });
-                resolve(array);
-                }) 
-            }
-            
-        }
-    );
-    
-}
+
 function findAVGUser(user){
     avgRating = {
         "overall":0,
@@ -60,21 +15,25 @@ function findAVGUser(user){
         "design":0,
         "sustainability":0
     }
-
+    count = 0;
     user.buys.forEach( function(element, index) {
         // statements
-        avgRating.overall = avgRating.overall + element.myrate.overall;
-        avgRating.price = avgRating.price + element.myrate.price;
-        avgRating.quality = avgRating.quality + element.myrate.quality;
-        avgRating.design = avgRating.design + element.myrate.design;
-        avgRating.sustainability = avgRating.sustainability + element.myrate.sustainability;
-
+        if(element.myrate!=undefined){
+            avgRating.overall = avgRating.overall + element.myrate.overall;
+            avgRating.price = avgRating.price + element.myrate.price;
+            avgRating.quality = avgRating.quality + element.myrate.quality;
+            avgRating.design = avgRating.design + element.myrate.design;
+            avgRating.sustainability = avgRating.sustainability + element.myrate.sustainability;
+            count = count+1;
+        }
     });
-    avgRating.overall = avgRating.overall/user.buys.length;
-    avgRating.price = avgRating.price/user.buys.length;
-    avgRating.quality = avgRating.quality/user.buys.length;
-    avgRating.design = avgRating.design/user.buys.length;
-    avgRating.sustainability = avgRating.sustainability/user.buys.length;
+    if(count!=0){
+        avgRating.overall = avgRating.overall/count;
+        avgRating.price = avgRating.price/count;
+        avgRating.quality = avgRating.quality/count;
+        avgRating.design = avgRating.design/count;
+        avgRating.sustainability = avgRating.sustainability/count;
+    }
     return avgRating;
 }
 
@@ -168,6 +127,8 @@ function getWeightItem(item){
 function AHPranking(weight_user,weight_item,item){
     rank = Matrix(weight_item.prod(weight_user));
     rank = rank([],0);
+    console.log("weight_item : ",weight_item());
+    console.log("rank : ",rank);
     list = convertWeight(rank,rank.length);
     temp = []
     for(var i=0;i<list.length;i++){
@@ -176,13 +137,15 @@ function AHPranking(weight_user,weight_item,item){
             'name':item[i].name,
             'score':list[i],
             'count':item[i].count,
+            'img':item[i].img,
             'rating':[{
                 "overall":item[i].rating[0].overall,
                 "price":item[i].rating[0].price,
                 "quality":item[i].rating[0].quality,
                 "design":item[i].rating[0].design,
                 "sustainability":item[i].rating[0].sustainability
-            }]
+            }],
+            'price':item[i].price
 
         })
     }
@@ -190,47 +153,31 @@ function AHPranking(weight_user,weight_item,item){
     return temp
 }
 
-var main = function (user_id){
+var main = function (user,item_res,item_longtail){
 
-    User.findById(user_id,function(err,obj){
-    if(err)console.log(err);
-    user = obj;
-    userBuys = obj.buys;
-    list= [];
-    userBuys.forEach( function(element, index) {
-        // statements
-        list.push(element._id);
+    weight_user = Matrix(getWeightUser(user));
+    console.log(weight_user());
+    weight_item = Matrix(getWeightItem(item_res));
+    itemList = AHPranking(weight_user,weight_item,item_res);
+    if(itemList.length>3){
+        itemList = itemList.slice(0,3);
+    }
+    insertedItem = distance(item_res,item_longtail,5-itemList.length);
 
-    });
-    result = getItem(list,"rules");
-    result.then(function(res){
-        itemRes = getItem(res,"item_res");
-        itemRes.then(function(result){
-           item_res = result;
-           Item.find({}).where('count').eq(1).exec(function(err,obj){
-            if(err)console.log(err);
-            item_longtail = obj;
-            weight_user = Matrix(getWeightUser(user));
-            weight_item = Matrix(getWeightItem(item_res));
-            itemList = AHPranking(weight_user,weight_item,item_res);
-            insertedItem = distance(item_res,item_longtail,3);
+    concate_list = concate(itemList,insertedItem);
+    // console.log(concate_list);
 
-            concate_list = concate(itemList,insertedItem);
-            console.log(concate_list);
+    weight_reAHP = Matrix(getWeightItem(concate_list));
+    reAHP_list = AHPranking(weight_user,weight_reAHP,concate_list);
+    // console.log(reAHP_list);
 
-            weight_reAHP = Matrix(getWeightItem(concate_list));
-            reAHP_list = AHPranking(weight_user,weight_reAHP,concate_list);
-            console.log(reAHP_list);
+    weight_list = weightList(concate_list,weight_user);
+    // console.log(weight_list);
 
-            weight_list = weightList(concate_list,weight_user);
-            console.log(weight_list);
-           })
-        })
-    })
-   
+    list = [concate_list,reAHP_list,weight_list];
+    return list;
 
-    })
-    
+
 
 }
 
@@ -278,13 +225,15 @@ function distance(item_res,item_longtail,num){
             "name":item_longtail[i].name,
             "distance":sum,
             "count":item_longtail[i].count,
+            "img":item_longtail[i].img,
             "rating":[{
                 "overall":item_longtail[i].rating[0].overall,
                 "price":item_longtail[i].rating[0].price,
                 "quality":item_longtail[i].rating[0].quality,
                 "design":item_longtail[i].rating[0].design,
                 "sustainability":item_longtail[i].rating[0].sustainability
-            }]
+            }],
+            price:item_longtail[i].price
         });
     }
     matrix = matrix.sort(sortBy('-distance'));
@@ -328,14 +277,16 @@ function weightList(concate_list,weight_user){
             "_id":concate_list[i]._id,
             "name":concate_list[i].name,
             "count":concate_list[i].count,
+            "img":concate_list[i].img,
             "rating":concate_list[i].rating,
-            "weight_rate":rate
+            "weight_rate":rate,
+            "price":concate_list[i].price
         })
     }
     wList = wList.sort(sortBy('-weight_rate'));
     return wList;
 }
 
-main("58c40eee80c5000bb852bbfc");
+// main("58c40eee80c5000bb852bbfc");
 
 module.exports = main;

@@ -30,8 +30,12 @@ import { default as swal } from 'sweetalert2';
 export class Rate implements OnInit{
   title = 'app works!';
   state = "closed";
+  recommendStatus = false;
+  recommendItem = false;
   itemRating = [];
+  itemRecommend =[];
   username;
+  id_user;
   constructor(private elementRef:ElementRef,
               private rateService:RateService,
               private _cookieService:CookieService,
@@ -48,6 +52,7 @@ export class Rate implements OnInit{
         
       }else if(JSON.parse(JSON.stringify(recieveCookie)).login){
          this.username = JSON.parse(JSON.stringify(recieveCookie)).data.username;
+         this.id_user = JSON.parse(JSON.stringify(recieveCookie)).data._id;
          var json = {
            'username':this.username,
          };
@@ -91,7 +96,7 @@ export class Rate implements OnInit{
   }  
   
   rateItem(){
-    var state = this.checkHasRate();
+    var state = this.checkHasRate(this.itemRating);
     if(state=="open"){
       swal('Please rate all the items','','warning');
     }else{
@@ -99,9 +104,17 @@ export class Rate implements OnInit{
         'username':this.username,
         'items':this.itemRating
       }
+     
       this.rateService.rateItem(json).subscribe(res=>{
         swal("Thank you", "", "success");
-        this.state = state;
+         this.recommendStatus = true;
+          this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
+            this.itemRecommend = res.data;
+            console.log(res.data);
+            this.recommendStatus = false;
+            this.recommendItem = true;
+          });
+        // this.state = state; not closed yet
       })
       
 
@@ -109,6 +122,17 @@ export class Rate implements OnInit{
     document.querySelector('body').classList.remove('ovh');
   }
 
+  rateRecommend(){
+    var state = this.checkHasRateRecommend(this.itemRecommend);
+    if(state=="open"){
+      swal('Please rate all the items','','warning');
+    }else{
+      var json ={
+        'username':this.username,
+        'items':this.itemRating
+      }
+    }
+  }
   onClickRate(id:String,rateName:String,value:number){
     var index = this.findById(this.itemRating,id);
     if(index>=0){
@@ -121,13 +145,24 @@ export class Rate implements OnInit{
 
   }
 
-  checkHasRate(){
-    for(var i = 0;i<this.itemRating.length;i++){
-      if( this.itemRating[i].myrate.overall == 0 ||
-          this.itemRating[i].myrate.price == 0 ||
-          this.itemRating[i].myrate.quality == 0 ||
-          this.itemRating[i].myrate.design == 0 ||
-          this.itemRating[i].myrate.sustainability == 0 
+  onClickRecommed(id:String,value:number){
+    var index = this.findById(this.itemRecommend,id);
+    if(index>=0){
+      this.itemRecommend[index].overall = value;
+      console.log(this.itemRecommend[index].overall);
+    }
+    else{
+      console.log("somethings wrong!!");
+    }
+  }
+
+  checkHasRate(item){
+    for(var i = 0;i<item.length;i++){
+      if( item.myrate.overall == 0 ||
+          item.myrate.price == 0 ||
+          item.myrate.quality == 0 ||
+          item.myrate.design == 0 ||
+          item.myrate.sustainability == 0 
         ){
         return "open";
       }
@@ -137,6 +172,16 @@ export class Rate implements OnInit{
     return "closed";
   }
 
+  checkHasRateRecommend(item){
+    for(var i = 0;i<item.length;i++){
+      if( item.overall == undefined){
+        return "open";
+      }
+
+    }
+
+    return "closed";
+  }
   findById(array:any[],id:String){
     for (var i = 0 ;i <= array.length; i++) {
       if(array[i]._id == id){
@@ -173,5 +218,6 @@ export class Rate implements OnInit{
         break;
     }
   }
+
 
 }
