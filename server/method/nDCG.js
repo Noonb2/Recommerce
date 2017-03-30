@@ -1,7 +1,12 @@
-var nDCG = function(list){
-    var sum = list[0][1];
-    for(var i in Range(1,length(list))){
-        sum = sum + (list[i][1]/Math.log2(i+1));
-    }
+var nDCG = function(rank){
+    var sum = 0;
+    rank.forEach(function(element,index){
+        if(index == 0){
+            sum = element.rate;
+        }
+        else{
+            sum = sum+(element.rate/Math.log2(index+1))
+        }
+    })
     return sum;
 }

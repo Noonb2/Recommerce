@@ -10,7 +10,7 @@ var method = function(targetuser){
          Rule.find({}, function(err,obj){
             if(err) console.log(err);
             rules = obj;
-            console.log(rules);
+            // console.log(rules);
             Item.find({}, function(err,obj){
                 if(err) console.log(err);
                 items = obj;
@@ -46,6 +46,7 @@ var method = function(targetuser){
 
                 predict = predictRate(item_list, sim, sets);
                 rank = predict.sort(sortBy('-rate'));
+                // console.log(rank);
                 res = []
                 rank.forEach(function(element4,index4){
                     items.forEach(function(element5,index5){
@@ -54,7 +55,11 @@ var method = function(targetuser){
                         }
                     })
                 })
-                console.log('Predict --> ', res)
+                console.log('Predict --> ', res);
+                console.log('\n')
+
+                nDCG = nDCG(rank);
+                console.log('nDCG --> ', nDCG);
     
             })
     
@@ -211,6 +216,19 @@ var predictRate = function(item_list, sim, sets){
         }
     })
     return rank;
+}
+
+var nDCG = function(rank){
+    var sum = 0;
+    rank.forEach(function(element,index){
+        if(index == 0){
+            sum = element.rate;
+        }
+        else{
+            sum = sum+(element.rate/Math.log2(index+1))
+        }
+    })
+    return sum;
 }
 
 module.exports = method;
