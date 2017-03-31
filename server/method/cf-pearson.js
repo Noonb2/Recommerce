@@ -69,7 +69,7 @@ var method = function(targetuser,callback){
                 return callback(res);
                 // console.log('Predict --> ', res);
                 // console.log('\n')
-
+                return callback(res);
                 // nDCG = nDCG(rank);
                 // console.log('nDCG --> ', nDCG);
     

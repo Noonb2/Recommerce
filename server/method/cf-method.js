@@ -12,7 +12,7 @@ var method = function(targetUser_id,numList,callback){
 		Id_buys = [];
 		buys.forEach( function(element, index) {
 			// statements
-			Id_buys.push(element._id);
+			Id_buys.push(mongoose.Types.ObjectId(element._id));
 		});
 		avgRate = getAVGrate(buys);
 		// console.log(Id_buys);
@@ -22,16 +22,19 @@ var method = function(targetUser_id,numList,callback){
 					$ne:_id
 				},
 				buys:{
-					"$elemMatch":{
+					$elemMatch:{
 						_id:{	$in:Id_buys }
 					}
 				}
 			},function(err,obj){
 				if(err)console.log(err);
 				neighbor = obj;
-				index_neighbor = similarityUser(targetUser,neighbor)[0].user;
-				rank = predictItem(targetUser,neighbor[index_neighbor]);
-				// console.log(rank);
+				if(neighbor.length!=0){
+					index_neighbor = similarityUser(targetUser,neighbor)[0].user;
+					rank = predictItem(targetUser,neighbor[index_neighbor]);
+				}else{
+					rank = [];
+				}
 				return callback(rank);
 
 
