@@ -254,7 +254,9 @@ moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
 	item_res = list[1];
 	// console.log(item_res.length)
 	item_longtail = list[2];
-	// cfpearson(targetUser);
+	cfpearson(targetUser,function(res){
+		console.log(res);
+	})
 })
 
 

@@ -3,7 +3,7 @@ var Rule = require('../models/rules-CF');
 var Item = require('../models/item');
 var sortBy = require('sort-by');
 
-var method = function(targetuser){
+var method = function(targetuser,callback){
     User.find({},function(err,obj){
          if(err) console.log(err);
          users = obj;
@@ -51,10 +51,22 @@ var method = function(targetuser){
                 rank.forEach(function(element4,index4){
                     items.forEach(function(element5,index5){
                         if(element5._id.equals(element4.itemID)){
-                            res.push({'data':element5, 'score':element4.rate});
+                            json = {
+                                _id:element5._id,
+                                category:element5.category,
+                                department:element5.department,
+                                name:element5.name,
+                                price:element5.price,
+                                count:element5.count,
+                                img:element5.img,
+                                rating:element5.rating,
+                                score:element4.rate
+                            }
+                            res.push(json);
                         }
                     })
                 })
+                return callback(res);
                 // console.log('Predict --> ', res);
                 // console.log('\n')
 
