@@ -3,7 +3,7 @@ var Rule = require('../models/rules-CF');
 var Item = require('../models/item');
 var sortBy = require('sort-by');
 
-var method = function(targetuser){
+var method = function(targetuser,callback){
     User.find({},function(err,obj){
          if(err) console.log(err);
          users = obj;
@@ -57,7 +57,7 @@ var method = function(targetuser){
                 })
                 // console.log('Predict --> ', res);
                 // console.log('\n')
-
+                return callback(res);
                 // nDCG = nDCG(rank);
                 // console.log('nDCG --> ', nDCG);
     

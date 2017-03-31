@@ -32,6 +32,7 @@ export class Rate implements OnInit{
   state = "closed";
   recommendStatus = false;
   recommendItem = false;
+  spinner = false;
   itemRating = [];
   itemRecommend =[];
   username;
@@ -108,10 +109,12 @@ export class Rate implements OnInit{
       this.rateService.rateItem(json).subscribe(res=>{
         swal("Thank you", "", "success");
          this.recommendStatus = true;
+         this.spinner = true;
           this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
             this.itemRecommend = res.data;
             console.log(res.data);
-            this.recommendStatus = false;
+            this.spinner = false;
+            // this.recommendStatus = false;
             this.recommendItem = true;
           });
         // this.state = state; not closed yet
@@ -158,11 +161,11 @@ export class Rate implements OnInit{
 
   checkHasRate(item){
     for(var i = 0;i<item.length;i++){
-      if( item.myrate.overall == 0 ||
-          item.myrate.price == 0 ||
-          item.myrate.quality == 0 ||
-          item.myrate.design == 0 ||
-          item.myrate.sustainability == 0 
+      if( item[i].myrate.overall == 0 ||
+          item[i].myrate.price == 0 ||
+          item[i].myrate.quality == 0 ||
+          item[i].myrate.design == 0 ||
+          item[i].myrate.sustainability == 0 
         ){
         return "open";
       }
@@ -174,7 +177,7 @@ export class Rate implements OnInit{
 
   checkHasRateRecommend(item){
     for(var i = 0;i<item.length;i++){
-      if( item.overall == undefined){
+      if( item[i].overall == undefined){
         return "open";
       }
 

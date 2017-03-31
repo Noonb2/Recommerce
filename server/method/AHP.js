@@ -127,8 +127,8 @@ function getWeightItem(item){
 function AHPranking(weight_user,weight_item,item){
     rank = Matrix(weight_item.prod(weight_user));
     rank = rank([],0);
-    console.log("weight_item : ",weight_item());
-    console.log("rank : ",rank);
+    // console.log("weight_item : ",weight_item());
+    // console.log("rank : ",rank);
     list = convertWeight(rank,rank.length);
     temp = []
     for(var i=0;i<list.length;i++){
@@ -156,7 +156,7 @@ function AHPranking(weight_user,weight_item,item){
 var main = function (user,item_res,item_longtail){
 
     weight_user = Matrix(getWeightUser(user));
-    console.log(weight_user());
+    // console.log(weight_user());
     weight_item = Matrix(getWeightItem(item_res));
     itemList = AHPranking(weight_user,weight_item,item_res);
     if(itemList.length>3){

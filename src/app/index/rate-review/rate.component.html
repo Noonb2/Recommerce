@@ -136,7 +136,7 @@
           </div>
 
           </template>
-          <div class="container-spinner" *ngIf="recommendStatus">
+          <div class="container-spinner" *ngIf="spinner">
               <div class="flex">
                 <div class="loader"></div>
               </div>
@@ -159,19 +159,19 @@
                 <div class="col-md-6" id="rating">
                     <div class='rating-stars-overall text-right'>
                       <ul id='stars'>
-                        <li class='star' title='Poor' data-value='1' (click)="onClickRecommend(item._id,'overall',1)">
+                        <li class='star' title='Poor' data-value='1' (click)="onClickRecommend(item._id,1)">
                           <i class='fa fa-star fa-fw'></i>
                         </li>
-                        <li class='star' title='Fair' data-value='2' (click)="onClickRecommend(item._id,'overall',2)">
+                        <li class='star' title='Fair' data-value='2' (click)="onClickRecommend(item._id,2)">
                           <i class='fa fa-star fa-fw'></i>
                         </li>
-                        <li class='star' title='Good' data-value='3' (click)="onClickRecommend(item._id,'overall',3)">
+                        <li class='star' title='Good' data-value='3' (click)="onClickRecommend(item._id,3)">
                           <i class='fa fa-star fa-fw'></i>
                         </li>
-                        <li class='star' title='Excellent' data-value='4' (click)="onClickRecommend(item._id,'overall',4)">
+                        <li class='star' title='Excellent' data-value='4' (click)="onClickRecommend(item._id,4)">
                           <i class='fa fa-star fa-fw'></i>
                         </li>
-                        <li class='star' title='WOW!!!' data-value='5' (click)="onClickRecommend(item._id,'overall',5)">
+                        <li class='star' title='WOW!!!' data-value='5' (click)="onClickRecommend(item._id,5)">
                           <i class='fa fa-star fa-fw'></i>
                         </li>
                       </ul>

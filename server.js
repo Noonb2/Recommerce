@@ -141,7 +141,9 @@ app.post('/register',function(req,res){
 
 
 })
-
+// method_cf("58de0cc5b4b8022420bd5617",5,function(result){
+// 	// console.log(result);
+// })
 
 app.post('/recommend',function(req,res){
 	Eval.findById(req.body._id,function(err,obj){
@@ -182,39 +184,52 @@ app.post('/recommend',function(req,res){
 			// ahp(targetUser,item_res,item_longtail);
 				method_cf(req.body.id,5,function(result){
 					cf_list = result;
-					cfpearson_list = cfpearson(req.body.id);
-					if(item_res.length!=0){
+					cfpearson(targetUser,function(list){
+						cfpearson_list = list;
+						cfpearson_list.forEach( function(element, index) {
+							// statements
+							console.log(element);
+						});
+						if(item_res.length!=0){
 						ahp_list = ahp(targetUser,item_res,item_longtail);
 						concat_list = ahp_list[0];
 						reAHP_list = ahp_list[1];
 						weight_list = ahp_list[2];
-					}
-					else{
-						concat_list = []
-						reAHP_list = [];
-						weight_list = [];
-					}
+						}
+						else{
+							concat_list = []
+							reAHP_list = [];
+							weight_list = [];
+						}
+						
+						list = ahp_list[0].slice(0,ahp_list[0].length);
+						temp = [];
+						list.forEach( function(element, index) {
+							// statements
+							temp.push(element._id);
+						});
+						console.log("cf list : "+cf_list.length);
+						console.log("cfpearson : "+cfpearson_list.length);
+						console.log("list : "+list.length);
+
+						list = addList(list,cf_list,temp);
+						list = addList(list,cfpearson_list,temp);
+						console.log("final list : "+list.length);
+						var eval = new Eval({
+							id:req.body.id,
+							concat:concat_list,
+							reAHP:reAHP_list,
+							weight:weight_list,
+							cf_regression:cf_list,
+							assrule_cf:[]
+						});
+						eval.save();
+						json = {
+							data:list
+						}
+						res.send(json);
+					})
 					
-					list = ahp_list[0].slice(0,ahp_list[0].length);
-					temp = [];
-					list.forEach( function(element, index) {
-						// statements
-						temp.push(element._id);
-					});
-					list = addList(list,cf_list,temp);
-					var eval = new Eval({
-						id:req.body.id,
-						concat:concat_list,
-						reAHP:reAHP_list,
-						weight:weight_list,
-						cf_regression:cf_list,
-						assrule_cf:[]
-					});
-					eval.save();
-					json = {
-						data:list
-					}
-					res.send(json);
 
 				});
 			
@@ -224,7 +239,6 @@ app.post('/recommend',function(req,res){
 						var count = 0;
 						temp.forEach( function(element2, index2) {
 							// statements
-
 							if(element1._id.equals(element2)){
 								count = count+1;
 							}
@@ -244,21 +258,6 @@ app.post('/recommend',function(req,res){
 	})
 })
 
-
-
-
-
-// var ahp = require('./server/method/AHP');
-moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
-	targetUser = list[0];
-	item_res = list[1];
-	// console.log(item_res.length)
-	item_longtail = list[2];
-	// cfpearson(targetUser);
-})
-
-
-// var ahp = require('./server/method/AHP');
 
 
 // Point static path to dist
