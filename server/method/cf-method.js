@@ -15,7 +15,7 @@ var method = function(targetUser_id,numList,callback){
 			Id_buys.push(element._id);
 		});
 		avgRate = getAVGrate(buys);
-		console.log(Id_buys);
+		// console.log(Id_buys);
 		_id = mongoose.Types.ObjectId(targetUser_id);
 		User.find({
 				_id:{
@@ -31,7 +31,7 @@ var method = function(targetUser_id,numList,callback){
 				neighbor = obj;
 				index_neighbor = similarityUser(targetUser,neighbor)[0].user;
 				rank = predictItem(targetUser,neighbor[index_neighbor]);
-				console.log(rank);
+				// console.log(rank);
 				return callback(rank);
 
 

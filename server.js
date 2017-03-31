@@ -16,6 +16,7 @@ var Eval = require('./server/models/eval');
 var method_cf = require('./server/method/cf-method');
 var ahp = require('./server/method/AHP');
 var moduleItem = require('./server/modules/get_item');
+var cfpearson = require('./server/method/cf-pearson');
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -141,9 +142,7 @@ app.post('/register',function(req,res){
 
 })
 
-method_cf("58c40eee80c5000bb852bbfd",5,function(res){
-	// console.log(res);
-});
+
 app.post('/recommend',function(req,res){
 	Eval.findById(req.body._id,function(err,obj){
 		if(err)console.log(err);
@@ -183,6 +182,7 @@ app.post('/recommend',function(req,res){
 			// ahp(targetUser,item_res,item_longtail);
 				method_cf(req.body.id,5,function(result){
 					cf_list = result;
+					cfpearson_list = cfpearson(req.body.id);
 					if(item_res.length!=0){
 						ahp_list = ahp(targetUser,item_res,item_longtail);
 						concat_list = ahp_list[0];
@@ -249,14 +249,12 @@ app.post('/recommend',function(req,res){
 
 
 // var ahp = require('./server/method/AHP');
-var moduleItem = require('./server/modules/get_item');
-var cfpearson = require('./server/method/cf-pearson');
 moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
 	targetUser = list[0];
 	item_res = list[1];
 	// console.log(item_res.length)
 	item_longtail = list[2];
-	cfpearson(targetUser);
+	// cfpearson(targetUser);
 })
 
 
