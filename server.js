@@ -260,7 +260,7 @@ app.post('/recommend',function(req,res){
 
 
 
-<<<<<<< HEAD
+
 
 
 // var ahp = require('./server/method/AHP');
@@ -278,8 +278,6 @@ moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
 // var ahp = require('./server/method/AHP');
 
 
-=======
->>>>>>> 6080612601d2e91291076d605a229eda08998af8
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
