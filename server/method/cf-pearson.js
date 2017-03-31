@@ -27,22 +27,22 @@ var method = function(targetuser){
                         }
                     })
                 })
-                console.log('Ass --> ', assRules);
-                console.log('\n')
+                // console.log('Ass --> ', assRules);
+                // console.log('\n')
 
                 sets = restructureData(users, assRules);
                 sets.forEach(function(element3,index3){
-                    console.log('userID --> ',element3._id,'\t','items --> ', element3.items)
+                    // console.log('userID --> ',element3._id,'\t','items --> ', element3.items)
                 })
-                console.log('\n')
+                // console.log('\n')
 
                 sim = PearsonCorrelation(targetuser, sets, assRules);
-                console.log('Sim --> ', sim);
-                console.log('\n')
+                // console.log('Sim --> ', sim);
+                // console.log('\n')
 
                 item_list = findItemList(targetuser, assRules, sets);
-                console.log('item_list --> ', item_list);
-                console.log('\n')
+                // console.log('item_list --> ', item_list);
+                // console.log('\n')
 
                 predict = predictRate(item_list, sim, sets);
                 rank = predict.sort(sortBy('-rate'));
@@ -55,11 +55,11 @@ var method = function(targetuser){
                         }
                     })
                 })
-                console.log('Predict --> ', res);
-                console.log('\n')
+                // console.log('Predict --> ', res);
+                // console.log('\n')
 
-                nDCG = nDCG(rank);
-                console.log('nDCG --> ', nDCG);
+                // nDCG = nDCG(rank);
+                // console.log('nDCG --> ', nDCG);
     
             })
     
@@ -110,8 +110,8 @@ var PearsonCorrelation = function(targetuser, sets, items){
                 sumXX = sumXX + Math.pow(element2.avgRate, 2);
             })
             targetuser_obj = element;
-            console.log('targetuser_obj --> ', targetuser_obj);
-            console.log('\n')
+            // console.log('targetuser_obj --> ', targetuser_obj);
+            // console.log('\n')
         }
         else{
             sumX = sumX + 0;
