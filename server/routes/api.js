@@ -4,6 +4,7 @@ var User = require('../models/user');
 var Item = require('../models/item');
 var Eval = require('../models/eval');
 var nDCG = require('../method/nDCG');
+var diversity = require('../method/diversity');
 var novelty = require('../method/novelty');
 var mongoose = require('mongoose');
 /* GET api listing. */
@@ -124,6 +125,7 @@ router.post('/rateRecommend',function(req,res){
                 res.markModified('assrule_cf');
                 res.save();
                 res.eval_assrule_cf.ndcg = nDCG(res.assrule_cf);
+                res.eval_assrule_cf.div = diversity(res.assrule_cf);
                 res.eval_assrule_cf.novel = novelty(res.assrule_cf,user.buys);
                 res.eval_assrule_cf.cov = res.assrule_cf.length;
                 res.markModified('eval_assrule_cf');
@@ -133,6 +135,7 @@ router.post('/rateRecommend',function(req,res){
                 res.markModified('cf_regression');
                 res.save();
                 res.eval_cf_regression.ndcg = nDCG(res.cf_regression);
+                res.eval_cf_regression.div = diversity(res.cf_regression);
                 res.eval_cf_regression.novel = novelty(res.cf_regression,user.buys);
                 res.eval_cf_regression.cov = res.cf_regression.length;
                 res.markModified('eval_cf_regression');
@@ -142,6 +145,7 @@ router.post('/rateRecommend',function(req,res){
                 res.markModified('concat');
                 res.save();
                 res.eval_concat.ndcg = nDCG(res.concat);
+                res.eval_concat.div = diversity(res.concat);
                 res.eval_concat.novel = novelty(res.concat,user.buys);
                 res.eval_concat.cov = res.concat.length;
                 res.markModified('eval_concat');
@@ -151,6 +155,7 @@ router.post('/rateRecommend',function(req,res){
                 res.markModified('reAHP');
                 res.save();
                 res.eval_reAHP.ndcg = nDCG(res.reAHP);
+                res.eval_reAHP.div = diversity(res.reAHP);
                 res.eval_reAHP.novel = novelty(res.reAHP,user.buys);
                 res.eval_reAHP.cov = res.reAHP.length;
                 res.markModified('eval_reAHP');
@@ -160,6 +165,7 @@ router.post('/rateRecommend',function(req,res){
                 res.markModified('weight');
                 res.save();
                 res.eval_weight.ndcg = nDCG(res.weight);
+                res.eval_weight.div = diversity(res.weight);
                 res.eval_weight.novel = novelty(res.weight,user.buys);
                 res.eval_weight.cov = res.weight.length;
                 res.markModified('eval_weight');
