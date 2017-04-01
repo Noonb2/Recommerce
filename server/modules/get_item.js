@@ -22,6 +22,9 @@ var list = function(user_id){
 	        itemRes = getItem(res,"item_res");
 	        itemRes.then(function(result){
 	           item_res = result;
+               item_res.forEach(function(element,index){
+                    list.push(element._id);
+               })
 	           Item.find({
                     count:{
                         $gte:1,$lte:2
