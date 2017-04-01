@@ -179,7 +179,7 @@ app.post('/recommend',function(req,res){
 			moduleItem(req.body.id).then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
-				console.log(item_res);
+				// console.log(item_res);
 				item_longtail = list[2];
 			// console.log(item_res);
 			// ahp(targetUser,item_res,item_longtail);

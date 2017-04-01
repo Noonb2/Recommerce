@@ -10,3 +10,5 @@ var nDCG = function(rank){
     })
     return sum;
 }
+
+module.exports = nDCG;

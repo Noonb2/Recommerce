@@ -165,7 +165,7 @@ var main = function (user,item_res,item_longtail){
     insertedItem = distance(item_res,item_longtail,5-itemList.length);
 
     concate_list = concate(itemList,insertedItem);
-    // console.log(concate_list);
+    
 
     weight_reAHP = Matrix(getWeightItem(concate_list));
     reAHP_list = AHPranking(weight_user,weight_reAHP,concate_list);
