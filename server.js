@@ -274,6 +274,7 @@ app.post('/recommend',function(req,res){
 
 // var ahp = require('./server/method/AHP');
 
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 

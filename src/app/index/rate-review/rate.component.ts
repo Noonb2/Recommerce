@@ -63,9 +63,11 @@ export class Rate implements OnInit{
           console.log(this.itemRating);
           if(this.itemRating.length!=0){
             this.state = "open";
+            let body = document.getElementsByTagName('body')[0];
+            body.style.overflow = 'hidden';
           }
           
-          document.querySelector('body').classList.add('ovh');
+          // document.querySelector('body').classList.add('ovh');
         });
         
       }
