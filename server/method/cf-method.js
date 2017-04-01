@@ -4,7 +4,7 @@ var User = require('../models/user');
 var regression = require('regression');
 var sortBy = require('sort-by');
 var linear = require('linear-solve');
-var method = function(targetUser_id,numList,callback){
+var method = function(targetUser_id,callback){
 	User.findById(targetUser_id,function(err,obj){
 		if(err) console.log(err);
 		buys = obj.buys;
@@ -39,16 +39,7 @@ var method = function(targetUser_id,numList,callback){
 
 
 		})
-		// Item.find({}).where('count').ne("0").where('_id').nin(Id_buys).exec(function(err,obj){
-		// 	if(err)console.log(err);
-		// 	itemList = itemWithRate(obj);
-		// 	simList = getListSim(avgRate,itemList);
-		// 	rank = getRank(simList,numList);
-		// 	rank = predictRate(rank);
-		// 	rank = rank.sort(sortBy('-prediction'));
-		// 	return callback(rank);
 
-		// })
 	})
 	
 }
@@ -113,7 +104,7 @@ function predictItem(targetUser,neighbor){
 	neighbor.buys.forEach( function(itemNeighbor, index) {
 		// statements
 		var check = 0;
-
+		console.log(itemNeighbor);
 		targetUser.buys.forEach( function(itemTarget, index) {
 			// statements
 			if(itemNeighbor._id.equals(itemTarget._id)){
@@ -211,6 +202,7 @@ var itemWithRate = function(obj){
 			'name':obj[i].name,
 			'img':obj[i].img,
 			'price':obj[i].price,
+			'count':obj[i].count,
 			'rating':{
 				'overall':0,
 				'price':0,
