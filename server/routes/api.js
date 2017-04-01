@@ -123,47 +123,38 @@ router.post('/rateRecommend',function(req,res){
             user = obj;
             updateData(data,data.assrule_cf,req.body.items,function(res){
                 res.markModified('assrule_cf');
-                res.save();
                 res.eval_assrule_cf.ndcg = nDCG(res.assrule_cf);
                 res.eval_assrule_cf.div = diversity(res.assrule_cf);
                 res.eval_assrule_cf.novel = novelty(res.assrule_cf,user.buys);
                 res.eval_assrule_cf.cov = res.assrule_cf.length;
                 res.markModified('eval_assrule_cf');
-                res.save();
             })
             updateData(data,data.cf_regression,req.body.items,function(res){
                 res.markModified('cf_regression');
-                res.save();
                 res.eval_cf_regression.ndcg = nDCG(res.cf_regression);
                 res.eval_cf_regression.div = diversity(res.cf_regression);
                 res.eval_cf_regression.novel = novelty(res.cf_regression,user.buys);
                 res.eval_cf_regression.cov = res.cf_regression.length;
                 res.markModified('eval_cf_regression');
-                res.save();
             })
             updateData(data,data.concat,req.body.items,function(res){
                 res.markModified('concat');
-                res.save();
                 res.eval_concat.ndcg = nDCG(res.concat);
                 res.eval_concat.div = diversity(res.concat);
                 res.eval_concat.novel = novelty(res.concat,user.buys);
                 res.eval_concat.cov = res.concat.length;
                 res.markModified('eval_concat');
-                res.save();
             })
             updateData(data,data.reAHP,req.body.items,function(res){
                 res.markModified('reAHP');
-                res.save();
                 res.eval_reAHP.ndcg = nDCG(res.reAHP);
                 res.eval_reAHP.div = diversity(res.reAHP);
                 res.eval_reAHP.novel = novelty(res.reAHP,user.buys);
                 res.eval_reAHP.cov = res.reAHP.length;
                 res.markModified('eval_reAHP');
-                res.save();
             })
             updateData(data,data.weight,req.body.items,function(res){
                 res.markModified('weight');
-                res.save();
                 res.eval_weight.ndcg = nDCG(res.weight);
                 res.eval_weight.div = diversity(res.weight);
                 res.eval_weight.novel = novelty(res.weight,user.buys);
