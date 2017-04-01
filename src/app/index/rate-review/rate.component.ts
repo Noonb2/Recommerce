@@ -138,7 +138,8 @@ export class Rate implements OnInit{
       this.rateService.rateRecommend(json).subscribe(res=>{
         swal("Thank you", "", "success");
         this.state = state;
-        /////////// add here
+        let body = document.getElementsByTagName('body')[0];
+        body.style.overflow = 'auto';
       });
     }
   }

@@ -179,7 +179,7 @@ app.post('/recommend',function(req,res){
 			moduleItem(req.body.id).then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
-				// console.log(item_res);
+				console.log(item_res);
 				item_longtail = list[2];
 			// console.log(item_res);
 			// ahp(targetUser,item_res,item_longtail);
@@ -192,14 +192,15 @@ app.post('/recommend',function(req,res){
 						concat_list = ahp_list[0];
 						reAHP_list = ahp_list[1];
 						weight_list = ahp_list[2];
+						list = ahp_list[0].slice(0,ahp_list[0].length);
 						}
 						else{
-							concat_list = []
+							concat_list = [];
 							reAHP_list = [];
 							weight_list = [];
+							list = [];
 						}
 						
-						list = ahp_list[0].slice(0,ahp_list[0].length);
 						temp = [];
 						list.forEach( function(element, index) {
 							// statements
