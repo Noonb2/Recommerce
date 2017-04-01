@@ -3,6 +3,7 @@ const router = express.Router();
 var User = require('../models/user');
 var Item = require('../models/item');
 var Eval = require('../models/eval');
+var nDCG = require('../method/nDCG');
 var mongoose = require('mongoose');
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -116,6 +117,9 @@ router.post('/rateRecommend',function(req,res){
         // console.log(req.body.items);
         updateData(data,data.assrule_cf,req.body.items,function(res){
             res.markModified('assrule_cf');
+            res.save();
+            res.ndcg_assrule_cf = nDCG(res.assrule_cf);
+            res.markModified('ndcg_assrule_cf');
             res.save();
         })
         updateData(data,data.cf_regression,req.body.items,function(res){
