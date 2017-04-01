@@ -109,7 +109,6 @@ export class Rate implements OnInit{
       }
      
       this.rateService.rateItem(json).subscribe(res=>{
-        swal("Thank you", "", "success");
          this.recommendStatus = true;
          this.spinner = true;
           this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
