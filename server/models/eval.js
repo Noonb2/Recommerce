@@ -11,25 +11,30 @@ module.exports = mongoose.model('Eval',{
 		ndcg:{type:Number, default:0},
 		div:{type:Number, default:0},
 		novel:{type:Number, default:0},
+		cov:{type:Number, default:0}
 	},
 	eval_reAHP:{ 
 		ndcg:{type:Number, default:0},
 		div:{type:Number, default:0},
 		novel:{type:Number, default:0},
+		cov:{type:Number, default:0}
 	},
 	eval_weight:{ 
 		ndcg:{type:Number, default:0},
 		div:{type:Number, default:0},
 		novel:{type:Number, default:0},
+		cov:{type:Number, default:0}
 	},
 	eval_cf_regression:{ 
 		ndcg:{type:Number, default:0},
 		div:{type:Number, default:0},
 		novel:{type:Number, default:0},
+		cov:{type:Number, default:0}
 	},
 	eval_assrule_cf:{ 
 		ndcg:{type:Number, default:0},
 		div:{type:Number, default:0},
 		novel:{type:Number, default:0},
+		cov:{type:Number, default:0}
 	},
 });
