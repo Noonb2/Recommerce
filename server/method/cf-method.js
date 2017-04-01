@@ -104,7 +104,6 @@ function predictItem(targetUser,neighbor){
 	neighbor.buys.forEach( function(itemNeighbor, index) {
 		// statements
 		var check = 0;
-		console.log(itemNeighbor);
 		targetUser.buys.forEach( function(itemTarget, index) {
 			// statements
 			if(itemNeighbor._id.equals(itemTarget._id)){
