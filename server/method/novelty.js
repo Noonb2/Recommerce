@@ -10,8 +10,13 @@ var main = function(rank,buys){
 		buys.forEach(function(j,index_j){
 			temp.push(distance(i,j));
 		})
-		temp.sort();
-		res.push(temp[0]);
+		sum = 0;
+		count=0;
+		temp.forEach(function(element,index){
+			sum += element;
+			count +=1;
+		})
+		res.push(sum/count);
 	})
 	count = 0;
 	sum = 0;
