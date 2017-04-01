@@ -183,8 +183,9 @@ app.post('/recommend',function(req,res){
 				item_longtail = list[2];
 			// console.log(item_res);
 			// ahp(targetUser,item_res,item_longtail);
-				method_cf(req.body.id,5,function(result){
+				method_cf(req.body.id,function(result){
 					cf_list = result;
+					// console.log(cf_list);
 					cfpearson(targetUser,function(list){
 						cfpearson_list = list;
 						if(item_res.length!=0){
