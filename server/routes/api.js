@@ -134,6 +134,7 @@ router.post('/rateRecommend',function(req,res){
             res.markModified('weight');
             res.save();
         })
+
         res.send(true);
 
     })
