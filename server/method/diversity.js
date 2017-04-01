@@ -1,6 +1,9 @@
 var diversity  = function(rank){
     var sum = 0;
     var R = rank.length;
+    if(R <= 1){
+        return 0;
+    }
     rank.forEach(function(element,index) {
         if(index == 0){
             k = element.rate;
