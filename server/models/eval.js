@@ -7,9 +7,29 @@ module.exports = mongoose.model('Eval',{
 	weight:Array,
 	cf_regression:Array,
 	assrule_cf:Array,
-	ndcg_concat:{ type: Number, default: 0 },
-	ndcg_reAHP:{ type: Number, default: 0 },
-	ndcg_weight:{ type: Number, default: 0 },
-	ndcg_cf_regression:{ type: Number, default: 0 },
-	ndcg_assrule_cf:{ type: Number, default: 0 },
+	eval_concat:{ 
+		ndcg_concat:{type:Number, default:0},
+		div_concat:{type:Number, default:0},
+		novel_concat:{type:Number, default:0},
+	},
+	eval_reAHP:{ 
+		ndcg_concat:{type:Number, default:0},
+		div_concat:{type:Number, default:0},
+		novel_concat:{type:Number, default:0},
+	},
+	eval_weight:{ 
+		ndcg_concat:{type:Number, default:0},
+		div_concat:{type:Number, default:0},
+		novel_concat:{type:Number, default:0},
+	},
+	eval_cf_regression:{ 
+		ndcg_concat:{type:Number, default:0},
+		div_concat:{type:Number, default:0},
+		novel_concat:{type:Number, default:0},
+	},
+	eval_assrule_cf:{ 
+		ndcg_concat:{type:Number, default:0},
+		div_concat:{type:Number, default:0},
+		novel_concat:{type:Number, default:0},
+	},
 });
