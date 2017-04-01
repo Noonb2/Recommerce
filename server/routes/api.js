@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 var User = require('../models/user');
 var Item = require('../models/item');
+var Eval = require('../models/eval');
 var mongoose = require('mongoose');
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -106,6 +107,54 @@ router.post('/rating',function(req,res){
         res.send(result);
     });
 })
+
+
+router.post('/rateRecommend',function(req,res){
+    Eval.find({'id':req.body._id},function(err,obj){
+        if(err)console.log(err);
+        data = obj[0];
+        // console.log(req.body.items);
+        updateData(data,data.assrule_cf,req.body.items,function(res){
+            res.markModified('assrule_cf');
+            res.save();
+        })
+        updateData(data,data.cf_regression,req.body.items,function(res){
+            res.markModified('cf_regression');
+            res.save();
+        })
+        updateData(data,data.concat,req.body.items,function(res){
+            res.markModified('concat');
+            res.save();
+        })
+        updateData(data,data.reAHP,req.body.items,function(res){
+            res.markModified('reAHP');
+            res.save();
+        })
+        updateData(data,data.weight,req.body.items,function(res){
+            res.markModified('weight');
+            res.save();
+        })
+        res.send(true);
+
+    })
+})
+
+function updateData(obj,list,data,callback){
+    list.forEach(function(element1,index1){
+        data.forEach(function(element2,index2){
+            // console.log("e1 "+element1._id);
+            // console.log("e2 "+element2._id);
+            // console.log("check "+element1._id.equals(element2._id))
+            if(element1._id.equals(element2._id)){
+                list[index1].rate = element2.overall;
+                // console.log(list[index1]);
+            }
+        })
+    })
+    // console.log(list);
+    return callback(obj);
+
+} 
 
 router.post('/rateItem',function(req,res){
     User.find({'username':req.body.username},function(err,obj){

@@ -179,6 +179,7 @@ app.post('/recommend',function(req,res){
 			moduleItem(req.body.id).then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
+				// console.log(item_res);
 				item_longtail = list[2];
 			// console.log(item_res);
 			// ahp(targetUser,item_res,item_longtail);
@@ -186,10 +187,6 @@ app.post('/recommend',function(req,res){
 					cf_list = result;
 					cfpearson(targetUser,function(list){
 						cfpearson_list = list;
-						cfpearson_list.forEach( function(element, index) {
-							// statements
-							console.log(element);
-						});
 						if(item_res.length!=0){
 						ahp_list = ahp(targetUser,item_res,item_longtail);
 						concat_list = ahp_list[0];
@@ -221,7 +218,7 @@ app.post('/recommend',function(req,res){
 							reAHP:reAHP_list,
 							weight:weight_list,
 							cf_regression:cf_list,
-							assrule_cf:[]
+							assrule_cf:cfpearson_list
 						});
 						eval.save();
 						json = {
@@ -260,26 +257,23 @@ app.post('/recommend',function(req,res){
 
 
 
-<<<<<<< HEAD
 
-
-// var ahp = require('./server/method/AHP');
-moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
-	targetUser = list[0];
-	item_res = list[1];
-	// console.log(item_res.length)
-	item_longtail = list[2];
-	cfpearson(targetUser,function(res){
-		console.log(res);
-	})
-})
 
 
 // var ahp = require('./server/method/AHP');
+// moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
+// 	targetUser = list[0];
+// 	item_res = list[1];
+// 	// console.log(item_res.length)
+// 	item_longtail = list[2];
+// 	cfpearson(targetUser,function(res){
+// 		console.log(res);
+// 	})
+// })
 
 
-=======
->>>>>>> 6080612601d2e91291076d605a229eda08998af8
+// var ahp = require('./server/method/AHP');
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 

@@ -131,9 +131,14 @@ export class Rate implements OnInit{
       swal('Please rate all the items','','warning');
     }else{
       var json ={
-        'username':this.username,
-        'items':this.itemRating
+        '_id':this.id_user,
+        'items':this.itemRecommend
       }
+      this.rateService.rateRecommend(json).subscribe(res=>{
+        swal("Thank you", "", "success");
+        this.state = state;
+        /////////// add here
+      });
     }
   }
   onClickRate(id:String,rateName:String,value:number){
@@ -148,7 +153,7 @@ export class Rate implements OnInit{
 
   }
 
-  onClickRecommed(id:String,value:number){
+  onClickRecommend(id:String,value:number){
     var index = this.findById(this.itemRecommend,id);
     if(index>=0){
       this.itemRecommend[index].overall = value;
@@ -177,6 +182,7 @@ export class Rate implements OnInit{
 
   checkHasRateRecommend(item){
     for(var i = 0;i<item.length;i++){
+      console.log(item[i]);
       if( item[i].overall == undefined){
         return "open";
       }

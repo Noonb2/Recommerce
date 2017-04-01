@@ -10,17 +10,26 @@ var list = function(user_id){
 	    user = obj;
 	    userBuys = obj.buys;
 	    list= [];
+        temp = [];
 	    userBuys.forEach( function(element, index) {
 	        // statements
 	        list.push(mongoose.Types.ObjectId(element._id));
+            temp.push(element._id);
 
 	    });
-	    result = getItem(list,"rules");
+	    result = getItem(list,"rules",temp);
 	    result.then(function(res){
 	        itemRes = getItem(res,"item_res");
 	        itemRes.then(function(result){
 	           item_res = result;
-	           Item.find({}).where('count').eq(1).exec(function(err,obj){
+	           Item.find({
+                    count:{
+                        $gte:1,$lte:2
+                    },
+                    _id:{
+                        $nin:list,
+                    }
+               },function(err,obj){
 	            if(err)console.log(err);
 	            item_longtail = obj;
 	            list=[user,item_res,item_longtail];
@@ -36,21 +45,24 @@ var list = function(user_id){
 	
 }
 
-function getItem(list,option){
+function getItem(list,option,temp){
     return new Promise(
         function(resolve,reject){
             if(option=="rules"){
                Rule.find({},function(err,obj){
                 if(err)console.log(err);
                 array = [];
+                t=[];
                 obj.forEach( function(element1, index1) {
                     // statements
                     list.forEach( function(element2, index2) {
                         // statements
-                        id1 =element2
+                        id1 =element2;
                         id2 =element1.r1;
-                        if(id1.equals(id2)){
+                        if(id1.equals(id2) && temp.indexOf(element1.r2.toString())<0 && t.indexOf(element1.r2.toString())<0 ){
+
                             array.push(element1.r2);
+                            t.push(element1.r2.toString());
                         }
                     });
                     
