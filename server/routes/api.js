@@ -118,24 +118,36 @@ router.post('/rateRecommend',function(req,res){
         updateData(data,data.assrule_cf,req.body.items,function(res){
             res.markModified('assrule_cf');
             res.save();
-            res.ndcg_assrule_cf = nDCG(res.assrule_cf);
-            res.markModified('ndcg_assrule_cf');
+            res.eval_assrule_cf.ndcg = nDCG(res.assrule_cf);
+            res.markModified('eval_assrule_cf');
             res.save();
         })
         updateData(data,data.cf_regression,req.body.items,function(res){
             res.markModified('cf_regression');
             res.save();
+            res.eval_cf_regression.ndcg = nDCG(res.cf_regression);
+            res.markModified('eval_cf_regression');
+            res.save();
         })
         updateData(data,data.concat,req.body.items,function(res){
             res.markModified('concat');
+            res.save();
+            res.eval_concat.ndcg = nDCG(res.concat);
+            res.markModified('eval_concat');
             res.save();
         })
         updateData(data,data.reAHP,req.body.items,function(res){
             res.markModified('reAHP');
             res.save();
+            res.eval_reAHP.ndcg = nDCG(res.reAHP);
+            res.markModified('eval_reAHP');
+            res.save();
         })
         updateData(data,data.weight,req.body.items,function(res){
             res.markModified('weight');
+            res.save();
+            res.eval_weight.ndcg = nDCG(res.weight);
+            res.markModified('eval_weight');
             res.save();
         })
 
