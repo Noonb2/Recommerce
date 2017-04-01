@@ -27,7 +27,7 @@ var list = function(user_id){
                })
 	           Item.find({
                     count:{
-                        $gte:1,$lte:2
+                        $gte:1,$lte:1
                     },
                     _id:{
                         $nin:list,

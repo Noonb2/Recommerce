@@ -2,6 +2,9 @@ var sortBy = require('sort-by');
 
 var main = function(rank,buys){
 	res = [];
+	if(rank.length==0){
+		return 0;
+	}
 	rank.forEach(function(i,index_i){
 		temp = []
 		buys.forEach(function(j,index_j){
@@ -16,6 +19,7 @@ var main = function(rank,buys){
 		sum = sum+element;
 		count +=1;
 	})
+
 	return sum/count;
 }
 
