@@ -115,12 +115,12 @@ router.post('/rating',function(req,res){
 
 
 router.post('/rateRecommend',function(req,res){
-    Eval.find({'id':req.body._id},function(err,obj){
+    Eval.findById(req.body._id,function(err,obj){
         if(err)console.log(err);
-        data = obj[0];
+        data = obj;
         // console.log(req.body.items);
 
-        User.findById(req.body._id,function(err,obj){
+        User.findById(req.body._id_user,function(err,obj){
             if(err)console.log(err)
             user = obj;
             updateData(data,data.assrule_cf,req.body.items,function(res){

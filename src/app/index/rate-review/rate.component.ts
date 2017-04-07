@@ -37,6 +37,7 @@ export class Rate implements OnInit{
   itemRecommend =[];
   username;
   id_user;
+  id_recommend;
   constructor(private elementRef:ElementRef,
               private rateService:RateService,
               private _cookieService:CookieService,
@@ -113,6 +114,7 @@ export class Rate implements OnInit{
          this.spinner = true;
           this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
             this.itemRecommend = res.data;
+            this.id_recommend = res.id;
             console.log(res.data);
             this.spinner = false;
             // this.recommendStatus = false;
@@ -132,7 +134,8 @@ export class Rate implements OnInit{
       swal('Please rate all the items','','warning');
     }else{
       var json ={
-        '_id':this.id_user,
+        '_id':this.id_recommend,
+        '_id_user':this.id_user,
         'items':this.itemRecommend
       }
       this.rateService.rateRecommend(json).subscribe(res=>{
