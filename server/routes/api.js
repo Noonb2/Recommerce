@@ -94,9 +94,10 @@ router.post('/rating',function(req,res){
         if(err)console.log(err);
         array = obj[0].buys;
         result= [];
+        temp = [];
         array.forEach( function(element, index) {
             // statements
-            if(element.myrate==undefined){
+            if(element.myrate==undefined && temp.indexOf(element._id.toString())<0){
                 element.myrate={
                     overall:0,
                     price:0,
@@ -105,6 +106,7 @@ router.post('/rating',function(req,res){
                     sustainability:0
                 }
                 result.push(element);
+                temp.push(element._id.toString());
             }
         });
         res.send(result);
