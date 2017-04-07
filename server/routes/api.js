@@ -94,9 +94,10 @@ router.post('/rating',function(req,res){
         if(err)console.log(err);
         array = obj[0].buys;
         result= [];
+        temp = [];
         array.forEach( function(element, index) {
             // statements
-            if(element.myrate==undefined){
+            if(element.myrate==undefined && temp.indexOf(element._id.toString())<0){
                 element.myrate={
                     overall:0,
                     price:0,
@@ -105,6 +106,7 @@ router.post('/rating',function(req,res){
                     sustainability:0
                 }
                 result.push(element);
+                temp.push(element._id.toString());
             }
         });
         res.send(result);
@@ -113,12 +115,12 @@ router.post('/rating',function(req,res){
 
 
 router.post('/rateRecommend',function(req,res){
-    Eval.find({'id':req.body._id},function(err,obj){
+    Eval.findById(req.body._id,function(err,obj){
         if(err)console.log(err);
-        data = obj[0];
+        data = obj;
         // console.log(req.body.items);
 
-        User.findById(req.body._id,function(err,obj){
+        User.findById(req.body._id_user,function(err,obj){
             if(err)console.log(err)
             user = obj;
             updateData(data,data.assrule_cf,req.body.items,function(res){

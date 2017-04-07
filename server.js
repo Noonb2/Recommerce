@@ -222,11 +222,16 @@ app.post('/recommend',function(req,res){
 							cf_regression:cf_list,
 							assrule_cf:cfpearson_list
 						});
-						eval.save();
-						json = {
-							data:list
-						}
-						res.send(json);
+						eval.save(function(err,obj){
+							id = obj._id;
+							json = {
+								data:list,
+								id:id
+							}
+							res.send(json);
+
+						});
+						
 					})
 					
 
