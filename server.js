@@ -26,8 +26,8 @@ var options = {
   user: 'apiromz',
   pass: '023799640'
 }
-// var connectionString = 'mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce'
-var connectionString = 'mongodb://apiromz:023799640@ds129050.mlab.com:29050/test_recommerce'
+var connectionString = 'mongodb://apiromz:023799640@ds133348.mlab.com:33348/recommerce'
+// var connectionString = 'mongodb://apiromz:023799640@ds129050.mlab.com:29050/test_recommerce'
 
 
 mongoose.connect(connectionString,{server:{auto_reconnect:true}});

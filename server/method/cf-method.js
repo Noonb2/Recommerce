@@ -29,6 +29,7 @@ var method = function(targetUser_id,callback){
 			},function(err,obj){
 				if(err)console.log(err);
 				neighbor = obj;
+				console.log(neighbor);
 				if(neighbor.length!=0){
 					index_neighbor = similarityUser(targetUser,neighbor)[0].user;
 					rank = predictItem(targetUser,neighbor[index_neighbor]);
