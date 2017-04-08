@@ -90,7 +90,7 @@ var restructureData = function(users, items){
 
         element.buys.forEach(function(element2,index2){
             items.forEach(function(element3,index3) {
-                if(element3._id.equals(element2._id)){
+                if(element3._id.equals(element2._id) && element2.myrate != undefined){
                     avg = (
                         element2.myrate.overall + 
                         element2.myrate.price +

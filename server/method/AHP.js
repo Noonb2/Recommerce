@@ -163,7 +163,7 @@ var main = function (user,item_res,item_longtail){
         itemList = itemList.slice(0,3);
     }
     insertedItem = distance(item_res,item_longtail,5-itemList.length);
-
+    console.log('InsertedItem --> ', insertedItem);
     concate_list = concate(itemList,insertedItem);
     
 
@@ -237,6 +237,7 @@ function distance(item_res,item_longtail,num){
         });
     }
     matrix = matrix.sort(sortBy('-distance'));
+    console.log(matrix);
     matrix = insertedItemNumber(matrix,num);
     return matrix;
 }
