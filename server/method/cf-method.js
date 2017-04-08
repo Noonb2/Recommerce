@@ -121,7 +121,7 @@ function predictItem(targetUser,neighbor){
 		var check = 0;
 		targetUser.buys.forEach( function(itemTarget, index) {
 			// statements
-			if(itemNeighbor._id.equals(itemTarget._id)){
+			if(itemNeighbor._id == itemTarget._id.toString()){
 				// console.log('have');
 				check += 1;
 				

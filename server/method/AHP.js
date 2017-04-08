@@ -238,16 +238,16 @@ function distance(item_res,item_longtail,num){
         });
     }
     matrix = matrix.sort(sortBy('-distance'));
-    console.log(matrix);
     matrix = insertedItemNumber(matrix,num);
     return matrix;
 }
 
 function insertedItemNumber(data,num){
     list= [];
-    for(var i=0;i<num;i++){
+    for(var i=50;i<50+num;i++){
         list.push(data[i]);
     }
+    console.log(list);
     return list;
 }
 
