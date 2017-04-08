@@ -1,75 +1,11 @@
-var mongoose = require('mongoose');
-var Rule = require('./server/models/rules');
-var Item = require('./server/models/item');
-var User = require('./server/models/user');
-var connectionString = 'mongodb://apiromz:023799640@ds129050.mlab.com:29050/test_recommerce';
-mongoose.connect(connectionString,{server:{auto_reconnect:true}});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.on('reconnected', function () {
-console.log('MongoDB reconnected!');
-});
-db.on('disconnected', function() {
-console.log('MongoDB disconnected!');
-mongoose.connect(connectionString, {server:{auto_reconnect:true}});
-});
-db.once('open', function() {
-  console.log("connection successful");
-});
-///////////////////
+var linear = require('linear-solve');
 
 
-function getItem(callback){
+mleft = [ [ 3, 5, 5, 3 ],[ 2, 5, 5, 4 ],[ 4, 5, 5, 1 ],[ 3,4,4, 3 ],[ 5, 5, 5, 3 ] ];
 
-	Rule.find({},function(err,obj){
-    	if(err)console.log(err);
-    	array = [];
-    	find(obj,array,function(res){
-    		console.log(res);
-    		console.log(res.length);
-    	})
-    	// obj.forEach( function(element1, index1) {
-     //    	// statements
-     //    	User.findById("58c40eee80c5000bb852bbfc",function(err,obj1){
-     //    		if(err)console.log(err);
-     //    		obj1.buys.forEach( function(element2, index2) {
-     //    			// statements
-     //    			if(element1.r1.equals(element2._id)){
-	    //         		array.push(element1.r2);
-	    //     		}
+mright = [ 4,4,5,4,4 ];
 
-     //    		});
-     //    	})
-    	// });
-    
-		// callback(array);    
-    
-    }) 
-}
-function find(obj,array,callback){
+aggregation_function = linear.solve(mleft,mright);
 
-	obj.forEach( function(element1, index1) {
-    	// statements
-    	(function(){
-		
-		User.findById("58c40eee80c5000bb852bbfc",function(err,obj){
-    		if(err)console.log(err);
-    		obj.buys.forEach( function(element2, index2) {
-    			// statements
-    			if(element1.r1.equals(element2._id)){
-            		array.push(element1.r2);
-        		}
+console.log(aggregation_function);
 
-    		});
-    		callback(array);
-    	})
-
-		
-		})();
-    	
-	});
-	
-}
-getItem(function(res){
-
-});

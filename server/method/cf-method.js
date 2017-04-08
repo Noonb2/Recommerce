@@ -12,7 +12,8 @@ var method = function(targetUser_id,callback){
 		Id_buys = [];
 		buys.forEach( function(element, index) {
 			// statements
-			Id_buys.push(mongoose.Types.ObjectId(element._id));
+			// Id_buys.push(mongoose.Types.ObjectId(element._id));
+			Id_buys.push(element._id);
 		});
 		avgRate = getAVGrate(buys);
 		// console.log(Id_buys);
@@ -29,7 +30,6 @@ var method = function(targetUser_id,callback){
 			},function(err,obj){
 				if(err)console.log(err);
 				neighbor = obj;
-				console.log(neighbor);
 				if(neighbor.length!=0){
 					index_neighbor = similarityUser(targetUser,neighbor)[0].user;
 					rank = predictItem(targetUser,neighbor[index_neighbor]);
@@ -55,7 +55,7 @@ function similarityUser(target,users){
 			target.buys.forEach( function(itemTarget, indexTarget) {
 				// statements
 				
-				if(itemUser._id.equals(itemTarget._id)){
+				if(itemUser._id == itemTarget._id.toString()){
 					sim += similarityItem(itemUser,itemTarget);
 					count += 1;
 				}
@@ -79,14 +79,20 @@ function similarityUser(target,users){
 
 function similarityItem(a,b){
 	var sum = 0 ;
-	var overall = Math.pow(a.myrate.overall - b.myrate.overall,2);
-	var price = Math.pow(a.myrate.price - b.myrate.price,2);
-	var quality = Math.pow(a.myrate.quality - b.myrate.quality,2);
-	var design = Math.pow(a.myrate.design - b.myrate.design,2);
-	var sustainability = Math.pow(a.myrate.sustainability - b.myrate.sustainability,2);
-	sum = overall + price + quality + design + sustainability;
-	dist = Math.sqrt(sum);
-	sim = 1/(1+dist);
+	if(a.myrate!=undefined && b.myrate!=undefined){
+		var overall = Math.pow(a.myrate.overall - b.myrate.overall,2);
+		var price = Math.pow(a.myrate.price - b.myrate.price,2);
+		var quality = Math.pow(a.myrate.quality - b.myrate.quality,2);
+		var design = Math.pow(a.myrate.design - b.myrate.design,2);
+		var sustainability = Math.pow(a.myrate.sustainability - b.myrate.sustainability,2);
+		sum = overall + price + quality + design + sustainability;
+		dist = Math.sqrt(sum);
+		sim = 1/(1+dist);
+		
+	}
+	else{
+		sim = 0;
+	}
 	return sim;
 }
 
@@ -96,12 +102,20 @@ function predictItem(targetUser,neighbor){
 	matrixRight = [];
 	neighbor.buys.forEach( function(element, index) {
 		// statements
-		matrixLeft.push([element.myrate.price,element.myrate.quality,element.myrate.design,element.myrate.sustainability]);
-		matrixRight.push(element.myrate.overall);
-	});
+		if(element.myrate !=undefined){
+			matrixLeft.push([element.myrate.price,element.myrate.quality,element.myrate.design,element.myrate.sustainability]);
+			matrixRight.push(element.myrate.overall);
 	
+		}
+	});
+	console.log(matrixLeft);
+	console.log(matrixRight);
+	try{
 	aggregation_function = linear.solve(matrixLeft,matrixRight);
 	// console.log(aggregation_function);
+	}catch(err){
+		return [];
+	}
 	neighbor.buys.forEach( function(itemNeighbor, index) {
 		// statements
 		var check = 0;
