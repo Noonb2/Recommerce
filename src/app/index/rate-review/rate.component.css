@@ -315,7 +315,7 @@
   width: 50pt;
   height: 50pt;
   border-radius: 100%;
-  border: #6767fa 4pt solid;
+  border: #2a062d 4pt solid;
   margin-left: auto;
   margin-right: auto;
   background-color: transparent;
@@ -326,5 +326,5 @@
   padding-top: 15px;
   text-align: center;
   font: 14pt "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: lighten(#6767fa, 75%);
+  color: lighten(#2a062d, 75%);
 }

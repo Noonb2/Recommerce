@@ -244,7 +244,7 @@ app.post('/recommend',function(req,res){
 						var count = 0;
 						temp.forEach( function(element2, index2) {
 							// statements
-							if(element1._id.equals(element2)){
+							if(element1._id.toString()==element2){
 								count = count+1;
 							}
 

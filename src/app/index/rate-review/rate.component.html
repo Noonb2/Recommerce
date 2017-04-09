@@ -143,8 +143,11 @@
               <div class="load-text">
                 Please wait for recommendation...
               </div>
-            </div>
-          <template  *ngFor="let item of itemRecommend" [ngIf]="recommendItem">
+          </div>
+          <div *ngIf="noRecommend">
+            <div class="load-text" style="padding-top: 200px">You are such a unique person!</div>
+          </div>
+          <template *ngFor="let item of itemRecommend" [ngIf]="recommendItem">
             <div class="item-rating">
             <div class="item">
               <div style="display: flex;justify-content: center;align-items: center">
@@ -180,8 +183,8 @@
               </div> 
             </div> 
             </div>
-
           </template>
+          
         </div>
         <div *ngIf="!recommendStatus">
         <div class="footer" (click)="rateItem()">Next &nbsp;<span class="glyphicon glyphicon-circle-arrow-right" 

@@ -32,6 +32,7 @@ export class Rate implements OnInit{
   state = "closed";
   recommendStatus = false;
   recommendItem = false;
+  noRecommend = false;
   spinner = false;
   itemRating = [];
   itemRecommend =[];
@@ -119,6 +120,10 @@ export class Rate implements OnInit{
             this.spinner = false;
             // this.recommendStatus = false;
             this.recommendItem = true;
+
+            if(this.itemRecommend.length==0){
+              this.noRecommend = true;
+            }
           });
         // this.state = state; not closed yet
       })
