@@ -179,7 +179,7 @@ app.post('/recommend',function(req,res){
 			moduleItem(req.body.id).then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
-				console.log('Item_res --> ', item_res);
+				// console.log('Item_res --> ', item_res);
 				item_longtail = list[2];
 				// console.log('Item_longtail --> ', item_longtail);
 			// console.log(item_res);
@@ -208,13 +208,13 @@ app.post('/recommend',function(req,res){
 							// statements
 							temp.push(element._id);
 						});
-						console.log("cf list : "+cf_list.length);
-						console.log("cfpearson : "+cfpearson_list.length);
-						console.log("list : "+list.length);
+						// console.log("cf list : "+cf_list.length);
+						// console.log("cfpearson : "+cfpearson_list.length);
+						// console.log("list : "+list.length);
 
 						list = addList(list,cf_list,temp);
 						list = addList(list,cfpearson_list,temp);
-						console.log("final list : "+list.length);
+						// console.log("final list : "+list.length);
 						var eval = new Eval({
 							id:req.body.id,
 							concat:concat_list,

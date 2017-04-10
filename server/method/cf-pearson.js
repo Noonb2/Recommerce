@@ -20,8 +20,8 @@ var method = function(targetuser,callback){
                 rules.forEach(function(element,index){
                     items.forEach(function(element2,index2){
                         if(element2._id.equals(element.r)){
-                            if(!temp.includes(element2._id)){
-                                temp.push(element2._id);
+                            if(!temp.indexOf(element2._id.toString())){
+                                temp.push(element2._id.toString());
                                 assRules.push(element2)
                             }
                         }
@@ -66,10 +66,13 @@ var method = function(targetuser,callback){
                         }
                     })
                 })
+                if(res.length > 5){
+                    res = res.slice(0,5);
+                }
                 return callback(res);
                 // console.log('Predict --> ', res);
                 // console.log('\n')
-                return callback(res);
+                // return callback(res);
                 // nDCG = nDCG(rank);
                 // console.log('nDCG --> ', nDCG);
     

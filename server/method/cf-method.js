@@ -108,8 +108,8 @@ function predictItem(targetUser,neighbor){
 	
 		}
 	});
-	console.log(matrixLeft);
-	console.log(matrixRight);
+	// console.log(matrixLeft);
+	// console.log(matrixRight);
 	try{
 	aggregation_function = linear.solve(matrixLeft,matrixRight);
 	// console.log(aggregation_function);
@@ -138,6 +138,9 @@ function predictItem(targetUser,neighbor){
 		}
 	});
 	list.sort(sortBy('-predictRate'));
+	if(list.length > 5){
+		list = list.slice(0,5);
+	}
 	return list;
 }
 function predictRate(rank){

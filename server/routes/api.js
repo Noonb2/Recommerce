@@ -179,7 +179,7 @@ function updateData(obj,list,data,callback){
             // console.log("e1 "+element1._id);
             // console.log("e2 "+element2._id);
             // console.log("check "+element1._id.equals(element2._id))
-            if(element1._id.equals(element2._id)){
+            if(element1._id.toString() == element2._id.toString()){
                 list[index1].rate = element2.overall;
                 // console.log(list[index1]);
             }
@@ -199,7 +199,7 @@ router.post('/rateItem',function(req,res){
             // statements
             items.forEach( function(element2, index2) {
                 // statements
-                if(element1._id == element2._id){
+                if(element1._id.toString() == element2._id.toString()){
                     obj.buys[index1].myrate = element2.myrate;
                 }
             });
