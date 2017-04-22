@@ -218,7 +218,6 @@ router.post('/search',function(req,res){
 router.post('/assrule',function(req,res){
     moduleItem(req.body.id,'carts').then(function(list){
         item_res = list[1];
-        console.log(item_res);
         res.send(item_res);
     })
 })

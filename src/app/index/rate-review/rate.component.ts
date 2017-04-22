@@ -114,7 +114,7 @@ export class Rate implements OnInit{
           swal("Thank you", "", "success");
           let body = document.getElementsByTagName('body')[0];
           body.style.overflow = 'auto';
-          location.reload();
+          this.state = state;
          // this.recommendStatus = true;
          // this.spinner = true;
           // this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
