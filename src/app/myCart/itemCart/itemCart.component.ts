@@ -31,7 +31,7 @@ export class itemCart implements OnInit{
     itemCarts = [];
     status="closed";
     sum=0;
-    statusRecommend = false;
+    statusRecommend;
     AssruleItem = [];
     checkAddToCart:boolean;
     option;
@@ -72,9 +72,10 @@ export class itemCart implements OnInit{
           this._itemCartService.getItemCarts(json).subscribe(res=>{
             this.itemCarts=res;
             if(this.itemCarts.length!=0){
+              this.statusRecommend = true;
               this._itemCartService.getItemAssrule(json).subscribe(res=>{
                 this.AssruleItem = res;
-                this.statusRecommend=true;
+                this.statusRecommend=false;
 
               })
             }
