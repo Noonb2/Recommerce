@@ -32,6 +32,7 @@ export class itemCart implements OnInit{
     status="closed";
     sum=0;
     statusRecommend;
+    youMayAlsoLike=false;
     AssruleItem = [];
     checkAddToCart:boolean;
     option;
@@ -76,6 +77,7 @@ export class itemCart implements OnInit{
               this._itemCartService.getItemAssrule(json).subscribe(res=>{
                 this.AssruleItem = res;
                 this.statusRecommend=false;
+                this.youMayAlsoLike=true;
 
               })
             }
