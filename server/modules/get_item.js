@@ -3,12 +3,17 @@ var Rule = require('../models/rules');
 var Item = require('../models/item');
 var User = require('../models/user');
 
-var list = function(user_id){
+var list = function(user_id,option){
 	return new Promise(function(resolve,reject){
 		User.findById(user_id,function(err,obj){
 	    if(err)console.log(err);
 	    user = obj;
-	    userBuys = obj.buys;
+        if(option=='buys'){
+            userBuys = obj.buys;
+        }else if(option=='carts'){
+            userBuys = obj.carts;
+        }
+	    // userBuys = obj.buys;
 	    list= [];
         temp = [];
         dep=[];
@@ -27,31 +32,37 @@ var list = function(user_id){
                item_res.forEach(function(element,index){
                     list.push(element._id);
                })
-               sex = "both";
-               if(dep.indexOf('woman')>0){
-                    sex = "man";
-               }else if(dep.indexOf('man')>0){
-                    sex="woman";
+               if(option!="carts"){
+                    sex = "both";
+                   if(dep.indexOf('woman')>0){
+                        sex = "man";
+                   }else if(dep.indexOf('man')>0){
+                        sex="woman";
+                   }else{
+                        sex="both";
+                   }
+                   Item.find({
+                        count:{
+                            $gte:1,$lte:2
+                        },
+                        _id:{
+                            $nin:list,
+                        },
+                        department:{
+                            $ne:sex,
+                        }
+                   },function(err,obj){
+                    if(err)console.log(err);
+                    item_longtail = obj;
+                    list=[user,item_res,item_longtail];
+                    resolve(list);
+                    
+                   })
                }else{
-                    sex="both";
+                    list=[[],item_res,[]];
+                    resolve(list);
                }
-	           Item.find({
-                    count:{
-                        $gte:1,$lte:2
-                    },
-                    _id:{
-                        $nin:list,
-                    },
-                    department:{
-                        $ne:sex,
-                    }
-               },function(err,obj){
-	            if(err)console.log(err);
-	            item_longtail = obj;
-	            list=[user,item_res,item_longtail];
-	            resolve(list);
-	            
-	           })
+               
 	        })
 	    })
 	   

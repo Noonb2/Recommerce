@@ -20,7 +20,7 @@ import {Indexpage} from './index/index.component';
 import {Rate} from './index/rate-review/rate.component';
 import {Carousel} from './index/carousel/carousel.component';
 import {RateService} from './index/rate-review/rate.service';
-
+import { OwlModule } from 'ng2-owl-carousel';
 
 const appRoutes: Routes = [
   { path: '',component:Indexpage },
@@ -46,7 +46,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    StickyModule
+    StickyModule,
+    OwlModule
   ],
   providers: [
     itemListService,

@@ -177,7 +177,7 @@ app.post('/recommend',function(req,res){
 
 		}else{
 			///////////////// for store list of recommendation to Eval
-			moduleItem(req.body.id).then(function(list){
+			moduleItem(req.body.id,'buys').then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
 				// console.log('Item_res --> ', item_res);
