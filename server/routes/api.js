@@ -4,9 +4,11 @@ var User = require('../models/user');
 var Item = require('../models/item');
 var Eval = require('../models/eval');
 var nDCG = require('../method/nDCG');
+var _ = require('underscore');
 var diversity = require('../method/diversity');
 var novelty = require('../method/novelty');
 var mongoose = require('mongoose');
+
 /* GET api listing. */
 router.get('/', (req, res) => {
   res.send('api works');
@@ -189,6 +191,28 @@ function updateData(obj,list,data,callback){
     return callback(obj);
 
 } 
+router.post('/sort',function(req,res){
+    var array = req.body.data;
+    array = _.sortBy(array,(item)=> parseInt(item.price));
+    res.send(array);
+})
+router.post('/search',function(req,res){
+    keyword = req.body.keyword;
+    var array  = keyword.split(' ');
+    var temp = [];
+    temp.push('');
+    array.forEach( function(element, index) {
+        // statements
+        string = '(?=.*'+element+')';
+        temp.push(string);
+    });
+    temp.push('.*$');
+    regex = temp.join('');
+    Item.find({'name': new RegExp(regex,'i')},function(err,obj){
+        if(err)console.log(err);
+        res.send(obj);
+    })
+})
 
 router.post('/rateItem',function(req,res){
     User.find({'username':req.body.username},function(err,obj){

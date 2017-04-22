@@ -30,7 +30,20 @@ export class itemListService {
 		return this.http.post('/addCart',item).map(res=>res.json());
 	}
 
+	getItemSearch(keyword:string){
+		var json = {
+			keyword:keyword
+		}
+		return this.http.post('/api/search',json).map(res=>res.json());
+	}
 
+	sort(data:Object){
+		var json = {
+			data:data
+		}
+
+		return this.http.post('/api/sort',json).map(res=>res.json());
+	}
 	// private extractData(res: Response) {
 	//     let body = res.json();
 	//     return body.data || { };

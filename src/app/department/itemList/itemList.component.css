@@ -1,6 +1,10 @@
 body {
   background: #ede9de; 
 }
+.navbar-default{
+  background: white !important;
+  border-color: whitesmoke !important;
+}
 .container-spinner {
   height: 100%;
   left: 50%;
@@ -209,6 +213,7 @@ body {
     width: 90% !important; 
     padding: 10px;
     transition: background 0.5s;
+    border: 1px solid #efe8ef;
 }
 #add-cart:hover{
 
@@ -299,4 +304,49 @@ body {
     .pagination>li{
         font-size: small;
     }
+}
+  
+
+
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 12px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+.style-1 input[type="text"] {
+  padding: 5px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+  float: left;
+  margin-right: 10px;
+}
+.style-1 li{
+  float: left;
+  margin-left: 10px;
+}
+.style-1 input[type="text"]:focus,
+.style-1 input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.sortFilter{
+  padding:3px 4px;
+  font-size: 12px;
+  background-color: #2a062d;
+  border-color: #2a062d;
+  color: #fcf192;
+}
+.sortFilter:active{
+  background-color: #2a062d;
+
 }

@@ -37,7 +37,11 @@
     "linear-solve": "^1.2.1",
     "matrix-js": "^1.2.1",
     "mongoose": "^4.8.3",
+
     "ng2-owl-carousel": "^0.1.15",
+
+    "mongoose-text-search": "0.0.2",
+
     "ng2-rating": "0.0.7",
     "ng2-sticky-kit": "^2.0.3",
     "ngx-rating": "0.0.9",
@@ -49,6 +53,7 @@
     "regression": "^1.4.0",
     "rxjs": "^5.0.1",
     "sort-by": "^1.2.0",
+    "sort-object": "^3.0.2",
     "sweetalert2": "^6.4.2",
     "ts-helpers": "^1.1.1",
     "underscore": "^1.8.3",

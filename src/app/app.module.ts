@@ -25,6 +25,7 @@ import {RateService} from './index/rate-review/rate.service';
 const appRoutes: Routes = [
   { path: '',component:Indexpage },
   { path: 'Departments/:department/:category', component:Department },
+  { path: 'search', component:Department },
   { path: 'myCart', component:myCart }
   
 ];

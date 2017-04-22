@@ -28,7 +28,7 @@
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;" *ngIf="!spinner">
-	{{department}} : <span style="text-transform: capitalize;">{{category}}</span> <span id="font">(กรุณาเลือกสินค้า มากกว่า 5 ชิ้นขึ้นไปและคละหมวดหมู่กัน)</span>
+	{{department}} : <span style="text-transform: capitalize;">{{category}}</span> 
 	<hr>
 </div>
 
@@ -36,6 +36,7 @@
     <div class="container">
         <div class="text-center">
             <!-- items being paged -->
+            <div *ngIf="!statusItem">No item</div>
            <div class="itemlist">
 				<div class="item" *ngFor="let item of pagedItems">
 					<img src="{{item.img}}" class="item-pic">
@@ -72,4 +73,27 @@
 
     </div>
 
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom ">
+    <div class="container" style="margin-top: 10px;padding-left: 5px;padding-right: 5px;">
+            <ul class="input-list style-1 clearfix center col-md-12 col-sm-12 col-xs-12" style="list-style: none;">
+                <li>
+                  <input type="text" placeholder="from" #filterFrom>
+                </li>
+                <li>
+                    -
+                </li>
+                <li>
+                  <input type="text" placeholder="to" #filterTo>
+                </li>
+                <li>
+                    <div class="btn btn-primary sortFilter" id="filter" (click)="filter(filterFrom.value,filterTo.value)">filter price</div>
+                </li>
+                <li>
+                    <div class="btn btn-primary sortFilter" id="sort" (click)="sort()">price low to high <span class="glyphicon glyphicon-sort-by-attributes"></span></div>     
+                </li>
+            </ul>
+
+    </div>
 </div>

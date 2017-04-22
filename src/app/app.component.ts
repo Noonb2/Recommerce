@@ -3,7 +3,7 @@ import {CookieService} from 'angular2-cookie/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { loginService } from './login.service';
 import {SharedService} from './shared.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 // import { itemListService } from './department/itemList/itemList.service';
 import { Observable } from 'rxjs/Observable';
@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
               private loginService:loginService,
               private sharedService:SharedService,
               private route:ActivatedRoute,
-              private _location: Location
+              private _location: Location,
+              private router:Router,
               // private _itemListService:itemListService,
     ){
   }
@@ -174,6 +175,13 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onEnterSearch(string:String){
+    console.log("value: "+string);
+    if(string!=""){
+      this.router.navigate(['/search', { keyword: string } ]);  
+
+    }
+  }
   
 
 

@@ -10,7 +10,7 @@
 	  <a href="javascript:void(0)" class="closebtn" >&times;</a>
 	  <div class="col-md-6 navbar-search" style="" >
 				<div id="search">
-					<input type="text" placeholder="search.." style="width: 80%;">
+					<input type="text" placeholder="search.." style="width: 80%;" #Search (keyup.enter)="onEnterSearch(Search.value);">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</div>
 	  </div>
@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-md-6 col-sm-3 navbar-search menu-collapse" style="" >
 				<div id="search">
-					<input type="text" placeholder="search.." >
+					<input type="text" placeholder="search.." #inputSearch (keyup.enter)="onEnterSearch(inputSearch.value);">
 					<span class="glyphicon glyphicon-search" aria-hidden="true" style=""></span>
 				</div>
 			</div>
