@@ -100,6 +100,7 @@ export class AppComponent implements OnInit {
 
   checkLogin(){
     var path = JSON.parse(JSON.stringify(this._location))._platformStrategy._platformLocation._location.pathname;
+    console.log("path: "+path);
     this.loginService.checkLogin(this.login).subscribe(bool=>{
       this.checkLog=bool.login
       if(this.checkLog == true){
@@ -113,7 +114,7 @@ export class AppComponent implements OnInit {
         this.statusLogin="open";
         setTimeout(() => {  
           this.statusLogin="closed";
-          if(path==='/myCart'){
+          if(path==='/myCart' || path==='/'){
             location.reload();
           }
         }, 700);
@@ -164,13 +165,14 @@ export class AppComponent implements OnInit {
 
   signOut(){
     var path = JSON.parse(JSON.stringify(this._location))._platformStrategy._platformLocation._location.pathname;
+    console.log("path: "+path);
     this._cookieService.putObject('login',{
       login:false,
       data:[]
     })
     console.log('sign out');
     this.checkLog=false;
-    if(path==='/myCart'){
+    if(path==='/myCart' || path==='/'){
       location.reload();
     }
   }

@@ -3,7 +3,7 @@
 <rating></rating>
 <div class="details" style="padding: 20px;">
 	<!--Recommend Inspired by You-->
-	<div class="panel-heading" id="itemRec" *ngIf="!statusRecommend">
+	<div class="panel-heading" id="itemRec" *ngIf="statusInspireByYou && status">
 		<div class="panel-title">
 			<div class="row">
 				<div class="col-xs-12">
@@ -13,13 +13,13 @@
 		</div>
 	</div>
 
-	<div class="loader" *ngIf="statusRecommend">Loading...</div>
+	<div class="loader" *ngIf="!statusInspireByYou && status">Loading...</div>
 
 	<owl-carousel 
 	[options]="option"  
-	[items]="AssruleItem" 
+	[items]="itemInspire" 
 	[carouselClasses]="['sliding']">
-		<div class="item" *ngFor="let item of AssruleItem" >
+		<div class="item" *ngFor="let item of itemInspire" >
 		<div class="photo">
 			<img src="{{item.img}}" class="img-responsive" alt="a" style="width: 125px; height: 125px; margin: auto"/>
 		</div>
@@ -44,7 +44,7 @@
 	</owl-carousel>
 
 	<!--Recommend Bestsellers-->
-	<div class="panel-heading" id="itemRec" *ngIf="!statusRecommend">
+	<div class="panel-heading" id="itemRec" >
 		<div class="panel-title">
 			<div class="row">
 				<div class="col-xs-12">
@@ -54,13 +54,11 @@
 		</div>
 	</div>
 
-	<div class="loader" *ngIf="statusRecommend">Loading...</div>
-
 	<owl-carousel 
 	[options]="option"  
-	[items]="AssruleItem" 
+	[items]="itemBestSeller" 
 	[carouselClasses]="['sliding']">
-		<div class="item" *ngFor="let item of AssruleItem" >
+		<div class="item" *ngFor="let item of itemBestSeller">
 		<div class="photo">
 			<img src="{{item.img}}" class="img-responsive" alt="a" style="width: 125px; height: 125px; margin: auto"/>
 		</div>
@@ -84,8 +82,8 @@
 		</div>
 	</owl-carousel>
 
-	<!--Recommend New Releases-->
-	<div class="panel-heading" id="itemRec" *ngIf="!statusRecommend">
+	
+	<div class="panel-heading" id="itemRec" >
 		<div class="panel-title">
 			<div class="row">
 				<div class="col-xs-12">
@@ -95,13 +93,12 @@
 		</div>
 	</div>
 
-	<div class="loader" *ngIf="statusRecommend">Loading...</div>
 
 	<owl-carousel 
 	[options]="option"  
-	[items]="AssruleItem" 
+	[items]="itemNewRelease" 
 	[carouselClasses]="['sliding']">
-		<div class="item" *ngFor="let item of AssruleItem" >
+		<div class="item" *ngFor="let item of itemNewRelease" >
 		<div class="photo">
 			<img src="{{item.img}}" class="img-responsive" alt="a" style="width: 125px; height: 125px; margin: auto"/>
 		</div>

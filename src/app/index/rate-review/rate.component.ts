@@ -111,20 +111,24 @@ export class Rate implements OnInit{
       }
      
       this.rateService.rateItem(json).subscribe(res=>{
-         this.recommendStatus = true;
-         this.spinner = true;
-          this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
-            this.itemRecommend = res.data;
-            this.id_recommend = res.id;
-            console.log(res.data);
-            this.spinner = false;
-            // this.recommendStatus = false;
-            this.recommendItem = true;
+          swal("Thank you", "", "success");
+          let body = document.getElementsByTagName('body')[0];
+          body.style.overflow = 'auto';
+          location.reload();
+         // this.recommendStatus = true;
+         // this.spinner = true;
+          // this.rateService.recommendItem({id:this.id_user}).subscribe(res=>{
+          //   this.itemRecommend = res.data;
+          //   this.id_recommend = res.id;
+          //   console.log(res.data);
+          //   this.spinner = false;
+          //   // this.recommendStatus = false;
+          //   this.recommendItem = true;
 
-            if(this.itemRecommend.length==0){
-              this.noRecommend = true;
-            }
-          });
+          //   if(this.itemRecommend.length==0){
+          //     this.noRecommend = true;
+          //   }
+          // });
         // this.state = state; not closed yet
       })
       

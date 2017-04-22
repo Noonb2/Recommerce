@@ -19,6 +19,7 @@ export class Indexpage implements OnInit{
   option;
   statusInspireByYou=false;
   checkAddToCart;
+  status=true;
   constructor(private elementRef:ElementRef,
               private http: Http,
               private _cookieService:CookieService,
@@ -56,9 +57,12 @@ export class Indexpage implements OnInit{
         this.itemInspire = res;
         if(this.itemInspire.length!=0){
           this.statusInspireByYou=true;
-
+        }else{
+          this.status=false;
         }
       })
+    }else{
+      this.status=false;
     }
 
     this.option = {
@@ -71,17 +75,17 @@ export class Indexpage implements OnInit{
                 0:{
                     items:2,
                     nav:false,
-                    loop:true
+                    loop:false
                 },
                 600:{
                     items:3,
                     nav:false,
-                    loop:true
+                    loop:false
                 },
                 1000:{
                     items:5,
                     nav:true,
-                    loop:true
+                    loop:false
                 }
             }
     }
