@@ -1,7 +1,7 @@
 console.log("Add to cart");
 $(document).ready(function () {
 	console.log("hi");
-
+  
 	// $('#scroll-top').click(function(){
 	// 	console.log("hi pagination");
 	// 	$("html, body").animate({scrollTop: 0}, 750);

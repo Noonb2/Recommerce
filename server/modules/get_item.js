@@ -11,10 +11,12 @@ var list = function(user_id){
 	    userBuys = obj.buys;
 	    list= [];
         temp = [];
+        dep=[];
 	    userBuys.forEach( function(element, index) {
 	        // statements
 	        list.push(mongoose.Types.ObjectId(element._id));
             temp.push(element._id);
+            dep.push(element.department);
 
 	    });
 	    result = getItem(list,"rules",temp);
@@ -25,12 +27,23 @@ var list = function(user_id){
                item_res.forEach(function(element,index){
                     list.push(element._id);
                })
+               sex = "both";
+               if(dep.indexOf('woman')>0){
+                    sex = "man";
+               }else if(dep.indexOf('man')>0){
+                    sex="woman";
+               }else{
+                    sex="both";
+               }
 	           Item.find({
                     count:{
                         $gte:1,$lte:2
                     },
                     _id:{
                         $nin:list,
+                    },
+                    department:{
+                        $ne:sex,
                     }
                },function(err,obj){
 	            if(err)console.log(err);

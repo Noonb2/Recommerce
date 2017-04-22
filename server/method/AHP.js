@@ -244,7 +244,8 @@ function distance(item_res,item_longtail,num){
 
 function insertedItemNumber(data,num){
     list= [];
-    for(var i=50;i<50+num ;i++){
+    index = Math.round(data.length/2);
+    for(var i=index;i<index+num ;i++){
         list.push(data[i]);
     }
     // console.log(list);

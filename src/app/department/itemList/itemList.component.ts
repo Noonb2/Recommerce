@@ -130,6 +130,7 @@ export class itemList implements OnInit {
           if(this.department=="Search Results"){
               this.statusItem = true;
               this.itemlistService.getItemSearch(this.keyword).subscribe(data=>{
+                this.data = data;
                 this.allItems = [];
                 this.allItems = data;
                 if(this.allItems.length==0){
@@ -213,6 +214,51 @@ export class itemList implements OnInit {
           swal('Please Sign in','Thank You','warning');
       }
       
+    }
+
+    filter(from:string,to:string){
+
+      var f = parseInt(from);
+      var t = parseInt(to);
+      var temp = [];
+      if(f==NaN || t==NaN){
+        console.log('NaN');
+        return;
+      }
+      console.log('filter:'+f+' to '+t);
+      this.spinner=true;
+      this.statusItem = true;
+
+      this.data.forEach(function(element,index){
+        if(element.price>=f && element.price<=t){
+          temp.push(element);
+        }
+      })
+
+      this.allItems = temp;
+      if(this.allItems.length!=0){
+        this.setPage(1);
+      }else{
+        this.setPage(0);
+        this.statusItem = false;
+      }
+      this.spinner = false;
+      window.scrollTo(0,0);
+    }
+
+    sort(){
+      var temp = [];
+      console.log('sort!');
+      var array = this.allItems.slice();
+      this.allItems= [];
+      this.setPage(0);
+      this.spinner = true;
+      this.itemlistService.sort(array).subscribe(res=>{
+        this.allItems=res;
+        this.spinner=false;
+        this.setPage(1);
+      })
+
     }
   
 }
