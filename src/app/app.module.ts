@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    StickyModule,
+    StickyModule
   ],
   providers: [
     itemListService,
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     CookieService,
     loginService,
     itemCartService,
-    RateService,
+    RateService
   ],
   bootstrap: [AppComponent]
 })
