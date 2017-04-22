@@ -32,31 +32,37 @@ var list = function(user_id,option){
                item_res.forEach(function(element,index){
                     list.push(element._id);
                })
-               sex = "both";
-               if(dep.indexOf('woman')>0){
-                    sex = "man";
-               }else if(dep.indexOf('man')>0){
-                    sex="woman";
+               if(option!="carts"){
+                    sex = "both";
+                   if(dep.indexOf('woman')>0){
+                        sex = "man";
+                   }else if(dep.indexOf('man')>0){
+                        sex="woman";
+                   }else{
+                        sex="both";
+                   }
+                   Item.find({
+                        count:{
+                            $gte:1,$lte:2
+                        },
+                        _id:{
+                            $nin:list,
+                        },
+                        department:{
+                            $ne:sex,
+                        }
+                   },function(err,obj){
+                    if(err)console.log(err);
+                    item_longtail = obj;
+                    list=[user,item_res,item_longtail];
+                    resolve(list);
+                    
+                   })
                }else{
-                    sex="both";
+                    list=[[],item_res,[]];
+                    resolve(list);
                }
-	           Item.find({
-                    count:{
-                        $gte:1,$lte:2
-                    },
-                    _id:{
-                        $nin:list,
-                    },
-                    department:{
-                        $ne:sex,
-                    }
-               },function(err,obj){
-	            if(err)console.log(err);
-	            item_longtail = obj;
-	            list=[user,item_res,item_longtail];
-	            resolve(list);
-	            
-	           })
+               
 	        })
 	    })
 	   

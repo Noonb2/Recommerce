@@ -97,7 +97,6 @@ export class itemCart implements OnInit{
           } 
           this.option = {
             // items:numItems,
-            navigation:true,
             dots:true,
             responsiveClass:true,
             responsive:{
