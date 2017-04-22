@@ -77,7 +77,9 @@ export class itemCart implements OnInit{
               this._itemCartService.getItemAssrule(json).subscribe(res=>{
                 this.AssruleItem = res;
                 this.statusRecommend=false;
-                this.youMayAlsoLike=true;
+                if(this.AssruleItem.length!=0){
+                  this.youMayAlsoLike=true;
+                }
 
               })
             }
