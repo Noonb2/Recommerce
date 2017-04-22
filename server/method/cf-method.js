@@ -144,7 +144,9 @@ function predictItem(targetUser,neighbor){
 		}
 	});
 	list.sort(sortBy('-predictRate'));
-	if(list.length>5){
+
+	if(list.length > 5){
+
 		list = list.slice(0,5);
 	}
 	return list;
