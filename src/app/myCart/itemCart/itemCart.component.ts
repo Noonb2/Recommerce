@@ -45,6 +45,11 @@ export class itemCart implements OnInit{
         q.type = "text/javascript";
         q.src = "./app/myCart/itemCart/quantity.script.js";
         this.elementRef.nativeElement.appendChild(q);
+
+        var c = document.createElement("script");
+        c.type = "text/javascript";
+        c.src = "./app/myCart/itemCart/owlcarousel.script.js";
+        this.elementRef.nativeElement.appendChild(c);
     }
     
     ngOnInit(){
