@@ -28,7 +28,7 @@
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;" *ngIf="!spinner">
-	{{department}} : <span style="text-transform: capitalize;">{{category}}</span> <span id="font">(กรุณาเลือกสินค้า มากกว่า 5 ชิ้นขึ้นไปและคละหมวดหมู่กัน)</span>
+	{{department}} : <span style="text-transform: capitalize;">{{category}}</span> 
 	<hr>
 </div>
 
@@ -36,6 +36,7 @@
     <div class="container">
         <div class="text-center">
             <!-- items being paged -->
+            <div *ngIf="!statusItem">No item</div>
            <div class="itemlist">
 				<div class="item" *ngFor="let item of pagedItems">
 					<img src="{{item.img}}" class="item-pic">

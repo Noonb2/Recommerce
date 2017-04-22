@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
-
-module.exports = mongoose.model('Item',{
+var schema = mongoose.Schema({
 	department:String,
 	category:String,
 	name:String,
@@ -14,5 +13,8 @@ module.exports = mongoose.model('Item',{
 		sustainability:Number
 	}],
 	count:Number,
+})
 
-});
+schema.index({name:'text'})
+
+module.exports = mongoose.model('Item',schema);

@@ -30,8 +30,11 @@ var method = function(targetUser_id,callback){
 			},function(err,obj){
 				if(err)console.log(err);
 				neighbor = obj;
+				// console.log("neighbor : "+neighbor.length);
 				if(neighbor.length!=0){
-					index_neighbor = similarityUser(targetUser,neighbor)[0].user;
+					temp = similarityUser(targetUser,neighbor);
+					// console.log("temp : "+temp.length)
+					index_neighbor = temp[0].user;
 					rank = predictItem(targetUser,neighbor[index_neighbor]);
 				}else{
 					rank = [];
@@ -48,10 +51,12 @@ function similarityUser(target,users){
 	var sim_neighbor = [];
 	users.forEach( function(user, number) {
 		// statements
+		var sim = 0;
+		var count = 0;
 		user.buys.forEach( function(itemUser, indexUser) {
 			// statements
-			var sim = 0;
-			var count = 0;
+			
+			
 			target.buys.forEach( function(itemTarget, indexTarget) {
 				// statements
 				
@@ -61,15 +66,16 @@ function similarityUser(target,users){
 				}
 			});
 
-			if(count>0){
-				json = {
-					user:number,
-					similarity:sim/count
-				}
-				sim_neighbor.push(json);
-			}
+			
 
 		});
+		if(count>0){
+			json = {
+				user:number,
+				similarity:sim/count
+			}
+			sim_neighbor.push(json);
+		}
 
 	});
 	sim_neighbor.sort(sortBy('-similarity'));
@@ -108,8 +114,8 @@ function predictItem(targetUser,neighbor){
 	
 		}
 	});
-	console.log(matrixLeft);
-	console.log(matrixRight);
+	// console.log(matrixLeft);
+	// console.log(matrixRight);
 	try{
 	aggregation_function = linear.solve(matrixLeft,matrixRight);
 	// console.log(aggregation_function);
@@ -134,10 +140,13 @@ function predictItem(targetUser,neighbor){
 						itemNeighbor.myrate.design*aggregation_function[2]+
 						itemNeighbor.myrate.sustainability*aggregation_function[3]
 			itemNeighbor.predictRate = predictrate;
-			list.push(itemNeighbor);
+			list.push(itemNeighbor); 
 		}
 	});
 	list.sort(sortBy('-predictRate'));
+	if(list.length>5){
+		list = list.slice(0,5);
+	}
 	return list;
 }
 function predictRate(rank){

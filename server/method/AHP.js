@@ -164,7 +164,7 @@ var main = function (user,item_res,item_longtail){
     }
     insertedItem = distance(item_res,item_longtail,5-itemList.length);
 
-    console.log('InsertedItem --> ', insertedItem);
+    // console.log('InsertedItem --> ', insertedItem);
     concate_list = concate(itemList,insertedItem);
     
 
@@ -244,10 +244,10 @@ function distance(item_res,item_longtail,num){
 
 function insertedItemNumber(data,num){
     list= [];
-    for(var i=50;i<50+num;i++){
+    for(var i=50;i<50+num ;i++){
         list.push(data[i]);
     }
-    console.log(list);
+    // console.log(list);
     return list;
 }
 

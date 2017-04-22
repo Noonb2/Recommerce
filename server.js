@@ -89,6 +89,7 @@ app.post('/login',function(req,res){
 	})
 })
 
+
 app.post('/addCart',function(req,res){
 	User.find({'username':req.body.username},function(err,obj){
 		if(err)console.log(err);
@@ -179,7 +180,7 @@ app.post('/recommend',function(req,res){
 			moduleItem(req.body.id).then(function(list){
 				targetUser = list[0];
 				item_res = list[1];
-				console.log('Item_res --> ', item_res);
+				// console.log('Item_res --> ', item_res);
 				item_longtail = list[2];
 				// console.log('Item_longtail --> ', item_longtail);
 			// console.log(item_res);

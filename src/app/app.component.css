@@ -84,7 +84,7 @@ body{
 
   #search{
     border-radius: 10px;
-    background: grey;
+    background: #5d2458;
     display: inline-block;
     width: 100%;
     padding: 1%;
@@ -98,7 +98,7 @@ body{
   #search input{
     border: none;
     width: 93%;
-    background: grey;
+    background: #5d2458;
     cursor:pointer;
     margin-left: 10px;
 
@@ -333,7 +333,7 @@ body{
       #search input{
         border: none;
         width: 76%;
-        background: grey;
+        background: #5d2458;
         cursor:pointer;
         margin-left: 10px;
       }

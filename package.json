@@ -37,6 +37,7 @@
     "linear-solve": "^1.2.1",
     "matrix-js": "^1.2.1",
     "mongoose": "^4.8.3",
+    "mongoose-text-search": "0.0.2",
     "ng2-rating": "0.0.7",
     "ng2-sticky-kit": "^2.0.3",
     "ngx-rating": "0.0.9",

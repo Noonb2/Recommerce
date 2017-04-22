@@ -39,6 +39,8 @@ export class itemList implements OnInit {
     message="";
     checkAddToCart=false;
     spinner:boolean;
+    keyword:string;
+    statusItem=true;
     numCarts = this.sharedService.getNumCarts();
     screen: number; 
     constructor(
@@ -65,13 +67,15 @@ export class itemList implements OnInit {
       this.elementRef.nativeElement.appendChild(l);
     }
     ngOnInit(){
-        console.log(window.innerWidth);
         this.screen = window.innerWidth;
         window.scrollTo(0,0);
+        
+        
         this.sub = this.route.params.subscribe(params => {
            this.spinner=true;
            this.department = params['department'];
            this.category = params['category'];
+           this.keyword = params['keyword'];
            switch (this.department) {
                case "women":
                    // code...
@@ -88,6 +92,7 @@ export class itemList implements OnInit {
                    break;
                default:
                    // code...
+                   this.department="Search Results"
                    break;
            }
            switch (this.category) {
@@ -109,17 +114,47 @@ export class itemList implements OnInit {
                    break;
                default:
                    // code...
+
+                   {
+                    
+                      if(this.department=="Search Results"){
+                       this.category = '"'+this.keyword+'"';
+                       
+                       }
+                    
+                   }
                    break;
            }
        // In a real app: dispatch action to load the details here.
-           this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => {
-            this.data =data;
-            this.allItems = data;
-            this.spinner=false;
-            window.scrollTo(0,0);
-              // initialize to page 1
-            this.setPage(1);
-          });
+        
+          if(this.department=="Search Results"){
+              this.statusItem = true;
+              this.itemlistService.getItemSearch(this.keyword).subscribe(data=>{
+                this.allItems = [];
+                this.allItems = data;
+                if(this.allItems.length==0){
+                  this.statusItem = false;
+                  this.setPage(0);
+                }else{
+                  this.setPage(1);
+                }
+                this.spinner=false;
+                window.scrollTo(0,0);
+                  // initialize to page 1
+                
+              })
+          }else{
+            this.itemlistService.getItemParams(this.department,this.category   ).subscribe(data => {
+              this.data =data;
+              this.allItems = data;
+              this.spinner=false;
+              window.scrollTo(0,0);
+                // initialize to page 1
+              this.setPage(1);
+            });
+          }
+        
+           
         });
 
     }
@@ -127,6 +162,8 @@ export class itemList implements OnInit {
      setPage(page: number) {
 
         if (page < 1 || page > this.pager.totalPages) {
+            this.pager={};
+            this.pagedItems = [];
             return;
         }
 
