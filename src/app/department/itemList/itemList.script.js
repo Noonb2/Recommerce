@@ -1,7 +1,11 @@
 console.log("Add to cart");
 $(document).ready(function () {
 	console.log("hi");
-  
+  $('#filter').click(function(){
+    console.log('filter click');
+  })
+
+  $('.owl-carousel').owlCarousel();
 	// $('#scroll-top').click(function(){
 	// 	console.log("hi pagination");
 	// 	$("html, body").animate({scrollTop: 0}, 750);
