@@ -10,6 +10,7 @@ import {itemCartService} from './itemCart.service';
 import {CookieService} from 'angular2-cookie/core';
 import {SharedService} from '../../shared.service';
 
+
 @Component({
   selector: 'itemCart',
   templateUrl: './itemCart.component.html',
@@ -42,7 +43,7 @@ export class itemCart implements OnInit{
     ngAfterViewInit(){
         var q = document.createElement("script");
         q.type = "text/javascript";
-        q.src = "./app/myCart/itemCart/quantity.script.js"
+        q.src = "./app/myCart/itemCart/quantity.script.js";
         this.elementRef.nativeElement.appendChild(q);
     }
     
