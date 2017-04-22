@@ -108,17 +108,17 @@ export class itemCart implements OnInit{
                 0:{
                     items:2,
                     nav:false,
-                    loop:true
+                    loop:false
                 },
                 600:{
                     items:3,
                     nav:false,
-                    loop:true
+                    loop:false
                 },
                 1000:{
                     items:5,
                     nav:true,
-                    loop:true
+                    loop:false
                 }
             }
           }
