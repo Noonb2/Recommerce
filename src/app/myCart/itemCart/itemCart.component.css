@@ -9,7 +9,7 @@ body {
     width: auto;
 }
 .item{
-    margin:10px;
+    margin:20px;
 }
 .btn-group-lg>.btn, .btn-lg{
     padding: 0px;
@@ -28,7 +28,7 @@ body {
    -webkit-line-clamp: 2; /* number of lines to show */
    line-height: 1.4;        /* fallback */
    font-family: 'Athiti', sans-serif !important;
-    font-weight: bold;
+   font-weight: bold;
    
 }
 h3{
@@ -186,6 +186,25 @@ input:focus {
     white-space: normal;
     text-align: center; 
 }*/
+#itemRec{
+    color: #330431; 
+}
+
+.item-info{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-family: 'Athiti', sans-serif !important;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.btn-slide{
+    background-color: transparent;
+    color: #330431 !important;
+}
 
 .swal2-modal .swal2-styled{
     background-color: #330431 !important;

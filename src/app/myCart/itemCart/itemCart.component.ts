@@ -97,8 +97,10 @@ export class itemCart implements OnInit{
           } 
           this.option = {
             // items:numItems,
-            dots:true,
+            dots:false,
             responsiveClass:true,
+            navText:["<div title='Previous' class='fa fa-chevron-left btn btn-slide' style='position:absolute;left:0'></div>",
+            "<div title='Next' class='fa fa-chevron-right btn btn-slide' style='position:absolute;right:0'></div>"],
             responsive:{
                 0:{
                     items:2,
@@ -118,10 +120,6 @@ export class itemCart implements OnInit{
             }
           }
         }
-
-        
-
-
     }
 
     deleteItem(object){

@@ -88,19 +88,28 @@
 			</div>
 		</div>
 	</div> -->
+	<div class="panel-heading" id="itemRec">
+		<div class="panel-title">
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>You May Also Like</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 	<owl-carousel 
 	[options]="option"  
 	[items]="AssruleItem" 
-	[carouselClasses]="['owl-theme', 'row', 'sliding']">
+	[carouselClasses]="['sliding']">
      <div class="item" *ngFor="let item of AssruleItem" >
         <div class="photo">
-			<img src="{{item.img}}" class="img-responsive" alt="a" />
+			<img src="{{item.img}}" class="img-responsive" alt="a" style="width: 125px; height: 125px; margin: auto"/>
 		</div>
 		<div class="info">
 			<div class="row">
 				<div class="price col-xs-12">
-					<h5>{{item.name}}</h5>
-					<h5 class="price-text-color">${{item.price}}</h5>
+					<h5 class="item-info">{{item.name}}</h5>
+					<h5 class="price-text-color">{{item.price}} ฿</h5>
 				</div>
 			</div>
 		</div>
