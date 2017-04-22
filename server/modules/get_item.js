@@ -34,10 +34,10 @@ var list = function(user_id,option){
                })
                if(option!="carts"){
                     sex = "both";
-                   if(dep.indexOf('woman')>0){
-                        sex = "man";
-                   }else if(dep.indexOf('man')>0){
-                        sex="woman";
+                   if(dep.indexOf('women')>0){
+                        sex = "men";
+                   }else if(dep.indexOf('men')>0){
+                        sex="women";
                    }else{
                         sex="both";
                    }
@@ -54,6 +54,7 @@ var list = function(user_id,option){
                    },function(err,obj){
                     if(err)console.log(err);
                     item_longtail = obj;
+                    // console.log('longtail: '+item_longtail);
                     list=[user,item_res,item_longtail];
                     resolve(list);
                     

@@ -249,8 +249,10 @@ router.post('/inspirebyyou',function(req,res){
                 item_res = list[1];
                 item_longtail = list[2];
                 ahp_list = ahp(targetUser,item_res,item_longtail);
+                concat_list = ahp_list[0];
+                reAHP_list = ahp_list[1];
                 weight_list = ahp_list[2];
-                res.send(weight_list);
+                res.send(concat_list);
             })
 
         }
