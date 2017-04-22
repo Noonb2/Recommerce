@@ -100,17 +100,17 @@ export class itemCart implements OnInit{
             // items:numItems,
             dots:false,
             responsiveClass:true,
-            navText:["<div title='Previous' class='fa fa-chevron-left btn btn-slide' style='position:absolute;left:0'></div>",
-            "<div title='Next' class='fa fa-chevron-right btn btn-slide' style='position:absolute;right:0'></div>"],
+            navText:["<div title='Previous' class='fa fa-chevron-left btn btn-slide' style='position:absolute;left:0;top:40%;font-size:20px'></div>",
+            "<div title='Next' class='fa fa-chevron-right btn btn-slide' style='position:absolute;right:0;top:40%;font-size:20px'></div>"],
             responsive:{
                 0:{
                     items:2,
-                    nav:true,
+                    nav:false,
                     loop:true
                 },
                 600:{
                     items:3,
-                    nav:true,
+                    nav:false,
                     loop:true
                 },
                 1000:{
