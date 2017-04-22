@@ -1,5 +1,5 @@
 var User = require('../models/user');
-var Rule = require('../models/rules-CF');
+var Rule = require('../models/rules');
 var Item = require('../models/item');
 var sortBy = require('sort-by');
 
@@ -9,7 +9,20 @@ var method = function(targetuser,callback){
          users = obj;
          Rule.find({}, function(err,obj){
             if(err) console.log(err);
-            rules = obj;
+            tempRule = [];
+            tRule = [];
+            obj.forEach(function(element,index){
+                if (tRule.indexOf(element.r1.toString())<0){
+                    tRule.push(element.r1.toString());
+                    tempRule.push({'r':element.r1});
+                }
+                if(tRule.indexOf(element.r2.toString())<0){
+                    tRule.push(element.r2.toString());
+                    tempRule.push({'r':element.r2});
+                }
+            })
+            rules = tempRule;
+            // rules = obj;
             // console.log(rules);
             Item.find({}, function(err,obj){
                 if(err) console.log(err);
@@ -20,7 +33,7 @@ var method = function(targetuser,callback){
                 rules.forEach(function(element,index){
                     items.forEach(function(element2,index2){
                         if(element2._id.equals(element.r)){
-                            if(!temp.indexOf(element2._id.toString())){
+                            if(temp.indexOf(element2._id.toString())<0){
                                 temp.push(element2._id.toString());
                                 assRules.push(element2)
                             }
@@ -167,7 +180,7 @@ var PearsonCorrelation = function(targetuser, sets, items){
          
             try{
                r = (N * sumXY - sumX * sumY) / Math.sqrt((N * sumXX - sumX2) * (N * sumYY - sumY2)); 
-            //    console.log('R --> ',r)
+            // console.log('R --> ',r)
             } catch(err){
                r = -1000; 
             //    console.log('R --> ', r)
@@ -188,12 +201,12 @@ var findItemList = function(targetuser, items, sets){
     sets.forEach(function(element,index){
         if(element._id.equals(targetuser._id)){
             element.items.forEach(function(element2,index2){
-                temp.push(element2.item_id);
+                temp.push(element2.item_id.toString());
             })
         }
     })
     items.forEach(function(element3,index3){
-        if(!temp.includes(element3._id)){
+        if(temp.indexOf(element3._id.toString())<0){
             item_rec.push(element3._id);
         }
     })

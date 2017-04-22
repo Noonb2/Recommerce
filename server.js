@@ -266,10 +266,10 @@ app.post('/recommend',function(req,res){
 
 
 
-
+	
 
 // var ahp = require('./server/method/AHP');
-// moduleItem("58c40eee80c5000bb852bbf7").then(function(list){
+// moduleItem("58f9ddcc64a0e00fa4992128").then(function(list){
 // 	targetUser = list[0];
 // 	item_res = list[1];
 // 	// console.log(item_res.length)
