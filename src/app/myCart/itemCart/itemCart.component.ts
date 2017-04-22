@@ -31,7 +31,7 @@ export class itemCart implements OnInit{
     itemCarts = [];
     status="closed";
     sum=0;
-    statusRecommend;
+    statusRecommend=true;
     AssruleItem = [];
     checkAddToCart:boolean;
     option;
@@ -78,6 +78,8 @@ export class itemCart implements OnInit{
                 this.statusRecommend=false;
 
               })
+            }else{
+              this.statusRecommend=true;
             }
             for (var i in this.itemCarts) {
               // code...
