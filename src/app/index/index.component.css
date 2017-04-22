@@ -35,6 +35,10 @@
     color: #330431 !important;
 }
 
+h4{
+  font-weight: bold;
+}
+
 @media screen and (min-width: 768px){
 	.details{
 		padding-left: 100px !important;
