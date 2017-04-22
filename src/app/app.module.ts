@@ -21,7 +21,7 @@ import {Rate} from './index/rate-review/rate.component';
 import {Carousel} from './index/carousel/carousel.component';
 import {RateService} from './index/rate-review/rate.service';
 import { OwlModule } from 'ng2-owl-carousel';
-
+import {indexService} from './index/index.service';
 const appRoutes: Routes = [
   { path: '',component:Indexpage },
   { path: 'Departments/:department/:category', component:Department },
@@ -47,7 +47,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     StickyModule,
-    OwlModule
+    OwlModule,
   ],
   providers: [
     itemListService,
@@ -55,7 +55,8 @@ const appRoutes: Routes = [
     CookieService,
     loginService,
     itemCartService,
-    RateService
+    RateService,
+    indexService,
   ],
   bootstrap: [AppComponent]
 })

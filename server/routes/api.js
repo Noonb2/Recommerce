@@ -9,7 +9,7 @@ var diversity = require('../method/diversity');
 var novelty = require('../method/novelty');
 var mongoose = require('mongoose');
 var moduleItem = require('../modules/get_item');
-
+var ahp = require('../method/AHP');
 /* GET api listing. */
 router.get('/', (req, res) => {
   res.send('api works');
@@ -220,6 +220,40 @@ router.post('/assrule',function(req,res){
         item_res = list[1];
         console.log(item_res);
         res.send(item_res);
+    })
+})
+
+
+router.get('/bestseller',function(req,res){
+    Item.find({}).sort({count:-1}).limit(10).exec(function(err,object){
+        if(err)console.log(err);
+        res.send(object);
+    })
+})
+
+router.get('/newrelease',function(req,res){
+    Item.find({}).limit(10).exec(function(err,obj){
+        if(err)console.log(err);
+        res.send(obj);
+    })
+})
+
+router.post('/inspirebyyou',function(req,res){
+    User.findById(req.body._id,function(err,obj){
+        if(err)console.log();
+        if(obj.buys.length==0){
+            res.send([]);
+        }else{
+            moduleItem(req.body._id,'buys').then(function(list){
+                targetUser = list[0];
+                item_res = list[1];
+                item_longtail = list[2];
+                ahp_list = ahp(targetUser,item_res,item_longtail);
+                weight_list = ahp_list[2];
+                res.send(weight_list);
+            })
+
+        }
     })
 })
 
