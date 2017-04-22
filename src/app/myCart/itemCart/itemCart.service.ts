@@ -25,5 +25,12 @@ export class itemCartService {
 		return this.http.post('/api/checkout',object).map(res=>res.json());
 	}
 
+	getItemAssrule(object:Object){
+		return this.http.post('/api/assrule',object).map(res=>res.json());
+	}
+
+	addToCart(item:Object){
+		return this.http.post('/addCart',item).map(res=>res.json());
+	}
 
 }

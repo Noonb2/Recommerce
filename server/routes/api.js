@@ -8,6 +8,7 @@ var _ = require('underscore');
 var diversity = require('../method/diversity');
 var novelty = require('../method/novelty');
 var mongoose = require('mongoose');
+var moduleItem = require('../modules/get_item');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -211,6 +212,14 @@ router.post('/search',function(req,res){
     Item.find({'name': new RegExp(regex,'i')},function(err,obj){
         if(err)console.log(err);
         res.send(obj);
+    })
+})
+
+router.post('/assrule',function(req,res){
+    moduleItem(req.body.id,'carts').then(function(list){
+        item_res = list[1];
+        console.log(item_res);
+        res.send(item_res);
     })
 })
 

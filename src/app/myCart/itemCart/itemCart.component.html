@@ -60,140 +60,61 @@
 	</div>	
 	<br><br>
 	<!--Recommend-->
-	<div class="owl-carousel owl-theme">
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
+	<!-- <div class="owl-carousel owl-theme" >
+		<div>
+			<div *ngFor="let item of AssruleItem">
+				<div>
+					<div class="photo">
+						<img src="{{item.img}}" class="img-responsive" alt="a" />
 					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
+					<div class="info">
+						<div class="row">
+							<div class="price col-xs-12">
+								<h5>{{item.name}}</h5>
+								<h5 class="price-text-color">${{item.price}}</h5>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
-					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
+					<div class="addtocart">
+						<div class="row">
+							<div class="col-xs-12">
+								<button type="button" class="btn btn-default btn-sm" id="addtocart" (click)="addToCart(item)">
+								<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
-					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
-					</div>
+	</div> -->
+	<owl-carousel 
+	[options]="option"  
+	[items]="AssruleItem" 
+	[carouselClasses]="['owl-theme', 'row', 'sliding']">
+     <div class="item" *ngFor="let item of AssruleItem" >
+        <div class="photo">
+			<img src="{{item.img}}" class="img-responsive" alt="a" />
+		</div>
+		<div class="info">
+			<div class="row">
+				<div class="price col-xs-12">
+					<h5>{{item.name}}</h5>
+					<h5 class="price-text-color">${{item.price}}</h5>
 				</div>
 			</div>
 		</div>
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
-					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
-					</div>
+		<div class="addtocart">
+			<div class="row">
+				<div class="col-xs-12">
+					<button type="button" class="btn btn-default btn-sm" id="addtocart" (click)="addToCart(item)">
+					<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
+					</button>
 				</div>
 			</div>
 		</div>
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
-					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div> 
-			<div class="photo">
-				<img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-			</div>
-			<div class="info">
-				<div class="row">
-					<div class="price col-xs-12">
-						<h5>Product Example</h5>
-						<h5 class="price-text-color">$249.99</h5>
-					</div>
-				</div>
-			</div>
-			<div class="addtocart">
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-default btn-sm" id="addtocart">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add to cart
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+     </div>
+ 	</owl-carousel>
 </div>
 <div id="message" class="center" style="z-index: 9999;position: fixed;text-align: center;width: 100%;top:25%;" [@fadeIn]="status" >
   <div class="alert thank" style="width: 50%" >Thank you for your shopping.</div>

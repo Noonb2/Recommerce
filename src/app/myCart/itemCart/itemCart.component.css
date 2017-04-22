@@ -8,7 +8,9 @@ body {
 #img{
     width: auto;
 }
-
+.item{
+    margin:10px;
+}
 .btn-group-lg>.btn, .btn-lg{
     padding: 0px;
     cursor: pointer;

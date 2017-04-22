@@ -3,12 +3,17 @@ var Rule = require('../models/rules');
 var Item = require('../models/item');
 var User = require('../models/user');
 
-var list = function(user_id){
+var list = function(user_id,option){
 	return new Promise(function(resolve,reject){
 		User.findById(user_id,function(err,obj){
 	    if(err)console.log(err);
 	    user = obj;
-	    userBuys = obj.buys;
+        if(option=='buys'){
+            userBuys = obj.buys;
+        }else if(option=='carts'){
+            userBuys = obj.carts;
+        }
+	    // userBuys = obj.buys;
 	    list= [];
         temp = [];
         dep=[];
