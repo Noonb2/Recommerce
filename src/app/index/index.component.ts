@@ -15,7 +15,7 @@ export class Indexpage implements OnInit{
   title = 'app works!';
   itemBestSeller = [];
   itemNewRelease = [];
-  itemInspire = [];
+  itemInspire;
   option;
   statusInspireByYou=false;
   checkAddToCart;
@@ -25,7 +25,10 @@ export class Indexpage implements OnInit{
               private _cookieService:CookieService,
               private sharedService:SharedService,
               private _indexService:indexService,
-    ){}
+    ){
+
+
+  }
   ngAfterViewInit(){
       // var s = document.createElement("script");
       // s.type = "text/javascript";
@@ -49,18 +52,25 @@ export class Indexpage implements OnInit{
     /////////// for getting Item Inspired by You 
     if(checkLogin!=undefined && JSON.parse(JSON.stringify(checkLogin)).login!=false){
       var id = JSON.parse(JSON.stringify(this._cookieService.getObject('login'))).data._id;
+      var username = JSON.parse(JSON.stringify(this._cookieService.getObject('login'))).data.username;
       var json = {
          _id:id 
       }
-
-      this._indexService.inspireByYou(json).subscribe(res=>{
-        this.itemInspire = res;
-        if(this.itemInspire.length!=0){
-          this.statusInspireByYou=true;
-        }else{
-          this.status=false;
-        }
-      })
+      if(this.sharedService.inspire.status && username==this.sharedService.inspire.username){
+        this.statusInspireByYou=true;
+        this.itemInspire = this.sharedService.inspire.item;
+      }else{
+        this._indexService.inspireByYou(json).subscribe(res=>{
+          this.itemInspire = res;
+          if(this.itemInspire.length!=0){
+            this.statusInspireByYou=true;
+            this.sharedService.rememberInspire(res,username);
+          }else{
+            this.status=false;
+          }
+        })
+      }
+      
     }else{
       this.status=false;
     }

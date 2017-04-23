@@ -117,6 +117,7 @@ export class AppComponent implements OnInit {
           if(path==='/myCart' || path==='/'){
             location.reload();
           }
+          this.sharedService.checkNumLogin();
         }, 700);
       }
       else if(this.checkLog==false){
@@ -175,6 +176,7 @@ export class AppComponent implements OnInit {
     if(path==='/myCart' || path==='/'){
       location.reload();
     }
+    this.sharedService.setNumSignOut();
   }
 
   onEnterSearch(string:String){
